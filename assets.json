@@ -1,7 +1,9 @@
 {
-  "vendors.js": "/Doc-test/static/js/vendors.8fb979bb.js",
-  "vendors.js.map": "/Doc-test/static/js/vendors.ae5808c2f3034b373bba.js.map",
-  "app.js": "/Doc-test/static/js/app.ae5808c2f3034b373bba.js",
-  "app.js.map": "/Doc-test/static/js/app.ae5808c2f3034b373bba.js.map",
+  "vendors.js": "/Doc-test/static/js/vendors.f249f523.js",
+  "vendors.js.map": "/Doc-test/static/js/vendors.a24904d0ed167643c084.js.map",
+  "app.js": "/Doc-test/static/js/app.a24904d0ed167643c084.js",
+  "app.js.map": "/Doc-test/static/js/app.a24904d0ed167643c084.js.map",
+  "introduction.js": "/Doc-test/static/js/introduction.38b80a1e.js",
+  "introduction.js.map": "/Doc-test/static/js/introduction.a24904d0ed167643c084.js.map",
   "index.html": "/Doc-test/index.html"
 }
