@@ -1,0 +1,19 @@
+{
+  "name": "doc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "docz dev",
+    "build": "docz build",
+    "predeploy": "npm install && npm run build",
+    "deploy": "gh-pages -d .docz/dist"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
+    "gh-pages": "^2.0.1"
+  }
+}
