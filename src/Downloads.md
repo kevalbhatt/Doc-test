@@ -8,50 +8,50 @@ route: /Downloads
 Apache Atlas release artifacts are distributed via mirror sites and should be checked for tampering using GPG or SHA-256.
 
 The table below lists release artifacts and their associated signatures and hashes. The keys used to sign the release
-artifacts can be found in our published [[https://www.apache.org/dist/atlas/KEYS][KEYS file]].
+artifacts can be found in our published [KEYS file](https://www.apache.org/dist/atlas/KEYS).
 
 | *Version* | *Release Date* | *Tarball* | *GPG* | *Hash* |
-| 2.0.0 | 2019-05-14 | [[https://www.apache.org/dyn/closer.cgi/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz][source]] | [[https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.asc][signature]] | [[https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.sha512][SHA512]] |
-| 1.1.0 | 2018-09-17 | [[https://www.apache.org/dyn/closer.cgi/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz][source]] | [[https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.asc][signature]] | [[https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.sha512][SHA512]] |
-| 1.0.0 | 2018-06-02 | [[https://www.apache.org/dyn/closer.cgi/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz][source]] | [[https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.asc][signature]] | [[https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.sha512][SHA512]] |
-| 0.8.2 | 2018-02-05 | [[https://www.apache.org/dyn/closer.cgi/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz][source]] | [[https://www.apache.org/dist/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz.asc][signature]] | [[https://www.apache.org/dist/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz.sha512][SHA512]] |
-| 0.8.1 | 2017-08-29 | [[https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz][source]] | [[https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz.sha512][SHA512]] |
-| 0.8.0-incubating | 2017-03-16 | [[https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz][source]] | [[https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz.sha512][SHA512]] |
-| 0.7.1-incubating | 2017-01-29 | [[https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz][source]] | [[https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz.mds][checksum]] |
-| 0.7.0-incubating | 2016-07-09 | [[https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz][source]] | [[https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz.sha512][SHA512]] |
-| 0.6.0-incubating | 2015-12-31 | [[https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz][source]] | [[https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz.sha][SHA]] |
-| 0.5.0-incubating | 2015-06-22 | [[https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz][source]] | [[https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz.asc][signature]] | [[https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz.sha][SHA]] |
+| 2.0.0 | 2019-05-14 | [source](https://www.apache.org/dyn/closer.cgi/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.sha512) |
+| 1.1.0 | 2018-09-17 | [source](https://www.apache.org/dyn/closer.cgi/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.sha512) |
+| 1.0.0 | 2018-06-02 | [source](https://www.apache.org/dyn/closer.cgi/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.sha512) |
+| 0.8.2 | 2018-02-05 | [source](https://www.apache.org/dyn/closer.cgi/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/0.8.2/apache-atlas-0.8.2-sources.tar.gz.sha512) |
+| 0.8.1 | 2017-08-29 | [source](https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz) | [signature](https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz.asc) | [SHA512](https://archive.apache.org/dist/atlas/0.8.1/apache-atlas-0.8.1-sources.tar.gz.sha512) |
+| 0.8.0-incubating | 2017-03-16 | [source](https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz) | [signature](https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz.asc) | [SHA512](https://archive.apache.org/dist/incubator/atlas/0.8.0-incubating/apache-atlas-0.8-incubating-sources.tar.gz.sha512) |
+| 0.7.1-incubating | 2017-01-29 | [source](https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz) | [signature](https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz.asc) | [checksum](https://archive.apache.org/dist/incubator/atlas/0.7.1-incubating/apache-atlas-0.7.1-incubating-sources.tar.gz.mds) |
+| 0.7.0-incubating | 2016-07-09 | [source](https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz) | [signature](https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz.asc) | [SHA512](https://archive.apache.org/dist/incubator/atlas/0.7.0-incubating/apache-atlas-0.7-incubating-sources.tar.gz.sha512) |
+| 0.6.0-incubating | 2015-12-31 | [source](https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz) | [signature](https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz.asc) | [SHA](https://archive.apache.org/dist/incubator/atlas/0.6.0-incubating/apache-atlas-0.6-incubating-sources.tar.gz.sha) |
+| 0.5.0-incubating | 2015-06-22 | [source](https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz) | [signature](https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz.asc) | [SHA](https://archive.apache.org/dist/incubator/atlas/0.5.0-incubating/apache-atlas-0.5-incubating-sources.tar.gz.sha) |
 
 ## Verify the integrity of the files
 
 It is essential that you verify the integrity of the downloaded file using the PGP signature (.asc file) or a hash
-(.md5 or .sha* file). Please read [[https://www.apache.org/info/verification.html][Verifying Apache Software Foundation Releases]]
+(.md5 or .sha* file). Please read [Verifying Apache Software Foundation Releases](https://www.apache.org/info/verification.html)
 for more information on why you should verify our releases.
 
 The PGP signature can be verified using PGP or GPG, with the following steps:
    * Download the release artifact from the link in the table above
    * Download the signature file for the release from the link in the table above
-   * Download [[https://www.apache.org/dist/atlas/KEYS][Apache Atlas KEYS file]]
+   * Download [Apache Atlas KEYS file](https://www.apache.org/dist/atlas/KEYS)
    * Verify the signatures using one of the following:
 
-<verbatim>
+```java
 % gpg --import KEYS
-% gpg --verify downloaded_file.asc downloaded_file</verbatim>
+% gpg --verify downloaded_file.asc downloaded_file```
 
 or
 
-<verbatim>
+```java
 % pgpk -a KEYS
-% pgpv downloaded_file.asc</verbatim>
+% pgpv downloaded_file.asc```
 
 or
 
-<verbatim>
+```java
 % pgp -ka KEYS
-% pgp downloaded_file.asc</verbatim>
+% pgp downloaded_file.asc```
 
 ## Release Notes
-*[[../2.0.0/index][Atlas 2.0.0]] (Released on 2019/05/14)*
+**[Atlas 2.0.0](../2.0.0/index) (Released on 2019/05/14)**
    * Soft-reference attribute implementation.
    * Unique-attributes constraints at graph store-level
    * Atlas Index Repair tool for Janusgraph
@@ -77,9 +77,9 @@ or
       * UI: Add relationships table inside relationships view in entity details page.
       * UI: Add service-type dropdown in basic search to filter entitydef type.
    * Various Bug-fixes and optimizations
-   * [[https://issues.apache.org/jira/issues/?jql=project%20%3D%20ATLAS%20AND%20status%20%3D%20Resolved%20AND%20fixVersion%20%3D%202.0.0%20ORDER%20BY%20updated%20DESC%2C%20priority%20DESC][List of JIRAs resolved in Apache Atlas 2.0.0 release]]
+   * [List of JIRAs resolved in Apache Atlas 2.0.0 release](https://issues.apache.org/jira/issues/?jql=project%20%3D%20ATLAS%20AND%20status%20%3D%20Resolved%20AND%20fixVersion%20%3D%202.0.0%20ORDER%20BY%20updated%20DESC%2C%20priority%20DESC)
 
-*[[../1.1.0/index][Atlas 1.1.0]] (Released on 2018/09/17)*
+**[Atlas 1.1.0](../1.1.0/index) (Released on 2018/09/17)**
    * Updated authorization model to support access control on relationship operations
    * Added support for AWS S3 datatypes, in Atlas server and Hive hook
    * Updated [[http://atlas.apache.org/JanusGraph.html][JanusGraph]] version from 0.2.0 to 0.3.0
@@ -87,7 +87,7 @@ or
    * Enhanced classification-propagation with options to handle entity-deletes
    * BugFixes and Optimizations
 
-*[[../1.0.0/index][Atlas 1.0.0]] (Released on 2018/06/02)*
+**[Atlas 1.0.0](../1.0.0/index) (Released on 2018/06/02)**
 
    * Core model enhancement to support Relationship as first-class construct
    * Support for JanusGraph graph database
@@ -100,9 +100,9 @@ or
    * Glossary terms, categories
    * HBase Hook
    * UI updates to show entity relationships
-   * [[https://issues.apache.org/jira/issues/?jql=project%20%3D%20Atlas%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%201.0.0%20ORDER%20BY%20key%20DESC][List of JIRAs resolved in Apache Atlas 1.0.0 release]]
+   * [List of JIRAs resolved in Apache Atlas 1.0.0 release](https://issues.apache.org/jira/issues/?jql=project%20%3D%20Atlas%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%201.0.0%20ORDER%20BY%20key%20DESC)
 
-*[[../0.8.2/index][Atlas 0.8.2]] (Released on 2018/02/05)*
+**[Atlas 0.8.2](../0.8.2/index) (Released on 2018/02/05)**
 
    * Search improvements:
       * Basic search enhancement to optionally exclude sub-type entities and sub-classification-types
@@ -115,9 +115,9 @@ or
    * fix type initialization issues in HA deployment
    * In HA, the passive node redirects the request with wrong URL encoding
    * tool kit to recover from lost/bad index data
-   * [[https://issues.apache.org/jira/issues/?jql=project%20%3D%20Atlas%20AND%20fixVersion%20%3D%200.8.2%20ORDER%20BY%20key%20ASC][List of JIRAs resolved in Apache Atlas 0.8.2 release]]
+   * [List of JIRAs resolved in Apache Atlas 0.8.2 release](https://issues.apache.org/jira/issues/?jql=project%20%3D%20Atlas%20AND%20fixVersion%20%3D%200.8.2%20ORDER%20BY%20key%20ASC)
 
-*[[../0.8.1/index][Atlas 0.8.1]] (Released on 2017/08/29)*
+**[Atlas 0.8.1](../0.8.1/index) (Released on 2017/08/29)**
 
    * Basic-search improvement in use of index for attribute filtering
    * DSL query enhancement to support 'like' operator
@@ -128,7 +128,7 @@ or
    * Knox SSO for Atlas REST APIs
    * Moved from use of Guice + Spring framework for dependency-injection to use only Spring framework
 
-*[[../0.8.0-incubating/index][Atlas 0.8-incubating]] (Released on 2017/03/16)*
+**[Atlas 0.8-incubating](../0.8.0-incubating/index) (Released on 2017/03/16)**
 
    * API revamp - new, structured REST API
    * Simplified search UI
@@ -136,12 +136,12 @@ or
    * Performance and scalability improvements
    * Knox SSO for Atlas UI
 
-*[[../0.7.1-incubating/index][Atlas 0.7.1-incubating]] (Released on 2017/01/29)*
+**[Atlas 0.7.1-incubating](../0.7.1-incubating/index) (Released on 2017/01/29)**
 
    * Performance and scalability improvements (ATLAS-1403, ATLAS-1404)
    * Bug fixes
 
-*[[../0.7.0-incubating/index][Atlas 0.7-incubating]] (Released on 2016/07/09)*
+**[Atlas 0.7-incubating](../0.7.0-incubating/index) (Released on 2016/07/09)**
 
    * High Availability (ATLAS-510)
    * Business Catalog / Taxonomy (ATLAS-491)
@@ -157,7 +157,7 @@ or
    * Standalone HBase Support (ATLAS-498)
    * Upgrade Support (ATLAS-631)
 
-*[[../0.6.0-incubating/index][Atlas 0.6-incubating]] (Released on 2015/12/30)*
+**[Atlas 0.6-incubating](../0.6.0-incubating/index) (Released on 2015/12/30)**
    * Improved Hive Server 2 Integration
    * Sqoop Integration
    * Falcon Integration
@@ -165,7 +165,7 @@ or
    * Various Bug Fixes
    * Atlas / Ranger Integration
 
-*[[../0.5.0-incubating/index][Atlas 0.5-incubating]] (Released on 2015/07/09)*
+**[Atlas 0.5-incubating](../0.5.0-incubating/index) (Released on 2015/07/09)**
    * Hive Server 2 Integration
    * Basic Hive Lineage
    * Basic Ambari Integration
