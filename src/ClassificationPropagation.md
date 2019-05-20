@@ -1,6 +1,6 @@
 ---
 name: ClassificationPropagation
-route: /
+route: /ClassificationPropagation
 ---
 # Classification Propagation
 

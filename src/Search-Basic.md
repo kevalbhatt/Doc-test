@@ -1,6 +1,7 @@
 ---
 name: Basic Search
 route: /Search-Basic
+menu: Search
 ---
 
 # Basic Search
@@ -37,7 +38,7 @@ The entire query structure can be represented using the following JSON structure
    attributes:             attributes to include in the search result
 ```
 
-<img src="images/twiki/search-basic-hive_column-PII.png" height="400" width="600"/>
+<img src="public/images/twiki/search-basic-hive_column-PII.png" height="400" width="600"/>
 
    Attribute based filtering can be done on multiple attributes with AND/OR conditions.
 
@@ -58,7 +59,7 @@ The entire query structure can be represented using the following JSON structure
    }
   ```
 
-<img src="/public/images/twiki/search-basic-hive_table-customers.png" height="400" width="600"/>
+<img src="public/images/twiki/search-basic-hive_table-customers.png" height="400" width="600"/>
 
    * Multi-attribute with OR
  ```json
@@ -86,7 +87,7 @@ The entire query structure can be represented using the following JSON structure
    }
 ```
 
-<img src="images/twiki/search-basic-hive_table-customers-or-provider.png" height="400" width="600"/>
+<img src="public/images/twiki/search-basic-hive_table-customers-or-provider.png" height="400" width="600"/>
 
    * Multi-attribute with AND
  ```json
@@ -114,7 +115,7 @@ The entire query structure can be represented using the following JSON structure
   }
 ```
 
-<img src="images/twiki/search-basic-hive_table-customers-owner_is_hive.png" height="400" width="600"/>
+<img src="public/images/twiki/search-basic-hive_table-customers-owner_is_hive.png" height="400" width="600"/>
 
 **Supported operators for filtering**
 

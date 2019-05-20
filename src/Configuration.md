@@ -1,6 +1,6 @@
 ---
 name: Configuration
-route: /
+route: /Configuration
 ---
 # Configuring Apache Atlas - Application Properties
 
@@ -12,7 +12,7 @@ All configuration in Atlas uses java properties style configuration. The main co
 ### Graph Persistence engine - HBase
 Set the following properties to configure [JanusGraph](http://atlas.apache.org/JanusGraph.html) to use HBase as the persistence engine. Please refer to [link](http://docs.janusgraph.org/0.2.0/configuration.html#_hbase_caching) for more details.
 
-```
+```shell
 atlas.graph.storage.backend=hbase
 atlas.graph.storage.hostname=<ZooKeeper Quorum>
 atlas.graph.storage.hbase.table=atlas
@@ -32,7 +32,7 @@ best suited for your environment and follow the configuration instructions below
 #### Graph Search Index - Solr
 Solr installation in Cloud mode is a prerequisite for Apache Atlas use. Set the following properties to configure JanusGraph to use Solr as the index search engine.
 
-```
+```shell
 atlas.graph.index.search.backend=solr5
 atlas.graph.index.search.solr.mode=cloud
 atlas.graph.index.search.solr.wait-searcher=true
@@ -50,16 +50,17 @@ atlas.graph.index.search.solr.zookeeper-session-timeout=60000
 #### Graph Search Index - Elasticsearch (Tech Preview)
 Elasticsearch is a prerequisite for Apache Atlas use. Set the following properties to configure JanusGraph to use Elasticsearch as the index search engine.
 
-```
+```shell
 atlas.graph.index.search.backend=elasticsearch
 atlas.graph.index.search.hostname=<hostname(s) of the Elasticsearch master nodes comma separated>
-atlas.graph.index.search.elasticsearch.client-only=true```
+atlas.graph.index.search.elasticsearch.client-only=true
+```
 
 
 ## Search Configs
 Search APIs (DSL, basic search, full-text search) support pagination and have optional limit and offset arguments. Following configs are related to search pagination
 
-```
+```shell
 # Default limit used when limit is not specified in API
 atlas.search.defaultlimit=100
 
@@ -71,7 +72,7 @@ atlas.search.maxlimit=10000
 ## Notification Configs
 Refer http://kafka.apache.org/documentation.html#configuration for Kafka configuration. All Kafka configs should be prefixed with 'atlas.kafka.'
 
-```
+```shell
 atlas.kafka.auto.commit.enable=false
 
 # Kafka servers. Example: localhost:6667
@@ -96,7 +97,8 @@ atlas.kafka.zookeeper.sync.time.ms=20
 ```
 
 ## Client Configs
-```
+
+```shell
 atlas.client.readTimeoutMSecs=60000
 atlas.client.connectTimeoutMSecs=60000
 
@@ -110,14 +112,14 @@ atlas.rest.address=
 ### SSL config
 The following property is used to toggle the SSL feature.
 
-```
+```shell
 atlas.enableTLS=false
 ```
 
 ## High Availability Properties
 The following properties describe High Availability related configuration options:
 
-```
+```shell
 # Set the following property to true, to enable High Availability. Default = false.
 atlas.server.ha.enabled=true
 
@@ -160,7 +162,7 @@ atlas.client.ha.sleep.interval.ms=5000
 ```
 
 ## Server Properties
-```
+```shell
 # Set the following property to true, to enable the setup steps to run on each server start. Default = false.
 atlas.server.run.setup.on.start=false
 ```
@@ -168,7 +170,7 @@ atlas.server.run.setup.on.start=false
 ## Performance configuration items
 The following properties can be used to tune performance of Atlas under specific circumstances:
 
-```
+```shell
 # The number of times Atlas code tries to acquire a lock (to ensure consistency) while committing a transaction.
 # This should be related to the amount of concurrency expected to be supported by the server. For e.g. with retries set to 10, upto 100 threads can concurrently create types in the Atlas system.
 # If this is set to a low value (default is 3), concurrent operations might fail with a PermanentLockingException.
@@ -193,7 +195,8 @@ atlas.webserver.queuesize=100
 
 ### Recording performance metrics
 To enable performance logs for various Atlas operations (like REST API calls, notification processing), setup the following in atlas-log4j.xml:
-```
+
+```shell
   <appender name="perf_appender" class="org.apache.log4j.DailyRollingFileAppender">
     <param name="File" value="/var/log/atlas/atlas_perf.log"/>
     <param name="datePattern" value="'.'yyyy-MM-dd"/>

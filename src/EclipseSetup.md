@@ -1,7 +1,8 @@
 ---
 name: EclipseSetup
-route: /
+route: /EclipseSetup
 ---
+
 # Tools required to build and run Apache Atlas on Eclipse
 
 These instructions are provided as-is. They worked at a point in time; other variants of software may work. These instructions may become stale if the build dependencies change.
@@ -61,7 +62,8 @@ Atlas tests use the (TestNG framework)[http://testng.org/doc/documentation-main.
 a. File - Import - Maven - Existing Maven Projects b. Browse to your Atlas folder c. Uncheck the root project and non-Java projects such as dashboardv2, docs and distro, then click Finish
 
 On the Mac, the Maven import fails with message
-```
+
+```shell
 "Cannot complete the install because one or more required items could not be found. Software being installed: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) Missing requirement: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) requires 'org.eclipse.ajdt.core 1.5.0' but it could not be found".
 ```
 
@@ -93,7 +95,8 @@ You should now have a clean workspace.
 
 You will need to change some of these scripts to point to your installation targets.
    * Run this script to setup your command line build environment
-```
+
+```shell
 #!/bin/bash # export JAVA_HOME=/Library/Java/JavaVirtualMachines/macosxx6480sr3fp10hybrid-20160719_01-sdk
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9 # Git is installed in the system path
@@ -103,7 +106,8 @@ export MAVEN_OPTS="-Xmx1536m -Drat.numUnapprovedLicenses=100"
 ```
 
    * If you do  not want to set Java 8 as your system java, you can use this  bash script to setup the environment and run Eclipse (which you can drop in Applications and rename to neon).
-```
+
+```shell
 #!/bin/bash
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9

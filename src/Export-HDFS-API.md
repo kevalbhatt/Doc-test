@@ -1,6 +1,7 @@
 ---
-name: Export-HDFS-API
-route: /
+name: Export HDFS API
+route: /Export-HDFS-API
+menu: Import/Export
 ---
 
 # Export & Import APIs for HDFS Path

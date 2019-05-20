@@ -1,6 +1,6 @@
 ---
 name: Downloads
-route: /
+route: /Downloads
 ---
 # Downloads
 

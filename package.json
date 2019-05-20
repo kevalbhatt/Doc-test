@@ -15,5 +15,8 @@
     "docz": "^1.2.0",
     "docz-theme-default": "^1.2.0",
     "gh-pages": "^2.0.1"
+  },
+  "dependencies": {
+    "docz-plugin-css": "^0.11.0"
   }
 }

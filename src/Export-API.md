@@ -1,6 +1,7 @@
 ---
-name: Export-API
-route: /
+name: Export API
+route: /Export-API
+menu: Import/Export
 ---
 
 
