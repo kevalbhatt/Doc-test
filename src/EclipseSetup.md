@@ -45,7 +45,7 @@ Some of the Atlas source code is written in the Scala programming language. The 
    * Set the Scala compiler to target the 1.7 JVM: Window - Preferences - Scala - Compiler, change target to 1.7
 *TestNG Eclipse plug-in*
 
-Atlas tests use the (TestNG framework)[http://testng.org/doc/documentation-main.html], which is similar to JUnit. The TestNG plug-in is required to run TestNG tests from Eclipse.
+Atlas tests use the [TestNG framework](http://testng.org/doc/documentation-main.html), which is similar to JUnit. The TestNG plug-in is required to run TestNG tests from Eclipse.
    * In Eclipse, choose Help - Install New Software..
    * Click Add... to add an update site, and set Location to http://beust.com/eclipse-old/eclipse_6.9.9.201510270734
       * Choose TestNG and continue with install
