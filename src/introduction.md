@@ -55,27 +55,6 @@ capabilities around these data assets for data scientists, analysts and the data
    * [Build & Install](./InstallationSteps.html)
    * [Quick Start](./QuickStart.html)
 
-
-## Documentation
-
-   * [High Level Architecture](./Architecture.html)
-   * [Type System](./TypeSystem.html)
-   * [Atlas Authorization Model](./Atlas-Authorization-Mode.html)
-      * [Steps to configure Atlas Simple Authorizer](./Atlas-Authorization-Simple-Authorizer.html)
-      * [Steps to configure Atlas Ranger Authorizer](./Atlas-Authorization-Ranger-Authorizer.html)
-   * [Classification Propagation](./ClassificationPropagation.html)
-   * [Configuration](./Configuration.html)
-   * [Notifications](./Notifications.html)
-   * Hooks & Bridges
-      * [HBase Hook & Bridge](./Hook-HBase)
-      * [Hive Hook & Bridge](./Hook-Hive)
-      * [Sqoop Hook](./Hook-Sqoop)
-      * [Storm Hook](./Hook-Storm)
-      * [Kafka Bridge](./Bridge-Kafka.html)
-   * [Fault Tolerance And High Availability Options](./HighAvailability.html)
-   * [Migration from Apache Atlas 0.8](./Migration-0.8-to-1.0.html)
-   * [Index repair tool](./AtlasRepairIndex.html)
-
 ## API Documentation
 
    * <a href="api/v2/index.html">REST API Documentation</a>
