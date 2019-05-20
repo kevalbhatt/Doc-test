@@ -46,9 +46,9 @@ The properties for configuring service authentication are:
 
    * `atlas.authentication.method` (simple|kerberos) [default: simple] - the authentication method to utilize.  Simple will leverage the OS authenticated identity and is the default mechanism.  'kerberos' indicates that the service is required to authenticate to the KDC leveraging the configured keytab and principal.
    * `atlas.authentication.keytab` - the path to the keytab file.
-   * `atlas.authentication.principal` - the principal to use for authenticating to the KDC.  The principal is generally of the form "user/host@realm".  You may use the '_HOST' token for the hostname and the local hostname will be substituted in by the runtime (e.g. "Atlas/_HOST@EXAMPLE.COM").
+   * `atlas.authentication.principal` - the principal to use for authenticating to the KDC.  The principal is generally of the form "user/host@realm".  You may use the '_HOST' token for the hostname and the local hostname will be substituted in by the runtime (e.g. "Atlas/_HOST@EXAMPLE.COM")
 
-Note that when Atlas is configured with HBase as the storage backend in a secure cluster, the graph db (JanusGraph) needs sufficient user permissions to be able to create and access an HBase table.  To grant the appropriate permissions see [Graph persistence engine - Hbase](./Configuration.html).
+> Note that when Atlas is configured with HBase as the storage backend in a secure cluster, the graph db (JanusGraph) needs sufficient user permissions to be able to create and access an HBase table.  To grant the appropriate permissions see [Graph persistence engine - Hbase](Configuration).
 
 ### JAAS configuration
 
@@ -280,4 +280,4 @@ curl --negotiate -u : "http://<host>:8983/solr/"
 ```
 
 
-   * Create collections in Solr corresponding to the indexes that Atlas uses and change the Atlas configuration to point to the Solr instance setup as described in the [Install Steps](./InstallationSteps.html)
+   * Create collections in Solr corresponding to the indexes that Atlas uses and change the Atlas configuration to point to the Solr instance setup as described in the [Install Steps](InstallationSteps)

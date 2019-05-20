@@ -25,6 +25,7 @@ See [here](http://atlas.apache.org/Export-HDFS-API.html) for details on exportin
 | _Notes_ | Consumer could choose to consume the output of the API by programmatically using _java.io.ByteOutputStream_ or by manually, save the contents of the stream to a file on the disk.|
 
 __Method Signature__
+
 ```
 @POST
 @Path("/export")
