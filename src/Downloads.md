@@ -1,6 +1,7 @@
 ---
 name: Downloads
 route: /Downloads
+menu: releases 
 ---
 # Downloads
 
@@ -36,19 +37,22 @@ The PGP signature can be verified using PGP or GPG, with the following steps:
 
 ```java
 % gpg --import KEYS
-% gpg --verify downloaded_file.asc downloaded_file```
+% gpg --verify downloaded_file.asc downloaded_file
+```
 
 or
 
 ```java
 % pgpk -a KEYS
-% pgpv downloaded_file.asc```
+% pgpv downloaded_file.asc
+```
 
 or
 
 ```java
 % pgp -ka KEYS
-% pgp downloaded_file.asc```
+% pgp downloaded_file.asc
+```
 
 ## Release Notes
 **[Atlas 2.0.0](../2.0.0/index) (Released on 2019/05/14)**

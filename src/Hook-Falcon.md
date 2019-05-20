@@ -1,7 +1,7 @@
 ---
 name: Falcon
 route: /Hook-Falcon
-menu: Hook
+menu: Hooks
 ---
 
 # Falcon Atlas Bridge

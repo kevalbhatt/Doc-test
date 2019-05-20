@@ -8,8 +8,8 @@ menu: Import/Export
 
 ### What's New
 The release of 0.8.3 includes the following improvements to Export and Import APIs:
-   * Export: Support for [Incremental Export](../Incremental Export).
-   * Export & Import: Support for [replicated attributes](ReplicatedToFromAttributes.html) to entities made possible by [SoftReference](SoftReference) entity attribute option.
+   * Export: Support for [Incremental Export](Incremental-Export).
+   * Export & Import: Support for [replicated attributes](ReplicatedToFromAttributes) to entities made possible by [SoftReference](SoftReference) entity attribute option.
    * Export option: [skipLineage](skipLineage).
    * New entity transforms framework.
    * New [AtlasServer](AtlasServer) entity type.

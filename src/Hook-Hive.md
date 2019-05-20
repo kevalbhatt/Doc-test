@@ -1,3 +1,9 @@
+---
+name: Hive
+route: /Hook-Hive
+menu: Hooks
+---
+
 # Apache Atlas Hook & Bridge for Apache Hive
 
 ## Hive Model

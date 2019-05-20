@@ -9,21 +9,22 @@ menu: Import/Export
 Import API options are specified as _options_ JSON. Since the API accepts multi-part form data, it is possible to sepecify multipls input streams within the CURL call.
 
 ### Examples Using CURL Calls
-<verbatim>
+```shell
 curl -g -X POST -u adminuser:password -H "Content-Type: multipart/form-data"
             -H "Cache-Control: no-cache"
             -F request=@importOptions.json
             -F data=@quickStartDB.zip
             "http://localhost:21000/api/atlas/admin/import"
-</verbatim>
+```
 
 To use the defaults, set the contents of _importOptions.json_ to:
-<verbatim>
+
+```shell
 {
   "options": {
   }
 }
-</verbatim>
+```
 
 
 ### Options
@@ -48,13 +49,14 @@ Example:
 The example below applies couple of transforms to the the _qualifiedName_ attribute of hive_table. It converts the value to lower case, then searches for 'cl1', if found, replaces it with 'cl2'.
 
 To use the option, set the contents of _importOptions.json_ to:
-<verbatim>
+
+```shell
 {
   "options": {
     "transforms": "{ \"hive_table\": { \"qualifiedName\": [ \"replace:@cl1:@cl2\" ] }, \"hive_db\": { \"qualifiedName\": [ \"replace:@cl1:@cl2\" ] } }"
   }
 }
-</verbatim>
+```
 
 Please refer to [ATLAS-1825](https://issues.apache.org/jira/browse/ATLAS-1825) for details scenarios when this option could be used.
 
@@ -65,24 +67,24 @@ When an import operation is in progress and the server goes down, it would be po
 Server-side logging is improved to display the detail of the last successfully imported entity, this includes the index within the import list and the entity's guid. Either can be used specify the point to resume import.
 
 To use the option, set the contents of _importOptions.json_ to:
-<verbatim>
+```shell
 {
 
   "options": {
     "startGuid": "bd97c78e-3fa5-4f9c-9f48-3683ca3d1fb1"
   }
 }
-</verbatim>
+```
 
 To use _startPosition_, use the following in the _importOptions.json_:
-<verbatim>
+```shell
 {
 
   "options": {
     "startPosition": "332"
   }
 }
-</verbatim>
+```
 
 Steps to use the behavior:
    * Start an import (using the CURL) that is fairly long, say about 1000# entities.
@@ -109,33 +111,33 @@ Table below enumerates the conditions that get addressed as part of type definit
 |Type to be imported and type in target system differ by some attributes| Target system type is updated to the attributes present in the source. It is possible that the target system will have attributes in addition to the one present in the source. In that case, the target system's type attributes will be an union of the attributes. Attributes in target system will not be deleted to match the source. If the type of the attribute differ, import process will be aborted and exception logged.|
 
 To use the option, set the contents of _importOptions.json_ to:
-<verbatim>
+```shell
 {
 
   "options": {
     "updateTypeDefinition": true
   }
 }
-</verbatim>
+```
 
 #### Specifying File to be Imported From Server Location
 
 In scenario where the file to be imported is present at a location on the server, the _importfile_ API can be used. It behaves like the Import API.
 
 To use the option, set the contents of _importOptions.json_ to:
-<verbatim>
+```shell
 {
 
   "options": {
     "fileName": "/root/fileToBeImported.zip"
   }
 }
-</verbatim>
+```
 
 _CURL_
-<verbatim>
+```shell
 curl -g -X POST -u adminuser:password -H "Content-Type: application/json"
             -H "Cache-Control: no-cache"
             -d r@importOptions.json
             "http://localhost:21000/api/atlas/admin/importfile"
-</verbatim>
+```

@@ -51,15 +51,15 @@ capabilities around these data assets for data scientists, analysts and the data
 
 ## Getting Started
 
-   * [What's new in Apache Atlas 2.0?](./WhatsNew-2.0.html)
-   * [Build & Install](./InstallationSteps.html)
-   * [Quick Start](./QuickStart.html)
+   * [What's new in Apache Atlas 2.0?](WhatsNew-2.0)
+   * [Build & Install](InstallationSteps)
+   * [Quick Start](QuickStart)
 
 ## API Documentation
 
    * <a href="api/v2/index.html">REST API Documentation</a>
-   * [Export & Import REST API Documentation](./Import-Export-API.html)
+   * [Export & Import REST API Documentation](Import-Export-API)
    * <a href="../api/rest.html">Legacy API Documentation</a>
 
 ## Developer Setup Documentation
-   * [Developer Setup: Eclipse](./EclipseSetup.html)
+   * [Developer Setup: Eclipse](EclipseSetup)
