@@ -1,1 +1,1 @@
-export default ["Introduction","Getting Started"]
+export default ["Introduction", "Getting Started", "Downloads"]
