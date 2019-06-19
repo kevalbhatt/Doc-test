@@ -1,5 +1,5 @@
 import { css } from "docz-plugin-css";
-import menu from "./menu";
+import menu from "./config/menu";
 
 module.exports = {
 	title: "Apache Atlas",
@@ -12,5 +12,25 @@ module.exports = {
 			preprocessor: "sass"
 		})
 	],
-	menu: menu
+	menu: menu,
+	theme: "theme/",
+	modifyBundlerConfig: config => {
+		config.module.rules.push(
+			{
+				test: /\.(js)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: "babel-loader",
+					query: {
+						presets: ["@babel/react"],
+						plugins: [
+							"@babel/plugin-proposal-class-properties",
+							"@babel/plugin-syntax-dynamic-import"
+						]
+					}
+				}
+			}
+		);
+		return config;
+	}
 };

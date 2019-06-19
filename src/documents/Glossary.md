@@ -72,9 +72,9 @@ Category view allows an user to perform the following operations:
 
 Users can switch between term view and category view using toggle provided in GLOSSARY tab.
 
-<img src="images/markdown/terms_view.png" width="250" style="border:2px solid black; margin-left:50px"/>
-<p/>
-<img src="images/markdown/category_view_1.png" width="250" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/terms_view.png"  />
+
+<img src="images/markdown/category_view_1.png"/>
   
 
 ##### Term context menu
@@ -83,14 +83,14 @@ Users can switch between term view and category view using toggle provided in GL
 Clicking on the **ellipsis (...)** next to a glossary name shows a pop-over menu that allows users to create a term in
 the glossary or delete the glossary - as shown below.
 
-<img src="images/markdown/term_view_context.png" width="400" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/term_view_context.png"/>
 
 
 * To delete a term  
 Clicking on the **ellipsis (...)** next to a term name shows a pop-over menu that allows users to delete the term - as
 shown below.
 
-<img src="images/markdown/term_delete_context.png" width="600" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/term_delete_context.png"/>
 
 
 ##### Term detail page
@@ -101,31 +101,31 @@ page provides different details of the term.
 * Classifications tab shows the classification(s) associated with the selected term
 * Related terms tab shows the terms that are related to the selected term
 
-<img src="images/markdown/term_details.png" width="600" style="border:2px solid black; margin-left:50px"/>  
+<img src="images/markdown/term_details.png"/>  
 
 
 ##### Add classification to Term
 
 Clicking on **+** next to classification label to add a classification to the term.
 
-<img src="images/markdown/term_add_classification_1.png" width="400" style="border:2px solid black; margin-left:50px" alt="Add classification"/>
-<p/>
-<img src="images/markdown/term_add_classification_2.png" width="400" style="border:2px solid black; margin-left:50px" alt="Add classification - details"/>
-<p/>
-<img src="images/markdown/term_with_classification.png" width="400" style="border:2px solid black; margin-left:50px" alt="Classifications associated with term"/>
+<img src="images/markdown/term_add_classification_1.png" alt="Add classification"/>
+
+<img src="images/markdown/term_add_classification_2.png" alt="Add classification - details"/>
+
+<img src="images/markdown/term_with_classification.png" alt="Classifications associated with term"/>
 
 
 ##### Create term relationship with other term
 Click on "Related Terms" tab when viewing term details. Clicking on **+** will allow linking a term with the current term.
 
-<img src="images/markdown/terms_related_terms.png" width="600" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/terms_related_terms.png"/>
 
 
 ##### Categorize a term
 
 Click on **+** next to categories label to categorize a term. A modal dialog will be presented for choosing a category.
 
-<img src="images/markdown/term_add_category.png" width="500" style="border:2px solid black; margin-left:50px"/> 
+<img src="images/markdown/term_add_category.png" /> 
 
 
 #### **Category view**
@@ -134,7 +134,7 @@ When the toggle switch is on category, the panel will list down all glossaries a
 interactions under this view.
 
 * Expanded view  
-<img src="images/markdown/category_view_2.png" width="250" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/category_view_2.png" />
   
 
 ##### Category context menu
@@ -143,29 +143,29 @@ Clicking on **ellipsis (...)** next to the category name will present a category
 
 * To create a new category   
 
-<img src="images/markdown/category_view_glossary_context.png" width="600" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/category_view_glossary_context.png"/>
 
 * To create a sub-category or delete a category  
 
-<img src="images/markdown/category_view_category_context_1.png" width="600" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/category_view_category_context_1.png"/>
 
 
 ##### Category detail page
 
 Once a category is selected, the details will be presented in the right pane.
 
-<img src="images/markdown/category_details_with_terms.png" width="600" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/category_details_with_terms.png"/>
 
 
 ##### Categorize term
 
 Click on **+** next to the terms label to link a term under selected category.
 
-<img src="images/markdown/category_add_term.png" width="600" style="border:2px solid black; margin-left:50px"/>
-<p/>
-<img src="images/markdown/category_add_term_1.png" width="500" style="border:2px solid black; margin-left:50px"/>
-<p/>
-<img src="images/markdown/category_add_term_2.png" width="500" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/category_add_term.png"/>
+
+<img src="images/markdown/category_add_term_1.png" />
+
+<img src="images/markdown/category_add_term_2.png" />
  
 
 #### **Term assignment flow**
@@ -176,26 +176,26 @@ Terms can be assigned to an entity either from the results page or entity detail
 
 Click on **+** under "terms" column (if associating term from search page)
 
-<img src="images/markdown/entity_search_add_term.png" width="" style="border:2px solid black; margin-left:50px"/>  
+<img src="images/markdown/entity_search_add_term.png" />  
 
 
 Click on **+** next to "terms" label (if viewing a specific entity details)
 
-<img src="images/markdown/entity_details_add_term.png" width="" style="border:2px solid black; margin-left:50px"/>  
+<img src="images/markdown/entity_details_add_term.png" />  
 
 
 Both the actions will present the following modal, follow prompts on screen to complete term assignment.  
 
-<img src="images/markdown/entity_add_term_modal.png" width="500" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/entity_add_term_modal.png" />
 
 
 ##### Propagated classification
 
 If a term has classification then the entity is has been assigned inherits the same.
 
-<img src="images/markdown/term_details_with_classification.png" width="" style="border:2px solid black; margin-left:50px"/>
-<p/>
-<img src="images/markdown/entity_assigned_term_with_tag.png" width="500" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/term_details_with_classification.png" />
+
+<img src="images/markdown/entity_assigned_term_with_tag.png" />
 
 
 #### **Search using a term**    
@@ -203,7 +203,7 @@ If a term has classification then the entity is has been assigned inherits the s
 Apache Atlas basic-search API and UI have been updated to support term as a search criteria. This allows users to find
 entities associated with a given term. Basic search UI now includes a new input drop-down for term based searches.   
 
-<img src="images/markdown/term_search.png" width="250" style="border:2px solid black; margin-left:50px"/>
+<img src="images/markdown/term_search.png" />
 
 
 ***

@@ -1,7 +1,6 @@
 ---
 name: Downloads
 route: /Downloads
-menu: releases 
 ---
 # Downloads
 
@@ -12,6 +11,7 @@ The table below lists release artifacts and their associated signatures and hash
 artifacts can be found in our published [KEYS file](https://www.apache.org/dist/atlas/KEYS).
 
 | *Version* | *Release Date* | *Tarball* | *GPG* | *Hash* |
+| : ------------- : | : ------------- : | : ------------- : | : ------------- : |: ------------- :|
 | 2.0.0 | 2019-05-14 | [source](https://www.apache.org/dyn/closer.cgi/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/2.0.0/apache-atlas-2.0.0-sources.tar.gz.sha512) |
 | 1.1.0 | 2018-09-17 | [source](https://www.apache.org/dyn/closer.cgi/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/1.1.0/apache-atlas-1.1.0-sources.tar.gz.sha512) |
 | 1.0.0 | 2018-06-02 | [source](https://www.apache.org/dyn/closer.cgi/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz) | [signature](https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.asc) | [SHA512](https://www.apache.org/dist/atlas/1.0.0/apache-atlas-1.0.0-sources.tar.gz.sha512) |

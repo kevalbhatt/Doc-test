@@ -11,12 +11,22 @@
   },
   "author": "",
   "license": "MIT",
+  "peerDependencies": {},
   "devDependencies": {
-    "docz": "^1.2.0",
-    "docz-theme-default": "^1.2.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-react-transform": "^3.0.0",
     "gh-pages": "^2.0.1"
   },
   "dependencies": {
-    "docz-plugin-css": "^0.11.0"
+    "docz": "^1.2.0",
+    "docz-plugin-css": "^0.11.0",
+    "facepaint": "^1.2.1",
+    "react-feather": "^1.1.6",
+    "styled-components": "^4.3.1"
   }
 }
