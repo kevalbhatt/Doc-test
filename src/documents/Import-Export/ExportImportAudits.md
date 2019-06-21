@@ -1,7 +1,8 @@
 ---
 name: Export Import Audits
 route: /ExportImportAudits
-menu: Import/Export
+menu: Documentation
+submenu: Import/Export
 ---
 
 # Export & Import Audits

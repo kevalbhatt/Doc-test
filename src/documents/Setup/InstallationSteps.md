@@ -1,7 +1,8 @@
 ---
 name: Installation Steps
 route: /InstallationSteps
-menu: Getting Started
+menu: Documentation
+submenu: Setup 
 ---
 
 ## Building & Installing Apache Atlas

@@ -1,6 +1,7 @@
 ---
 name: Introduction
 route: /
+menu: Introduction
 ---
 
 # Introduction

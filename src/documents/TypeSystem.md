@@ -1,6 +1,8 @@
 ---
 name: Type System
 route: /TypeSystem
+menu: Documentation
+submenu: Whats-New  
 ---
 
 # Type System

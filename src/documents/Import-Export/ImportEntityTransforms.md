@@ -1,7 +1,8 @@
 ---
 name: Import Entity Transforms
 route: /ImportEntityTransforms
-menu: Import/Export
+menu: Documentation
+submenu: Import/Export
 ---
 
 # (New) Entity Transforms Framework

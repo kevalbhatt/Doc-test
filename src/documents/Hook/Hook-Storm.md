@@ -1,7 +1,8 @@
 ---
 name: Storm
 route: /Hook-Storm
-menu: Hooks
+menu: Documentation
+submenu: Hooks
 ---
 
 # Apache Atlas Hook for Apache Storm

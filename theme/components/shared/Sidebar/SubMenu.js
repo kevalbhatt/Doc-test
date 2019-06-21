@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { MenuLink } from "./MenuLink";
 import { get } from "../../../utils/theme";
 
-import { SubMenu } from "./SubMenu";
 export const MenuItem = {
   id: "",
   name: "",
@@ -44,6 +43,7 @@ const Icon = styled.div`
   transform: translateY(-50%) rotate(${iconRotate});
   transform-origin: 50% 50%;
   transition: transform 0.3s;
+
   & svg {
     stroke: ${get("colors.sidebarText")};
   }
@@ -59,13 +59,12 @@ const MenuState = {
   opened: false,
   hasActive: false
 };
-export const Menu = props => {
+export const SubMenu = props => {
   const [opened, setOpened] = useState(true);
   const toggle = () => setOpened(s => !s);
-
   const { item, sidebarToggle, collapseAll } = props;
   const show = collapseAll || opened;
-  const hasChildren = !item.href && item.menu && item.menu.length > 0;
+  const hasChildren = !item.href && item.submenu && item.submenu.length > 0;
   const hasToggle = !item.href && !item.route;
   const hasSubMenu = "";
   const handleToggle = ev => {
@@ -75,27 +74,33 @@ export const Menu = props => {
   return (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
-        {`${item.name} ffff`}
+        {`Yo, ${item.name}!`}
         {hasChildren && (
           <Icon opened={show}>
             <ChevronDown size={15} />
           </Icon>
         )}
       </MenuLink>
+
       {hasChildren && (
-        <div >
-          {item.menu &&
-            item.menu.map(dataItem => (
-                <List opened={show} key={dataItem.name}>
-                  <SubMenu 
+        <List opened={show}>
+          {item.submenu &&
+            item.submenu.map(dataItem => (
+              <dt key={dataItem.name}>
+                <MenuLink
                   item={dataItem}
-                  />
-                </List>
+                  onClick={sidebarToggle}
+                  onActiveChange={setOpened}
+                >
+                  
+                  {`${dataItem.name}!`}
+                </MenuLink>
+              </dt>
             ))}
-        </div>
+        </List>
       )}
     </Wrapper>
   );
 };
-Menu.defaultProps = MenuProps;
-Menu.defaultProps = MenuState;
+SubMenu.defaultProps = MenuProps;
+SubMenu.defaultProps = MenuState;

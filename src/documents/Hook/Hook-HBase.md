@@ -1,7 +1,8 @@
 ---
 name: HBase
 route: /Hook-HBase
-menu: Hooks
+menu: Documentation
+submenu: Hooks
 ---
 
 # Apache Atlas Hook & Bridge for Apache HBase

@@ -1,3 +1,9 @@
+---
+name: Replicated Attributes
+route: /Replicated Attributes
+menu: Documentation
+submenu: Whats-New  
+---
 # Replicated Attributes
 
 #### Background

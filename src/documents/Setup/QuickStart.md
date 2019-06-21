@@ -1,7 +1,8 @@
 ---
 name: Quick Start
 route: /QuickStart
-menu: Getting Started
+menu: Documentation
+submenu: Setup 
 ---
 
 # Quick Start

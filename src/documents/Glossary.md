@@ -1,6 +1,8 @@
 ---
 name: Glossary
 route: /Glossary
+menu: Documentation
+submenu: Whats-New  
 ---
 
 # Glossary

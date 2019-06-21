@@ -1,6 +1,8 @@
 ---
 name: HighAvailability
 route: /HighAvailability
+menu: Documentation
+submenu: Whats-New  
 ---
 
 # Fault Tolerance and High Availability Options

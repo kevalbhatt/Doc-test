@@ -1,6 +1,8 @@
 ---
 name: ClassificationPropagation
 route: /ClassificationPropagation
+menu: Documentation
+submenu: Whats-New  
 ---
 
 # Classification Propagation

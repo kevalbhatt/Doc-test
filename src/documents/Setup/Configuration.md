@@ -1,6 +1,8 @@
 ---
 name: Configuration
 route: /Configuration
+menu: Documentation
+submenu: Setup 
 ---
 # Configuring Apache Atlas - Application Properties
 

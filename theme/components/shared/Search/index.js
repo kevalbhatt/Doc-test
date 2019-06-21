@@ -35,7 +35,7 @@ const Input = styled.input`
 `;
 
 const SearchProps = {
-  onSearch: value => null
+  onSearch: (value) => {console.log("asd")}
 };
 
 export const Search = ({ onSearch }) => (
@@ -44,9 +44,10 @@ export const Search = ({ onSearch }) => (
     <Input
       type="text"
       placeholder="Search here..."
-      onChange={ev => {
+      onChange={(ev) => {
         onSearch && onSearch(ev.target.value);
       }}
     />
   </Wrapper>
 );
+Search.defaultProps = SearchProps;

@@ -1,7 +1,8 @@
 ---
 name: Migration-0.8 to 1.0
 route: /Migration-0.8-to-1.0
-menu: Migration
+menu: Documentation
+submenu: Migration
 ---
 
 # Migrating data from Apache Atlas 0.8 to Apache Atlas 1.0

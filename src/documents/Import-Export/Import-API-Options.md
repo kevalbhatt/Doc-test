@@ -1,7 +1,8 @@
 ---
 name: Import API Options
 route: /Import-API-Options
-menu: Import/Export
+menu: Documentation
+submenu: Import/Export
 ---
 
 # Import API Options

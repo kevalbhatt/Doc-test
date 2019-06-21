@@ -1,6 +1,8 @@
 ---
 name: Atlas Repair Index
 route: /AtlasRepairIndex
+menu: Documentation
+submenu: Whats-New  
 ---
   
 # Atlas Repair Index

@@ -1,6 +1,7 @@
 ---
 name: Downloads
 route: /Downloads
+menu: Documentation
 ---
 # Downloads
 

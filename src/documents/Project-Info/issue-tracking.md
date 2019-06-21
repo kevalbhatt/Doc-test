@@ -1,7 +1,8 @@
 ---
 name: Issue-Tracking
 route: /Issue-Tracking
-menu: Project-Info 
+menu: Documentation
+submenu: Project-Info 
 ---
 
 

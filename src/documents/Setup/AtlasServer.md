@@ -1,6 +1,8 @@
 ---
 name: Atlas Server
 route: /AtlasServer
+menu: Documentation
+submenu: Setup 
 ---
 
 # Atlas Server Entity Type

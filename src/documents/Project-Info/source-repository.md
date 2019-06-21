@@ -1,7 +1,8 @@
 ---
 name: Source-Repository
 route: /Source-Repository
-menu: Project-Info 
+menu: Documentation
+submenu: Project-Info 
 ---
 
 #Overview
