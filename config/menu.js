@@ -1,4 +1,1 @@
-export default [
-	"Introduction",
-	"Documentation",
-];
+export default ["Introduction", "Documentation" ];

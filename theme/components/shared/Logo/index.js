@@ -62,7 +62,7 @@ const LogoText = styled("h1")`
 `;
 
 const LogoProps = {
-  showBg: false
+  showBg: true
 };
 
 export const Logo = ({ showBg }) => {
@@ -72,7 +72,6 @@ export const Logo = ({ showBg }) => {
     linkComponent: Link,
     themeConfig: { logo }
   } = useConfig();
-
   if (!Link) return null;
   return (
     <Wrapper showBg={showBg}>

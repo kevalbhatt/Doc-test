@@ -7,18 +7,19 @@ import { components } from "./components/ui";
 import { Global } from "./styles/global";
 import { config } from "./config";
 import { ThemeProvider } from "./utils/theme";
+import { GithubLink } from "./components/shared/GithubLink";
+
 
 const Theme = ({ children }) => (
   <ThemeProvider>
     <Global />
-    <ComponentsProvider components={components}>{children}</ComponentsProvider>
+    <ComponentsProvider components={components}>{children} <GithubLink /></ComponentsProvider>
+   
   </ThemeProvider>
 );
 
-export const enhance = theme(
-  config,
-  ({ mode, codemirrorTheme, ...config }) => {
-    return ({
+export const enhance = theme(config, ({ mode, codemirrorTheme, ...config }) => {
+  return {
     ...config,
     mode,
     codemirrorTheme: codemirrorTheme || `docz-${mode}`,
@@ -26,8 +27,8 @@ export const enhance = theme(
       ...get(modes, mode),
       ...config.colors
     }
-  })}
-);
+  };
+});
 
 export default enhance(Theme);
 export { components };

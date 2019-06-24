@@ -1,3 +1,6 @@
+function _interopDefault(ex) {
+  return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
+}
 import {
   createContext,
   createElement,
@@ -11,11 +14,11 @@ import {
   useEffect
 } from "react";
 import * as React from "react";
-import GitHubButton from "react-github-btn";
+
 import { useMenus, useWindowSize, usePrevious, doczState } from "docz";
 import styled from "styled-components";
-import _get from "lodash/fp/get";
 import _unionBy from "lodash/fp/unionBy";
+import _get from "lodash/fp/get";
 import { Logo } from "../Logo";
 import { Search } from "../Search";
 import { Menu } from "./Menu";
@@ -25,6 +28,11 @@ import { Hamburger } from "./Hamburger";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
 
+const _pipe = _interopDefault(require("lodash/fp/pipe"));
+const sort = _interopDefault(require("array-sort"));
+const _flattenDepth = _interopDefault(require('lodash/fp/flattenDepth'));
+const match = _interopDefault(require('match-sorter'));
+const ulid = require("ulid");
 const WrapperProps = {
   opened: true,
   theme: ""
@@ -35,8 +43,8 @@ const sidebarText = get("colors.sidebarText");
 const sidebarBorder = get("colors.sidebarBorder");
 const Wrapper = styled.div`
   position: relative;
-  width: 280px;
-  min-width: 280px;
+  width: 320px;
+  min-width: 320px;
   min-height: 100vh;
   background: ${sidebarBg};
   transition: transform 0.2s, background 0.3s;
@@ -72,7 +80,7 @@ const GitHubDivContent = styled.div`
   top: 0px;
   right: 10px;
 `;
-console.log(GitHubButton)
+
 const Content = styled.div`
   position: fixed;
   top: 0;
@@ -135,8 +143,43 @@ const ToggleBackground = styled.div`
   cursor: pointer;
   z-index: 99;
 `;
+function compare(a, b, reverse) {
+  if (a < b) return reverse ? 1 : -1;
+  if (a > b) return reverse ? -1 : 1;
+  return 0;
+}
+const sortByName = (a, b) => {
+  return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+};
+const findPos = (item, orderedList = []) => {
+  const name = typeof item !== "string" ? _get("name", item) : item;
+  const pos = orderedList.findIndex(item => item === name);
+  return pos !== -1 ? pos : UNKNOWN_POS;
+};
+const compareWithMenu = (to = []) => (a, b) => {
+  const list = to.map(i => i.name || i);
+  return compare(findPos(a, list), findPos(b, list));
+};
 const noMenu = entry => !entry.submenu;
+const parseItemStr = item =>
+  typeof item === "string"
+    ? {
+        name: item
+      }
+    : item;
+const normalize = item => {
+  const selected = parseItemStr(item);
+  return Object.assign({}, selected, {
+    id: selected.id || ulid.ulid(),
+    parent: _get("parent", selected) || _get("parent", item),
+    menu: Array.isArray(selected.menu)
+      ? selected.menu.map(normalize)
+      : selected.menu
+  });
+};
 
+const clean = item => (item.href || item.route ? _omit("submenu", item) : item);
+const normalizeAndClean = _pipe(normalize, clean);
 const fromMenu = submenu => entry => entry.submenu === submenu;
 
 const entryAsMenu = entry => ({
@@ -172,7 +215,58 @@ const menusFromEntries = entries => {
   menus[0].menu = submenus;
   return _unionBy("name", menus, entriesWithoutMenu);
 };
+const mergeMenus = (entriesMenu, configMenu) => {
+  const first = entriesMenu.map(normalizeAndClean);
+  const second = configMenu.map(normalizeAndClean);
 
+  const merged = _unionBy("name", first, second);
+
+  return merged.map(item => {
+    if (!item.menu) return item;
+    const found = second.find(i => i.name === item.name);
+    const foundMenu = found && found.menu;
+    return Object.assign({}, item, {
+      menu: foundMenu
+        ? mergeMenus(item.menu, foundMenu)
+        : item.menu || found.menu
+    });
+  });
+};
+const sortMenus = (first, second = []) => {
+  const sorted = sort(first, compareWithMenu(second), sortByName);
+  return sorted.map(item => {
+    if (!item.menu) return item;
+    const found = second.find(menu => menu.name === item.name);
+    const foundMenu = found && found.menu;
+    return Object.assign({}, item, {
+      menu: foundMenu
+        ? sortMenus(item.menu, foundMenu)
+        : sort(item.menu, sortByName)
+    });
+  });
+};
+const search = (val, menu) => {
+  const items = menu.map(item => [item].concat(item.menu || []));
+
+  const flattened = _flattenDepth(2, items);
+
+  const flattenedDeduplicated = [...new Set(flattened)];
+  const matchedValues =  match(flattenedDeduplicated, val, {
+    keys: ["name"]
+  });
+  console.log(matchedValues)
+  return matchedValues;
+};
+
+const filterMenus = (items, filter) => {
+  if (!filter) return items;
+  return items.filter(filter).map(item => {
+    if (!item.menu) return item;
+    return Object.assign({}, item, {
+      menu: item.menu.filter(filter)
+    });
+  });
+};
 const useMenusCustom = opts => {
   const { query = "" } = opts || {};
   const { entries, config } = useContext(doczState.context);
@@ -180,6 +274,14 @@ const useMenusCustom = opts => {
   const arr = entries.map(({ value }) => value);
 
   const entriesMenu = menusFromEntries(arr);
+
+  const sorted = React.useMemo(() => {
+    const merged = mergeMenus(entriesMenu, config.menu);
+    const result = sortMenus(merged, config.menu);
+    return filterMenus(result, opts && opts.filter);
+  }, [entries, config]);
+  // console.log(_flattenDepth(2, sorted))
+  return query && query.length > 0 ? search(query, sorted) : sorted;
 
   var objNew = {};
 
@@ -231,7 +333,7 @@ export const Sidebar = () => {
   const [query, setQuery] = useState("");
   // const menus = useMenus({ query });
   const menus = useMenusCustom({ query });
-
+  // console.log(menus)
   const windowSize = useWindowSize();
   const isDesktop = windowSize.innerWidth >= breakpoints.desktop;
   const prevIsDesktop = usePrevious(isDesktop);
@@ -288,34 +390,6 @@ export const Sidebar = () => {
         </Content>
       </Wrapper>
       <ToggleBackground opened={hidden} onClick={handleSidebarToggle} />
-
-      <GitHubDivContainer>
-        <GitHubDivContent>
-          <GitHubButton
-            href="https://github.com/apache/atlas/fork"
-            data-size="large"
-            aria-label="Fork apache/atlas on GitHub"
-          >
-            Fork
-          </GitHubButton>
-
-          <GitHubButton
-            href="https://github.com/apache/atlas/archive/master.zip"
-            data-size="large"
-            aria-label="Download apache/atlas on GitHub"
-          >
-            Download
-          </GitHubButton>
-
-          <GitHubButton
-            href="https://github.com/apache/atlas"
-            data-size="large"
-            aria-label="Star apache/atlas on GitHub"
-          >
-            Star
-          </GitHubButton>
-        </GitHubDivContent>
-      </GitHubDivContainer>
     </Fragment>
   );
 };

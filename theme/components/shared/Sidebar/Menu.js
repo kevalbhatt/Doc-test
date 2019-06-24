@@ -67,15 +67,15 @@ export const Menu = props => {
   const show = collapseAll || opened;
   const hasChildren = !item.href && item.menu && item.menu.length > 0;
   const hasToggle = !item.href && !item.route;
-  const hasSubMenu = "";
   const handleToggle = ev => {
     ev.preventDefault();
     toggle();
   };
+  // console.log(item.menu, item.submenu)
   return (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
-        {`${item.name} ffff`}
+        {`${item.name} `}
         {hasChildren && (
           <Icon opened={show}>
             <ChevronDown size={15} />
@@ -83,16 +83,14 @@ export const Menu = props => {
         )}
       </MenuLink>
       {hasChildren && (
-        <div >
+        <List opened={show}>
           {item.menu &&
             item.menu.map(dataItem => (
-                <List opened={show} key={dataItem.name}>
-                  <SubMenu 
-                  item={dataItem}
-                  />
-                </List>
+              <List opened={show} key={dataItem.name}>
+                <SubMenu item={dataItem} />
+              </List>
             ))}
-        </div>
+        </List>
       )}
     </Wrapper>
   );

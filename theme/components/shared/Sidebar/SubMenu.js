@@ -71,36 +71,57 @@ export const SubMenu = props => {
     ev.preventDefault();
     toggle();
   };
-  return (
-    <Wrapper>
-      <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
-        {`Yo, ${item.name}!`}
-        {hasChildren && (
-          <Icon opened={show}>
-            <ChevronDown size={15} />
-          </Icon>
-        )}
-      </MenuLink>
+  const lengthOfSubMenu = item.submenu && item.submenu.length;
 
-      {hasChildren && (
-        <List opened={show}>
-          {item.submenu &&
-            item.submenu.map(dataItem => (
-              <dt key={dataItem.name}>
-                <MenuLink
-                  item={dataItem}
-                  onClick={sidebarToggle}
-                  onActiveChange={setOpened}
-                >
-                  
-                  {`${dataItem.name}!`}
-                </MenuLink>
-              </dt>
-            ))}
-        </List>
-      )}
-    </Wrapper>
-  );
+  let output = "";
+  if (lengthOfSubMenu > 1) {
+    output = (
+      <Wrapper>
+        <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
+          {`${item.name}`}
+          {hasChildren && (
+            <Icon opened={show}>
+              <ChevronDown size={15} />
+            </Icon>
+          )}
+        </MenuLink>
+
+        {hasChildren && (
+          <List opened={show}>
+            {item.submenu &&
+              item.submenu.map(dataItem => (
+                <dt key={dataItem.name}>
+                  <MenuLink
+                    item={dataItem}
+                    onClick={sidebarToggle}
+                    onActiveChange={setOpened}
+                  >
+                    {`${dataItem.name}`}
+                  </MenuLink>
+                </dt>
+              ))}
+          </List>
+        )}
+      </Wrapper>
+    );
+  } else {
+    output = (
+      <Wrapper>
+        {item.submenu &&
+          item.submenu.map(dataItem => (
+            <dt key={dataItem.name}>
+              <MenuLink
+                item={dataItem}
+                onActiveChange={setOpened}
+              >
+                {`${dataItem.name}`}
+              </MenuLink>
+            </dt>
+          ))}
+      </Wrapper>
+    );
+  }
+  return output;
 };
 SubMenu.defaultProps = MenuProps;
 SubMenu.defaultProps = MenuState;

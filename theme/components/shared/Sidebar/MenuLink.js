@@ -7,16 +7,15 @@ import styled, { css } from "styled-components";
 import { MenuHeadings } from "./MenuHeadings";
 import { get } from "../../../utils/theme";
 
-
 export const MenuItem = {
-    id: "",
-    name: "",
-    route: "",
-    href: "",
-    menu: [],
-    order: Number,
-    parent: ""
-}
+  id: "",
+  name: "",
+  route: "",
+  href: "",
+  menu: [],
+  order: Number,
+  parent: ""
+};
 
 const WrapperProps = {
   active: false,
@@ -114,7 +113,7 @@ export const MenuLink = React.forwardRef(
       onClick
     };
 
-    useEffect(() => {
+    useEffect (() => {
       const isActive = getActiveFromClass($el.current, item.route);
       if (prevActive !== isActive) {
         setActive(isActive);
@@ -122,7 +121,7 @@ export const MenuLink = React.forwardRef(
         onActiveChange && onActiveChange(isActive);
       }
     });
-
+// console.log(item.route)
     return (
       <Wrapper active={active}>
         {item.route ? (
@@ -139,12 +138,12 @@ export const MenuLink = React.forwardRef(
             ref={$el}
             href={item.href || "#"}
             target={item.href ? "_blank" : "_self"}
-            {...!item.href && {
+            {...(!item.href && {
               onClick: ev => {
                 ev.preventDefault();
                 linkProps.onClick && linkProps.onClick(ev);
               }
-            }}
+            })}
           />
         )}
         {active && item.route && <MenuHeadings route={item.route} />}
