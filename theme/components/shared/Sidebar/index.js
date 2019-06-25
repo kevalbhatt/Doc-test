@@ -24,14 +24,15 @@ import { Search } from "../Search";
 import { Menu } from "./Menu";
 import { Docz } from "./Docz";
 import { Hamburger } from "./Hamburger";
-
+import { MenuLink } from "./MenuLink";
+import { SubMenu } from "./SubMenu";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
 const sort = _interopDefault(require("array-sort"));
-const _flattenDepth = _interopDefault(require('lodash/fp/flattenDepth'));
-const match = _interopDefault(require('match-sorter'));
+const _flattenDepth = _interopDefault(require("lodash/fp/flattenDepth"));
+const match = _interopDefault(require("match-sorter"));
 const ulid = require("ulid");
 const WrapperProps = {
   opened: true,
@@ -251,10 +252,10 @@ const search = (val, menu) => {
   const flattened = _flattenDepth(2, items);
 
   const flattenedDeduplicated = [...new Set(flattened)];
-  const matchedValues =  match(flattenedDeduplicated, val, {
+  const matchedValues = match(flattenedDeduplicated, val, {
     keys: ["name"]
   });
-  console.log(matchedValues)
+  // console.log(matchedValues)
   return matchedValues;
 };
 
@@ -358,7 +359,8 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
-  return (
+
+  let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
         <Content>
@@ -367,7 +369,7 @@ export const Sidebar = () => {
           <Search onSearch={setQuery} />
 
           {menus && menus.length === 0 ? (
-            <Empty>No documents found.</Empty>
+            <Empty>No documents founda.</Empty>
           ) : (
             <Menus>
               {menus &&
@@ -392,4 +394,28 @@ export const Sidebar = () => {
       <ToggleBackground opened={hidden} onClick={handleSidebarToggle} />
     </Fragment>
   );
+  if (query.length > 0) {
+    outputHtml = (
+      <Wrapper>
+        <Content>
+          <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
+          <Logo showBg={!hidden} />
+          <Search onSearch={setQuery} />
+          <MenuLink item={menus}></MenuLink>
+          <Menus>
+            {menus &&
+              menus.map(menu => (
+                <SubMenu
+                  key={menu.id}
+                  item={menu}
+                  sidebarToggle={handleSidebarToggle}
+                  collapseAll={Boolean(query.length)}
+                />
+              ))}
+          </Menus>
+        </Content>
+      </Wrapper>
+    );
+  }
+  return outputHtml;
 };
