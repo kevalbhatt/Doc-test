@@ -30,6 +30,7 @@ import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
+const _omit = _interopDefault(require('lodash/fp/omit'));
 const sort = _interopDefault(require("array-sort"));
 const _flattenDepth = _interopDefault(require("lodash/fp/flattenDepth"));
 const match = _interopDefault(require("match-sorter"));
@@ -144,6 +145,7 @@ const ToggleBackground = styled.div`
   cursor: pointer;
   z-index: 99;
 `;
+const UNKNOWN_POS = Infinity;
 function compare(a, b, reverse) {
   if (a < b) return reverse ? 1 : -1;
   if (a > b) return reverse ? -1 : 1;
@@ -179,7 +181,7 @@ const normalize = item => {
   });
 };
 
-const clean = item => (item.href || item.route ? _omit("submenu", item) : item);
+const clean = item => (item.href || item.route ? _omit("menu", item) : item);
 const normalizeAndClean = _pipe(normalize, clean);
 const fromMenu = submenu => entry => entry.submenu === submenu;
 
@@ -199,21 +201,37 @@ function flatArrFromObject(arr, prop) {
 
   return Array.from(new Set(arr.reduce(reducer, [])));
 }
-const entriesOfMenu = (submenu, entries) =>
+const entriesOfSubMenu = (submenu, entries) =>
   entries.filter(fromMenu(submenu)).map(entryAsMenu);
-
+const entriesOfMenu = (menu, entries) =>
+  entries.filter(fromMenu(menu)).map(entryAsMenu);
 const parseMenu = entries => name => ({
   name,
-  submenu: entriesOfMenu(name, entries)
+  menu: entriesOfMenu(name, entries)
+});
+
+const parseSubMenu = entries => name => ({
+  name,
+  submenu: entriesOfSubMenu(name, entries)
 });
 const menusFromEntries = entries => {
   const entriesWithoutMenu = entries.filter(noMenu).map(entryAsMenu);
   const menus = flatArrFromObject(entries, "menu").map(parseMenu(entries));
   const submenus = flatArrFromObject(entries, "submenu").map(
-    parseMenu(entries)
+    parseSubMenu(entries)
   );
+  
+  for (var x in menus) {
+    for (var without of entriesWithoutMenu) {
+      if (without.name == menus[x].name) {
+        menus[x] = without;
+        break;
+      }
+    }
+  }
 
   menus[0].menu = submenus;
+  console.log(menus)
   return _unionBy("name", menus, entriesWithoutMenu);
 };
 const mergeMenus = (entriesMenu, configMenu) => {
@@ -281,7 +299,7 @@ const useMenusCustom = opts => {
     return filterMenus(result, opts && opts.filter);
   }, [entries, config]);
   return query && query.length > 0 ? search(query, sorted) : sorted;
-  return entriesMenu;
+  // return entriesMenu;
 };
 
 ToggleBackground.defaultProps = OpenProps;
@@ -313,13 +331,12 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
-
   let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
         <Content>
           <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
-          <Logo showBg={!hidden} />
+          <Logo showBg={true} />
           <Search onSearch={setQuery} />
 
           {menus && menus.length === 0 ? (

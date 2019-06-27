@@ -7,7 +7,7 @@ import { breakpoints } from "../../../styles/responsive";
 import { get } from "../../../utils/theme";
 
 const WrapperProps = {
-  showBg: false,
+  showBg: true,
   theme: null
 };
 
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 
   ${get("styles.logo")};
 `;
-Wrapper.defaultProps = WrapperProps
+Wrapper.defaultProps = WrapperProps;
 
 const LogoImg = styled("img")`
   padding: 0;
@@ -66,12 +66,7 @@ const LogoProps = {
 };
 
 export const Logo = ({ showBg }) => {
-  const {
-    base,
-    title,
-    linkComponent: Link,
-    themeConfig: { logo }
-  } = useConfig();
+  const { base, title, linkComponent: Link, logo } = useConfig();
   if (!Link) return null;
   return (
     <Wrapper showBg={showBg}>

@@ -56,8 +56,8 @@ const MenuProps = {
 };
 
 const MenuState = {
-  opened: false,
-  hasActive: false
+  opened: true,
+  hasActive: true
 };
 export const SubMenu = props => {
   const [opened, setOpened] = useState(true);
