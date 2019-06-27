@@ -71,7 +71,6 @@ export const Menu = props => {
     ev.preventDefault();
     toggle();
   };
-  // console.log(item.menu, item.submenu)
   return (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>

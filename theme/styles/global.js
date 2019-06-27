@@ -25,6 +25,5 @@ export const Global = createGlobalStyle`
   #root {
     height: 100%;
     min-height: 100%;
-    padding-top:20px;
   }
 `;

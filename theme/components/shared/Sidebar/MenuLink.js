@@ -121,7 +121,6 @@ export const MenuLink = React.forwardRef(
         onActiveChange && onActiveChange(isActive);
       }
     });
-// console.log(item.route)
     return (
       <Wrapper active={active}>
         {item.route ? (

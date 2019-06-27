@@ -255,7 +255,6 @@ const search = (val, menu) => {
   const matchedValues = match(flattenedDeduplicated, val, {
     keys: ["name"]
   });
-  // console.log(matchedValues)
   return matchedValues;
 };
 
@@ -281,50 +280,7 @@ const useMenusCustom = opts => {
     const result = sortMenus(merged, config.menu);
     return filterMenus(result, opts && opts.filter);
   }, [entries, config]);
-  // console.log(_flattenDepth(2, sorted))
   return query && query.length > 0 ? search(query, sorted) : sorted;
-
-  var objNew = {};
-
-  // for (var obj of arr) {
-  //   if (obj.menu) {
-  //     if (objNew[obj.menu]) {
-  //       objNew[obj.menu].push({
-  //         name: obj.name,
-  //         route: obj.route,
-  //         parent: obj.parent,
-  //         submenu: obj.submenu
-  //       });
-  //     } else {
-  //       objNew[obj.menu] = {
-  //         name: obj.name,
-  //         route: obj.route,
-  //         parent: obj.parent,
-  //         submenu: obj.submenu
-  //       };
-  //     }
-  //     if (obj.submenu) {
-  //       var foundIndex = objNew[obj.menu].findIndex(x => x.name == obj.submenu);
-
-  //       if (foundIndex) {
-  //         objNew[obj.menu].push({
-  //           name: obj.name,
-  //           route: obj.route,
-  //           parent: obj.parent,
-  //           submenu: obj.submenu
-  //         });
-  //       } else {
-  //       }
-  //     }
-  //   } else {
-  //     objNew[obj] = {
-  //       name: obj.name,
-  //       route: obj.route,
-  //       parent: obj.parent
-  //     };
-  //   }
-  // }
-
   return entriesMenu;
 };
 
@@ -332,9 +288,7 @@ ToggleBackground.defaultProps = OpenProps;
 export const Sidebar = () => {
   const [hidden, setHidden] = useState(true);
   const [query, setQuery] = useState("");
-  // const menus = useMenus({ query });
   const menus = useMenusCustom({ query });
-  // console.log(menus)
   const windowSize = useWindowSize();
   const isDesktop = windowSize.innerWidth >= breakpoints.desktop;
   const prevIsDesktop = usePrevious(isDesktop);
