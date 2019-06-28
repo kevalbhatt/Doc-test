@@ -12,5 +12,5 @@ export const blue = "#0B5FFF";
 export const skyBlue = "#1FB6FF";
 export const negative = "#EB4D4B";
 
-export const geeen = "#38bb9b"
-export const geeenLight = "#529d8b"
+export const green = "#38bb9b"
+export const greenLight = "#529d8b"

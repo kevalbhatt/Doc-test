@@ -6,4 +6,4 @@ const DoczProps = {
 	className: ""
 };
 
-export const Docz = ({ width = 100, className }) => <span>dsds</span>;
+export const Docz = ({ width = 100, className }) => <span></span>;

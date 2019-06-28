@@ -1,11 +1,15 @@
 import { css } from "docz-plugin-css";
 import menu from "./config/menu";
 
+
+
+const logoConfig = {"src":"./src/resources/images/atlas-logo.png"}
 module.exports = {
 	title: "Apache Atlas",
 	files: "**/*.{md,mdx}",
 	base: "/Doc-test",
 	src: "./src",
+	logo:logoConfig,
 	public: "./src/resources",
 	plugins: [
 		css({

@@ -8,13 +8,16 @@ import { Global } from "./styles/global";
 import { config } from "./config";
 import { ThemeProvider } from "./utils/theme";
 import { GithubLink } from "./components/shared/GithubLink";
-
+import { HeaderDropDown } from "./components/shared/HeaderDropDown";
 
 const Theme = ({ children }) => (
   <ThemeProvider>
     <Global />
-    <ComponentsProvider components={components}>{children} <GithubLink /></ComponentsProvider>
-   
+    <ComponentsProvider components={components}>
+      {children} 
+      <GithubLink />
+      <HeaderDropDown/>
+    </ComponentsProvider>
   </ThemeProvider>
 );
 

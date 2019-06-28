@@ -30,7 +30,7 @@ import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
-const _omit = _interopDefault(require('lodash/fp/omit'));
+const _omit = _interopDefault(require("lodash/fp/omit"));
 const sort = _interopDefault(require("array-sort"));
 const _flattenDepth = _interopDefault(require("lodash/fp/flattenDepth"));
 const match = _interopDefault(require("match-sorter"));
@@ -220,7 +220,7 @@ const menusFromEntries = entries => {
   const submenus = flatArrFromObject(entries, "submenu").map(
     parseSubMenu(entries)
   );
-  
+
   for (var x in menus) {
     for (var without of entriesWithoutMenu) {
       if (without.name == menus[x].name) {
@@ -231,7 +231,7 @@ const menusFromEntries = entries => {
   }
 
   menus[0].menu = submenus;
-  console.log(menus)
+  console.log(menus);
   return _unionBy("name", menus, entriesWithoutMenu);
 };
 const mergeMenus = (entriesMenu, configMenu) => {
@@ -331,6 +331,7 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
+
   let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
@@ -367,25 +368,27 @@ export const Sidebar = () => {
   );
   if (query.length > 0) {
     outputHtml = (
-      <Wrapper>
-        <Content>
-          <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
-          <Logo showBg={!hidden} />
-          <Search onSearch={setQuery} />
-          <MenuLink item={menus}></MenuLink>
-          <Menus>
-            {menus &&
-              menus.map(menu => (
-                <SubMenu
-                  key={menu.id}
-                  item={menu}
-                  sidebarToggle={handleSidebarToggle}
-                  collapseAll={Boolean(query.length)}
-                />
-              ))}
-          </Menus>
-        </Content>
-      </Wrapper>
+      <Fragment>
+        <Wrapper>
+          <Content>
+            <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
+            <Logo showBg={!hidden} />
+            <Search onSearch={setQuery} />
+            <MenuLink item={menus}></MenuLink>
+            <Menus>
+              {menus &&
+                menus.map(menu => (
+                  <SubMenu
+                    key={menu.id}
+                    item={menu}
+                    sidebarToggle={handleSidebarToggle}
+                    collapseAll={Boolean(query.length)}
+                  />
+                ))}
+            </Menus>
+          </Content>
+        </Wrapper>
+      </Fragment>
     );
   }
   return outputHtml;
