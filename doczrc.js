@@ -3,7 +3,7 @@ import menu from "./config/menu";
 
 
 
-const logoConfig = {"src":"./src/resources/images/atlas-logo.png"}
+const logoConfig = {"src":"http://atlas.apache.org/images/atlas-logo.png"}
 module.exports = {
 	title: "Apache Atlas",
 	files: "**/*.{md,mdx}",

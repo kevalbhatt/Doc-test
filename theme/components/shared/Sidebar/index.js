@@ -231,7 +231,6 @@ const menusFromEntries = entries => {
   }
 
   menus[0].menu = submenus;
-  console.log(menus);
   return _unionBy("name", menus, entriesWithoutMenu);
 };
 const mergeMenus = (entriesMenu, configMenu) => {

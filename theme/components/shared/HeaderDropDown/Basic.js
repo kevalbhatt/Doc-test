@@ -8,6 +8,7 @@ const Basic = props => {
   return (
     <Fragment>
       <Select
+       placeholder="Download Version"
         color={colors.green}
         options={options}
         onChange={value => {

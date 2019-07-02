@@ -9,17 +9,21 @@ import { config } from "./config";
 import { ThemeProvider } from "./utils/theme";
 import { GithubLink } from "./components/shared/GithubLink";
 import { HeaderDropDown } from "./components/shared/HeaderDropDown";
+import { LegalFooter } from "./components/shared/LegalFooter";
 
-const Theme = ({ children }) => (
-  <ThemeProvider>
-    <Global />
-    <ComponentsProvider components={components}>
-      {children} 
+const Theme = ({ children }) => {
+  return (
+    <ThemeProvider>
+      <Global />
+      <ComponentsProvider components={components}>
+        {children}
+      </ComponentsProvider>
       <GithubLink />
-      <HeaderDropDown/>
-    </ComponentsProvider>
-  </ThemeProvider>
-);
+      <HeaderDropDown />
+      <LegalFooter />
+    </ThemeProvider>
+  );
+};
 
 export const enhance = theme(config, ({ mode, codemirrorTheme, ...config }) => {
   return {

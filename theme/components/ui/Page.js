@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   background: ${get("colors.background")};
   min-width: 0;
   position: relative;
+  padding-top: 50px;
 `;
 
 export const Container = styled.div`
@@ -60,7 +61,7 @@ const EditPage = styled(ButtonLink.withComponent("a"))`
 const EditIcon = styled(Edit)`
   margin-right: 5px;
 `;
-export const Page = ({ children, doc: { link, fullpage, edit = true } }) => {
+export const Page = ({ children, doc: { link, fullpage, edit = false } }) => {
   const { repository } = useConfig();
   const content = (
     <Fragment>
@@ -72,7 +73,6 @@ export const Page = ({ children, doc: { link, fullpage, edit = true } }) => {
       {children}
     </Fragment>
   );
-
   return (
     <Main>
       {repository && <GithubLink repository={repository} />}

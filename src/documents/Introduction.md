@@ -1,6 +1,6 @@
 ---
 name: Introduction
-route: /Introduction
+route: /
 menu: Introduction 
 ---
 

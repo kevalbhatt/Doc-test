@@ -74,6 +74,7 @@ export const SubMenu = props => {
   const lengthOfSubMenu = item.submenu && item.submenu.length;
 
   let output = "";
+  
   if (lengthOfSubMenu > 1) {
     output = (
       <Wrapper>

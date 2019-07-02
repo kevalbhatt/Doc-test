@@ -3,12 +3,15 @@ import { SFC } from "react";
 import { get } from "../../../utils/theme";
 import styled, { keyframes } from "styled-components";
 import GitHubButton from "react-github-btn";
+
 const GitHubDivContainer = styled.div`
   width: 100%;
   position: fixed;
-  background: #333;
+  background: rgb(255, 255, 255);
   padding: 20px 0;
   color: #fff;
+  top: 0px;
+  opacity: 1;
 `;
 const GitHubDivContent = styled.div`
   position: fixed;
