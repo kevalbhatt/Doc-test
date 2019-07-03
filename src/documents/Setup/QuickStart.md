@@ -4,6 +4,8 @@ route: /QuickStart
 menu: Documentation
 submenu: Setup 
 ---
+import Img from 'theme/components/shared/Img'
+
 
 # Quick Start
 
@@ -14,12 +16,12 @@ It also adds sample entities along with traits as shown in the instance graph be
 
 ### Example Type Definitions
 
-<img src="public/images/twiki/guide-class-diagram.png"/>
+<Img src={`images/twiki/guide-class-diagram.png`}/>
 
 
 ### Example Instance Graph
 
-<img src="public/images/twiki/guide-instance-graph.png"/>
+<Img src={`images/twiki/guide-instance-graph.png`}/>
 
 
 ## Running the example

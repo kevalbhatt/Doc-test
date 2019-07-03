@@ -4,6 +4,7 @@ route: /AtlasServer
 menu: Documentation
 submenu: Setup 
 ---
+import Img from 'theme/components/shared/Img'
 
 # Atlas Server Entity Type
 
@@ -29,8 +30,7 @@ The property page for _AtlasServer_ entity has one additional tab 'Export/Import
 
 The _additionalInfo_ attribute property is discussed in detail below.
 
-<img src="images/markdown/atlas-server-properties.png"/>
-
+<Img src={`images/markdown/atlas-server-properties.png`}/>
 
 ###### Export/Import Audits
 
@@ -43,8 +43,7 @@ The table has following columns:
 * _Operation EndTIme_: Time the operation completed.
 * _Tools_: Pop-up property page that contains details of the operation.
 
-<img src="images/markdown/atlas-server-exp-imp-audits.png" />
-
+<Img src={'images/markdown/atlas-server-exp-imp-audits.png'}/>
 
 ###### Example
 

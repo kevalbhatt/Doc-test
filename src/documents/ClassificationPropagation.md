@@ -4,6 +4,7 @@ route: /ClassificationPropagation
 menu: Documentation
 submenu: Whats-New  
 ---
+import Img from 'theme/components/shared/Img'
 
 # Classification Propagation
 
@@ -14,50 +15,50 @@ submenu: Whats-New
 ## Use Cases
 
 Consider the following lineage where data from a 'hdfs_path' entity is loaded into a table, which is further made available through views. We will go through various scenarios to understand the classification propagation feature.
-<img src="public/images/twiki/classification-propagation-1.png"/>
+<Img src={`images/twiki/classification-propagation-1.png`}/>
 
 
 ## Add classification to an entity
 
 When classification ‘PII’ is added to 'hdfs_path' entity, the classification is propagated to all impacted entities in the lineage path, including 'employees' table, views 'us_employees' and 'uk_employees' - as shown below.
-<img src="public/images/twiki/classification-propagation-2.png"/>
+<Img src={`images/twiki/classification-propagation-2.png`}/>
 
 ## Update classification associated with an entity
 
 Any updates to classifications associated with an entity will be seen in all entities the classification is propagated to as well.
-<img src="public/images/twiki/classification-propagation-3.png"/>
+<Img src={`images/twiki/classification-propagation-3.png`}/>
 
 ## Remove classification associated with an entity
 
 When a classification is deleted from an entity, the classification will be removed from all entities the classification is propagated to as well.
-<img src="public/images/twiki/classification-propagation-4.png"/>
+<Img src={`images/twiki/classification-propagation-4.png`}/>
 
 ## Add lineage between entities
 
 When lineage is added between entities, for example to capture loading of data in a file to a table, the classifications associated with the source entity are propagated to all impacted entities as well.
 For example, when a view is created from a table, classifications associated with the table are propagated to the newly created view as well.
-<img src="public/images/twiki/classification-propagation-5.png"/>
+<Img src={`images/twiki/classification-propagation-5.png`}/>
 
 ## Delete an entity
 
 **Case 1:**
 When an entity is deleted, classifications associated with this entity will be removed from all entities the classifications are propagated to. 
 For example. when _employees_ table is deleted, classifications associated with this table are removed from 'employees_view' view.
-<img src="public/images/twiki/classification-propagation-6.png"></img>
+<Img src={`images/twiki/classification-propagation-6.png`}/>
 
 **Case 2:**
 When an entity is deleted in the middle of a lineage path, the propagation link is broken and previously propagated classifications will be removed from all derived entities of the deleted entity.
 For example. when 'us_employees' table is deleted, classifications propagating through this table (**PII**) are removed from 'ca_employees' table, since the only path of propagation is broken by entity deletion.
-<img src="public/images/twiki/classification-propagation-entity-delete-1.png" ></img>
+<Img src={`images/twiki/classification-propagation-entity-delete-1.png"`}/>
 
-<img src="public/images/twiki/classification-propagation-entity-delete-2.png" ></img>
+<Img src={`images/twiki/classification-propagation-entity-delete-2.png"`}/>
 
 **Case 3:**
 When an entity is deleted in the middle of a lineage path and if there exists alternate path for propagation, previously propagated classifications will be retained.
 For example. when 'us_employees' table is deleted, classifications  propagating (**PII**) through this table are retained in 'ca_employees' table, since there are two propagation paths available and only one of them is broken by entity deletion.
-<img src="public/images/twiki/classification-propagation-entity-delete-3.png" ></img>
+<Img src={`images/twiki/classification-propagation-entity-delete-3.png"`}/>
 
-<img src="public/images/twiki/classification-propagation-entity-delete-4.png" ></img>
+<Img src={`images/twiki/classification-propagation-entity-delete-4.png"`}/>
 
 ## Control Propagation
 
@@ -68,7 +69,7 @@ This section details available options.
 
 Each association of classification to an entity has a boolean flag that controls whether the classification is propagated or not. 
 When a classification is associated with an entity, this flag is set to ‘true’ i.e. the classification will be propagated to all impacted entities. This flag can be updated to desired value during initial association or later.
-<img src="public/images/twiki/classification-propagation-7.png"/>
+<Img src={`images/twiki/classification-propagation-7.png`}/>
 
 ## Propagate flag in lineage edge
 
@@ -82,7 +83,7 @@ Apache Atlas supports blocking propagation of specific classifications in at lin
 This can be useful, for example, to handle scenarios like: a column classified as PII is masked when creating a view; in such scenario, if corresponding column in the created view might not have PII, hence the propagation of PII classification should be blocked. 
 This can be done by updating the lineage edge to add the PII classification in _‘blocked propagated classifications’_ list.
 Classifications in blocked propagated classifications will not be propagated in the derivative/downstream entities.
-<img src="public/images/twiki/classification-propagation-8.png"/>
+<Img src={`images/twiki/classification-propagation-8.png`}/>
 
 ## Notifications and Audit
 

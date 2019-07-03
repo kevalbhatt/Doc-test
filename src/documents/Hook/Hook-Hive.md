@@ -5,7 +5,10 @@ menu: Documentation
 submenu: Hooks
 ---
 
+import Img from 'theme/components/shared/Img'
+
 # Apache Atlas Hook & Bridge for Apache Hive
+
 
 ## Hive Model
 Hive model includes the following types:
@@ -109,7 +112,7 @@ create table t2 as select id, name from T1
 
 The lineage is captured as
 
-<img src="images/column_lineage_ex1.png" height="200" width="400" />
+<Img src={`images/column_lineage_ex1.png`} height="200" width="400" />
 
 
 

@@ -66,12 +66,12 @@ const LogoProps = {
 };
 
 export const Logo = ({ showBg }) => {
-  const { base, title, linkComponent: Link, logo } = useConfig();
+  const { base, title, linkComponent: Link, baseUrl } = useConfig();
   if (!Link) return null;
   return (
     <Wrapper showBg={showBg}>
       <Link to={typeof base === "string" ? base : "/"}>
-          <LogoImg src={'images/atlas-logo-grey.png'} width={"100"} alt={title} />
+          <LogoImg src={`${baseUrl}/images/atlas-logo-grey.png`} alt={title} />
       </Link>
     </Wrapper>
   );
