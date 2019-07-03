@@ -7,7 +7,7 @@ module.exports = {
 	title: "Apache Atlas",
 	files: "**/*.{md,mdx}",
 	base: "/Doc-test",
-	baseUrl:"/",
+	baseUrl:"./public",
 	src: "./src",
 	public: "./src/resources",
 	plugins: [
