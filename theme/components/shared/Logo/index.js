@@ -71,11 +71,7 @@ export const Logo = ({ showBg }) => {
   return (
     <Wrapper showBg={showBg}>
       <Link to={typeof base === "string" ? base : "/"}>
-        {logo ? (
-          <LogoImg src={logo.src} width={logo.width} alt={title} />
-        ) : (
-          <LogoText>{title}</LogoText>
-        )}
+          <LogoImg src={'images/atlas-logo-grey.png'} width={"100"} alt={title} />
       </Link>
     </Wrapper>
   );

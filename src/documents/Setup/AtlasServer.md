@@ -29,7 +29,7 @@ The property page for _AtlasServer_ entity has one additional tab 'Export/Import
 
 The _additionalInfo_ attribute property is discussed in detail below.
 
-<img src="images/markdown/atlas-server-properties.png" style="border:1px solid; margin-left:25px"/>
+<img src="images/markdown/atlas-server-properties.png"/>
 
 
 ###### Export/Import Audits
@@ -43,7 +43,7 @@ The table has following columns:
 * _Operation EndTIme_: Time the operation completed.
 * _Tools_: Pop-up property page that contains details of the operation.
 
-<img src="images/markdown/atlas-server-exp-imp-audits.png" style="border:1px solid; margin-left:25px"/>
+<img src="images/markdown/atlas-server-exp-imp-audits.png" />
 
 
 ###### Example
@@ -76,7 +76,7 @@ This property in _AtlasServer_ is a map with key and value both as String. This 
 Please see [Incremental Export](IncrementalExport) for and example of how this property can be used.
 
 #### REST APIs
-Title           |Atlas Server API                       |
+**Title**           |**Atlas Server API**                       |
 ----------------|---------------------------------------|
 Example         |   see below.                          |
 URL             | api/atlas/admin/server/{serverName}   |

@@ -37,7 +37,7 @@ The approach used by the new transformation framework creates a transformation b
 
 Following are built-in conditions.
 
-Condition Types                          | Description     |
+|**Condition Types**                          | **Description**    |
 -----------------------------------------|-----------------|
 ENTITY_ALL                | Any/every entity               |
 ENTITY_TOP_LEVEL          | Entity that is the top-level entity. This is also the entity present specified in _AtlasExportRequest_.|
@@ -50,7 +50,7 @@ HAS_VALUE                 | Entity attribute has value. |
 
 ##### Actions
 
-Action Type        | Description                                  |
+|**Action Type**        | *Description**                                 |
 -------------------|----------------------------------------------|
 ADD_CLASSIFICATION | Add classifiction                            |
 REPLACE_PREFIX     | Replace value starting with another value.   |

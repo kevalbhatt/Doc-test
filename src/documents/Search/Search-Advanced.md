@@ -78,7 +78,6 @@ from Table where name = ["customer_dim", "time_dim"]
 ```
 
 A condition that uses the LIKE operator, allows for filtering using wildcards like '*' or '?'.
-
 Example: To retrieve entity of type _Table_ whose name ends with '_dim':
 ```sql
 from Table where name LIKE '*_dim'
@@ -323,7 +322,6 @@ The propeties of each _Column_ entity type are displayed.
 
 ### Using System Attributes
 Each type defined within Atlas gets few attributes by default. These attributes help with internal book keeping of the entities. All the system attributes are prefixed with '__' (double underscore). This helps in identifying them from other attributes.
-
 Following are the system attributes:
    * __guid Each entity within Atlas is assigned a globally unique identifier (GUID for short).
    * __modifiedBy Name of the user who last modified the entity.
@@ -360,8 +358,10 @@ Relevant models for these operations:
    *  *[AtlasBaseException](https://github.com/apache/atlas/blob/master/intg/src/main/java/org/apache/atlas/exception/AtlasBaseException.java)*
 
 ### The V2 API
-|*Get Results using DSL Search*||
-| _Example_ | See Examples sections below. |
+**Get Results using DSL Search**
+
+| **_Example_** | **See Examples sections below.** |
+|:----:|:----:|
 |_URL_|_api/atlas/v2/search/dsl_|
 |_Method_|_GET_|
 |_URL Parameters_|_query_: Query conforming to DSL syntax.|

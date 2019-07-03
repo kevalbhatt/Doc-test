@@ -15,7 +15,7 @@ The general approach is:
 ### Import ZIP File Using POST
 
 
-| Title  | Import API  |
+| **Title** | **Import API**  |
 | ------------ | ------------ |
 | _Example_ | See Examples sections below. |
 | _Description_|Provide the contents of the file to be imported in the request body.|
@@ -28,7 +28,7 @@ The general approach is:
 
 ### Import ZIP File Available on Server
 
-|*Title*|*Import API*|
+|**Title**|**Import API**|
 | ------------ | ------------ |
 | _Example_ | See Examples sections below. |
 | _Description_|Provide the path of the file to be imported.|

@@ -2,7 +2,7 @@
 name: EclipseSetup
 route: /EclipseSetup
 menu: Documentation
-submenu: Setup 
+submenu: EclipseSetup 
 ---
 
 # Tools required to build and run Apache Atlas on Eclipse

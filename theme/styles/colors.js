@@ -8,9 +8,9 @@ export const grayExtraDark = "#1D2330";
 export const dark = "#13161F";
 
 export const blueLight = "#e9f2fa";
-export const blue = "#0B5FFF";
+export const blue = "#4a90e2 ";
 export const skyBlue = "#1FB6FF";
 export const negative = "#EB4D4B";
 
-export const green = "#38bb9b"
-export const greenLight = "#529d8b"
+export const green = "#37bb9b";
+export const greenLight = "#529d8b";

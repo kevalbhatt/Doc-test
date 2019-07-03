@@ -4,7 +4,7 @@ export const light = {
   ...colors,
   primary: colors.green,
   text: colors.grayDark,
-  link: colors.green,
+  link: colors.blue,
   footerText: colors.grayDark,
   sidebarBg: colors.grayExtraLight,
   sidebarText: colors.dark,

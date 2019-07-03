@@ -84,7 +84,6 @@ export const HeaderDropDown = ({ options, title }) => (
 					padding: "0 5px",
 					borderRadius: "5px"
 				}}
-				title="Select Release.."
 			/>
 		</DropDownDivContent>
 	</DropDownDivContainer>

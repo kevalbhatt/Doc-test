@@ -106,7 +106,7 @@ This option allows for optionally importing of type definition. The option is se
 
 Table below enumerates the conditions that get addressed as part of type definition import:
 
-|*Condition*|*Action*|
+|**Condition**|**Action**|
 | Incoming type does not exist in target system | Type is created. |
 |Type to be imported and type in target system are same | No change |
 |Type to be imported and type in target system differ by some attributes| Target system type is updated to the attributes present in the source. It is possible that the target system will have attributes in addition to the one present in the source. In that case, the target system's type attributes will be an union of the attributes. Attributes in target system will not be deleted to match the source. If the type of the attribute differ, import process will be aborted and exception logged.|

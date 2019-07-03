@@ -71,10 +71,11 @@ export const Menu = props => {
     ev.preventDefault();
     toggle();
   };
-  return (
+
+  let OutputHtml = (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
-        {`${item.name} `}
+        {` ${item.name} `}
         {hasChildren && (
           <Icon opened={show}>
             <ChevronDown size={15} />
@@ -93,6 +94,18 @@ export const Menu = props => {
       )}
     </Wrapper>
   );
+
+  if (!hasChildren && !hasToggle) {
+
+    OutputHtml = (
+      <Wrapper>
+        <MenuLink  item={item} {...(opened && { handleToggle })}>
+          {`${item.name} `}
+        </MenuLink>
+      </Wrapper>
+    );
+  }
+  return OutputHtml;
 };
 Menu.defaultProps = MenuProps;
 Menu.defaultProps = MenuState;

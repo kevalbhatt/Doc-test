@@ -330,7 +330,6 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
-
   let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>

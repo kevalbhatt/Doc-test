@@ -14,7 +14,7 @@ The general approach is:
 
 See [here](http://atlas.apache.org/Export-HDFS-API.html) for details on exporting *hdfs_path* entities.
 
-|*Title*|*Export API*|
+|**Title**|**Export API**|
 | ------------ | ------------ |
 | _Example_ | See Examples sections below. |
 | _URL_ |_api/atlas/admin/export_ |

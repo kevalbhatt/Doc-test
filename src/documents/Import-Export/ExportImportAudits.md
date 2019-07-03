@@ -13,7 +13,7 @@ The new audits for Export and Import operations also have corresponding REST API
 
 #### REST APIs
 
-|Title           | Replication Audits for a Cluster                                 |
+|**Title**          | **Replication Audits for a Cluster**                                 |
 |----------------|------------------------------------------------------------------|
 |Example         | See below.                                                       |
 |URL             | api/atlas/admin/expimp/audit                                     |
