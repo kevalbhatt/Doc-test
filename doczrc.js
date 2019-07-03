@@ -6,7 +6,7 @@ import menu from "./config/menu";
 module.exports = {
 	title: "Apache Atlas",
 	files: "**/*.{md,mdx}",
-	base: "/Doc-test",
+	base: "/Doc-test/",
 	baseUrl:"./public",
 	src: "./src",
 	public: "./src/resources",
