@@ -4,11 +4,11 @@ import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
 import { useConfig } from "docz";
 const Img = props => {
-	const { src } = props;
+	const { src,width,height } = props;
 	const { baseUrl } = useConfig();
 	return (
 		<div>
-			<img src={`${baseUrl}${src}`} />
+			<img src={`${baseUrl}${src}`} height={`${height}`} width={`${width}`} />
 		</div>
 	);
 };
