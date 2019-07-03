@@ -16,12 +16,12 @@ It also adds sample entities along with traits as shown in the instance graph be
 
 ### Example Type Definitions
 
-<Img src={`images/twiki/guide-class-diagram.png`}/>
+<Img src={`/images/twiki/guide-class-diagram.png`}/>
 
 
 ### Example Instance Graph
 
-<Img src={`images/twiki/guide-instance-graph.png`}/>
+<Img src={`/images/twiki/guide-instance-graph.png`}/>
 
 
 ## Running the example

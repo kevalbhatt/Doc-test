@@ -76,9 +76,9 @@ Category view allows an user to perform the following operations:
 
 Users can switch between term view and category view using toggle provided in GLOSSARY tab.
 
-<Img src={`images/markdown/terms_view.png`}  />
+<Img src={`/images/markdown/terms_view.png`}  />
 
-<Img src={`images/markdown/category_view_1.png`}/>
+<Img src={`/images/markdown/category_view_1.png`}/>
   
 
 ##### Term context menu
@@ -87,14 +87,14 @@ Users can switch between term view and category view using toggle provided in GL
 Clicking on the **ellipsis (...)** next to a glossary name shows a pop-over menu that allows users to create a term in
 the glossary or delete the glossary - as shown below.
 
-<Img src={`images/markdown/term_view_context.png`}/>
+<Img src={`/images/markdown/term_view_context.png`}/>
 
 
 * To delete a term  
 Clicking on the **ellipsis (...)** next to a term name shows a pop-over menu that allows users to delete the term - as
 shown below.
 
-<Img src={`images/markdown/term_delete_context.png`}/>
+<Img src={`/images/markdown/term_delete_context.png`}/>
 
 
 ##### Term detail page
@@ -105,31 +105,31 @@ page provides different details of the term.
 * Classifications tab shows the classification(s) associated with the selected term
 * Related terms tab shows the terms that are related to the selected term
 
-<Img src={`images/markdown/term_details.png`}/>  
+<Img src={`/images/markdown/term_details.png`}/>  
 
 
 ##### Add classification to Term
 
 Clicking on **+** next to classification label to add a classification to the term.
 
-<Img src={`images/markdown/term_add_classification_1.png`} alt="Add classification"/>
+<Img src={`/images/markdown/term_add_classification_1.png`} alt="Add classification"/>
 
-<Img src={`images/markdown/term_add_classification_2.png`} alt="Add classification - details"/>
+<Img src={`/images/markdown/term_add_classification_2.png`} alt="Add classification - details"/>
 
-<Img src={`images/markdown/term_with_classification.png`} alt="Classifications associated with term"/>
+<Img src={`/images/markdown/term_with_classification.png`} alt="Classifications associated with term"/>
 
 
 ##### Create term relationship with other term
 Click on "Related Terms" tab when viewing term details. Clicking on **+** will allow linking a term with the current term.
 
-<Img src={`images/markdown/terms_related_terms.png`}/>
+<Img src={`/images/markdown/terms_related_terms.png`}/>
 
 
 ##### Categorize a term
 
 Click on **+** next to categories label to categorize a term. A modal dialog will be presented for choosing a category.
 
-<Img src={`images/markdown/term_add_category.png`} /> 
+<Img src={`/images/markdown/term_add_category.png`} /> 
 
 
 #### **Category view**
@@ -138,7 +138,7 @@ When the toggle switch is on category, the panel will list down all glossaries a
 interactions under this view.
 
 * Expanded view  
-<Img src={`images/markdown/category_view_2.png`} />
+<Img src={`/images/markdown/category_view_2.png`} />
   
 
 ##### Category context menu
@@ -147,29 +147,29 @@ Clicking on **ellipsis (...)** next to the category name will present a category
 
 * To create a new category   
 
-<Img src={`images/markdown/category_view_glossary_context.png`}/>
+<Img src={`/images/markdown/category_view_glossary_context.png`}/>
 
 * To create a sub-category or delete a category  
 
-<Img src={`images/markdown/category_view_category_context_1.png`}/>
+<Img src={`/images/markdown/category_view_category_context_1.png`}/>
 
 
 ##### Category detail page
 
 Once a category is selected, the details will be presented in the right pane.
 
-<Img src={`images/markdown/category_details_with_terms.png`}/>
+<Img src={`/images/markdown/category_details_with_terms.png`}/>
 
 
 ##### Categorize term
 
 Click on **+** next to the terms label to link a term under selected category.
 
-<Img src={`images/markdown/category_add_term.png`}/>
+<Img src={`/images/markdown/category_add_term.png`}/>
 
-<Img src={`images/markdown/category_add_term_1.png`} />
+<Img src={`/images/markdown/category_add_term_1.png`} />
 
-<Img src={`images/markdown/category_add_term_2.png`} />
+<Img src={`/images/markdown/category_add_term_2.png`} />
  
 
 #### **Term assignment flow**
@@ -180,26 +180,26 @@ Terms can be assigned to an entity either from the results page or entity detail
 
 Click on **+** under "terms" column (if associating term from search page)
 
-<Img src={`images/markdown/entity_search_add_term.png`} />  
+<Img src={`/images/markdown/entity_search_add_term.png`} />  
 
 
 Click on **+** next to "terms" label (if viewing a specific entity details)
 
-<Img src={`images/markdown/entity_details_add_term.png`} />  
+<Img src={`/images/markdown/entity_details_add_term.png`} />  
 
 
 Both the actions will present the following modal, follow prompts on screen to complete term assignment.  
 
-<Img src={`images/markdown/entity_add_term_modal.png`} />
+<Img src={`/images/markdown/entity_add_term_modal.png`} />
 
 
 ##### Propagated classification
 
 If a term has classification then the entity is has been assigned inherits the same.
 
-<Img src={`images/markdown/term_details_with_classification.png`} />
+<Img src={`/images/markdown/term_details_with_classification.png`} />
 
-<Img src={`images/markdown/entity_assigned_term_with_tag.png`} />
+<Img src={`/images/markdown/entity_assigned_term_with_tag.png`} />
 
 
 #### **Search using a term**    
@@ -207,7 +207,7 @@ If a term has classification then the entity is has been assigned inherits the s
 Apache Atlas basic-search API and UI have been updated to support term as a search criteria. This allows users to find
 entities associated with a given term. Basic search UI now includes a new input drop-down for term based searches.   
 
-<Img src={`images/markdown/term_search.png`} />
+<Img src={`/images/markdown/term_search.png`} />
 
 
 ***

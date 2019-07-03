@@ -112,7 +112,7 @@ create table t2 as select id, name from T1
 
 The lineage is captured as
 
-<Img src={`images/column_lineage_ex1.png`} height="200" width="400" />
+<Img src={`/images/column_lineage_ex1.png`} height="200" width="400" />
 
 
 
