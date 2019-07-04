@@ -2,7 +2,7 @@
 name: Notifications
 route: /Notifications
 menu: Documentation
-submenu: Whats-New  
+submenu: Notifications
 ---
 
 # Notifications

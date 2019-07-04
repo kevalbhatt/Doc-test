@@ -2,7 +2,7 @@
 name: Glossary
 route: /Glossary
 menu: Documentation
-submenu: Whats-New  
+submenu: Glossary
 ---
 
 import Img from 'theme/components/shared/Img'

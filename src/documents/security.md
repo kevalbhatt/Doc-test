@@ -2,7 +2,7 @@
 name: Security
 route: /security
 menu: Documentation
-submenu: Whats-New  
+submenu: security
 ---
 
 # Security Features of Apache Atlas

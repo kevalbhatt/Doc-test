@@ -2,7 +2,7 @@
 name: Soft Reference
 route: /SoftReference
 menu: Documentation
-submenu: Whats-New  
+submenu: Soft Reference
 --- 
 
 # Entity Attribute Option: SoftReference

@@ -2,7 +2,7 @@
 name: WhatsNew-2.0
 route: /WhatsNew-2.0
 menu: Documentation
-submenu: Releases 
+submenu: Whats-New  
 --- 
 
 # What's new in Apache Atlas 2.0?

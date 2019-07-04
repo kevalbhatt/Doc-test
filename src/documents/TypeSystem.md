@@ -2,7 +2,7 @@
 name: Type System
 route: /TypeSystem
 menu: Documentation
-submenu: Whats-New  
+submenu: Type System  
 ---
 
 # Type System

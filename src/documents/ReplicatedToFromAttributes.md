@@ -2,7 +2,7 @@
 name: Replicated Attributes
 route: /Replicated Attributes
 menu: Documentation
-submenu: Whats-New  
+submenu: Replicated Attributes
 ---
 # Replicated Attributes
 

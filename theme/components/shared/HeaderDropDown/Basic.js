@@ -1,19 +1,24 @@
 import Select from "react-dropdown-select";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import * as colors from "../../../styles/colors";
 
 const Basic = props => {
   let { options, title, ...rest } = props;
+  const [value, setValue] = useState([
+    { id: 1, href: "/", title: "Latest", label: "Latest" }
+  ]);
   return (
     <Fragment>
       <Select
-       placeholder="Documentation"
+        valueField="id"
+        placeholder="Documentation"
         color={colors.green}
         options={options}
-        onChange={value => {
-          if (value.length > 0) {
-            window.open(value[0]["href"], "_blank");
+        values={value}
+        onChange={selectedValue => {
+          if (selectedValue.length > 0) {
+            setValue(selectedValue);
           }
         }}
         {...rest}
