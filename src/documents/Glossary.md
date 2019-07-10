@@ -4,6 +4,9 @@ route: /Glossary
 menu: Documentation
 submenu: Glossary
 ---
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 import Img from 'theme/components/shared/Img'
 
@@ -218,8 +221,8 @@ Following operations are supported by Atlas, the details of REST interface can b
 ##### JSON structure
 
 * Glossary
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
 	"guid": "2f341934-f18c-48b3-aa12-eaa0a2bfce85",
 	"qualifiedName": "SampleBank",
 	"displayName": "Banking",
@@ -260,12 +263,12 @@ Following operations are supported by Atlas, the details of REST interface can b
 		"relationGuid": "7757b031-4e25-43a8-bf77-946f7f06c67a",
 		"displayText": "Loans"
 	}]
-}
-```
+}`}
+</SyntaxHighlighter>
 
 * Term
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
 	"guid": "e441a540-ee55-4fc8-8eaf-4b9943d8929c",
 	"qualifiedName": "fixed_mtg@SampleBank",
 	"displayName": "15-30 yr mortgage",
@@ -296,12 +299,12 @@ Following operations are supported by Atlas, the details of REST interface can b
                            "termGuid"   : "c4e2b956-2589-4648-8596-240d3bea5e44",
                            "displayText": "ARM Loans"
                          }]
-}
-```
+}`}
+</SyntaxHighlighter>
 
 * Category
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
 	"guid": "7f041401-de8c-443f-a3b7-7bf5a910ff6f",
 	"qualifiedName": "Loans.Customer@HortoniaBank",
 	"displayName": "Loans",
@@ -324,8 +327,8 @@ Following operations are supported by Atlas, the details of REST interface can b
 		"relationGuid": "8db1e784-4f04-4eda-9a58-6c9535a95451",
 		"displayText": "ARM loans"
 	}]
-}
-```
+}`}
+</SyntaxHighlighter>
 
 ##### CREATE operations
 

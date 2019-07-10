@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Export & Import Audits
 
 #### Background
@@ -34,8 +38,8 @@ The new audits for Export and Import operations also have corresponding REST API
 ###### CURL
 curl -X GET -u admin:admin -H "Content-Type: application/json" -H "Cache-Control: no-cache" 'http://localhost:21000/api/atlas/admin/expimp/audit?sourceClusterName=cl2'
 
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "queryType": "BASIC",
     "searchParameters": {
         "typeName": "ReplicationAuditEntry",
@@ -79,5 +83,5 @@ curl -X GET -u admin:admin -H "Content-Type: application/json" -H "Cache-Control
         "displayText": "cl2",
         "classificationNames": []
     }]
-}
-```
+}`}
+</SyntaxHighlighter>

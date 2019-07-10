@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Export & Import REST APIs
 
 ### What's New
@@ -37,9 +41,10 @@ For additional information please refer to the following:
 
 ### Errors
 If an import or export operation is initiated while another is in progress, the consumer will receive this error:
-```
-"ATLAS5005E": "Another import or export is in progress. Please try again."
-```
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`"ATLAS5005E": "Another import or export is in progress. Please try again."`}
+</SyntaxHighlighter>
 
 Unhandled errors will be returned as Internal error code 500.
 

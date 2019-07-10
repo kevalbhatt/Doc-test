@@ -5,6 +5,10 @@ menu: Documentation
 submenu: HighAvailability
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Fault Tolerance and High Availability Options
 
 ## Introduction
@@ -62,16 +66,21 @@ section lists a few of the main options.
    * Next, define a list of identifiers, one for each physical machine you have selected for the Atlas Web Service instance. These identifiers can be simple strings like =id1=, =id2= etc. They should be unique and should not contain a comma.
    * Define a comma separated list of these identifiers as the value of the option =atlas.server.ids=.
    * For each physical machine, list the IP Address/hostname and port as the value of the configuration =atlas.server.address.id=, where =id= refers to the identifier string for this physical machine.
+
       * For e.g., if you have selected 2 machines with hostnames =host1.company.com= and =host2.company.com=, you can define the configuration options as below:
-      ```shell
-      atlas.server.ids=id1,id2
-      atlas.server.address.id1=host1.company.com:21000
-      atlas.server.address.id2=host2.company.com:21000
-      ```
+
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
+{`atlas.server.ids=id1,id2
+atlas.server.address.id1=host1.company.com:21000
+atlas.server.address.id2=host2.company.com:21000`}
+</SyntaxHighlighter>
+
    * Define the Zookeeper quorum which will be used by the Atlas High Availability feature.
-      ```shell
+
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
       atlas.server.ha.zookeeper.connect=zk1.company.com:2181,zk2.company.com:2181,zk3.company.com:2181
-      ```
+    </SyntaxHighlighter>
+
    * You can review other configuration options that are defined for the High Availability feature, and set them up as desired in the =atlas-application.properties= file.
    * For production environments, the components that Atlas depends on must also be set up in High Availability mode. This is described in detail in the following sections. Follow those instructions to setup and configure them.
    * Install the Atlas software on the selected physical machines.
@@ -82,9 +91,9 @@ section lists a few of the main options.
 To verify that High Availability is working, run the following script on each of the instances where Atlas Web Service
 is installed.
 
-```shell
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
 $ATLAS_HOME/bin/atlas_admin.py -status
-```
+</SyntaxHighlighter>
 This script can print one of the values below as response:
 
    * *ACTIVE*: This instance is active and can respond to user requests.
@@ -112,11 +121,10 @@ that has a capability to transparently switch services based on status. One such
 Here is an example HAProxy configuration that can be used. Note this is provided for illustration only, and not as a
 recommended production configuration. For that, please refer to the HAProxy documentation for appropriate instructions.
 
-```shell
-frontend atlas_fe
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
+{`frontend atlas_fe
   bind *:41000
   default_backend atlas_be
-
 backend atlas_be
   mode http
   option httpchk get /api/atlas/admin/status
@@ -124,10 +132,9 @@ backend atlas_be
   balance roundrobin
   server host1_21000 host1:21000 check
   server host2_21000 host2:21000 check backup
-
 listen atlas
-  bind localhost:42000
-```
+  bind localhost:42000`}
+</SyntaxHighlighter>
 
 The above configuration binds HAProxy to listen on port 41000 for incoming client connections. It then routes
 the connections to either of the hosts host1 or host2 depending on a HTTP status check. The status check is
@@ -214,18 +221,19 @@ to configure Atlas to use Kafka in HA mode, do the following:
       * Decide number of replicas for Kafka topic: Set this to at least 2 for redundancy.
       * Run the following commands:
 
-      ```shell
-      $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper <list of zookeeper host:port entries> --topic ATLAS_HOOK --replication-factor <numReplicas> --partitions 1
-      $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper <list of zookeeper host:port entries> --topic ATLAS_ENTITIES --replication-factor <numReplicas> --partitions 1
-      Here KAFKA_HOME points to the Kafka installation directory.
-      ```
+ <SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
+  {`$KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper <list of zookeeper host:port entries> --topic ATLAS_HOOK --replication-factor <numReplicas> --partitions 1
+  $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper <list of zookeeper host:port entries> --topic ATLAS_ENTITIES --replication-factor <numReplicas> --partitions 1
+  Here KAFKA_HOME points to the Kafka installation directory.`}
+   </SyntaxHighlighter>
+
    * In atlas-application.properties, set the following configuration:
    
-     ```shell
-     atlas.notification.embedded=false
-     atlas.kafka.zookeeper.connect=<comma separated list of servers forming Zookeeper quorum used by Kafka>
-     atlas.kafka.bootstrap.servers=<comma separated list of Kafka broker endpoints in host:port form> - Give at least 2 for redundancy.
-     ```
+   <SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
+     {`atlas.notification.embedded=false
+    atlas.kafka.zookeeper.connect=<comma separated list of servers forming Zookeeper quorum used by Kafka>
+    atlas.kafka.bootstrap.servers=<comma separated list of Kafka broker endpoints in host:port form> - Give at least 2 for redundancy.`}
+   </SyntaxHighlighter>
 
 ## Known Issues
 

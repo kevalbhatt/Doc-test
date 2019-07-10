@@ -5,6 +5,9 @@ menu: Documentation
 submenu: Type System  
 ---
 
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Type System
 
 ## Overview
@@ -20,9 +23,8 @@ A Type in Atlas is a definition of how a particular type of metadata objects are
 An example of a type that comes natively defined with Atlas is a Hive table. A Hive table is defined with these
 attributes:
 
-
-```json
-Name:         hive_table
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+{`Name:         hive_table
 TypeCategory: Entity
 SuperTypes:   DataSet
 Attributes:
@@ -37,12 +39,12 @@ Attributes:
     partitionKeys:    array<hive_column>
     aliases:          array<string>
     columns:          array<hive_column>
-    parameters:       map<string,string>
+    parameters:       map<string>
     viewOriginalText: string
     viewExpandedText: string
     tableType:        string
-    temporary:        boolean
-```
+    temporary:        boolean`}
+</SyntaxHighlighter>
 
 The following points can be noted from the above example:
 
@@ -64,8 +66,8 @@ An ‘entity’ in Atlas is a specific value or instance of an Entity ‘type’
 An example of an entity will be a specific Hive Table. Say Hive has a table called ‘customers’ in the ‘default’database. This table will be an ‘entity’ in Atlas of type hive_table. By virtue of being an instance of an entity type, it will have values for every attribute that are a part of the Hive table ‘type’, such as:
 
 
-```json
-guid:     "9ba387dd-fa76-429c-b791-ffc338d3c91f"
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+{`guid:     "9ba387dd-fa76-429c-b791-ffc338d3c91f"
 typeName: "hive_table"
 status:   "ACTIVE"
 values:
@@ -94,8 +96,8 @@ values:
     viewOriginalText: null
     viewExpandedText: null
     tableType:        “MANAGED_TABLE”
-    temporary:        false
-```
+    temporary:        false`}
+</SyntaxHighlighter>
 
 The following points can be noted from the example above:
 
@@ -115,14 +117,14 @@ properties that define more concepts related to the type system.
 
 An attribute has the following properties:
 
-```json
-name:        string,
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+{`name:        string,
 typeName:    string,
 isOptional:  boolean,
 isIndexable: boolean,
 isUnique:    boolean,
-cardinality: enum
-```
+cardinality: enum`}
+</SyntaxHighlighter>
 
 The properties above have the following meanings:
 
@@ -143,28 +145,28 @@ Using the above, let us expand on the attribute definition of one of the attribu
 Let us look at the attribute called ‘db’ which represents the database to which the hive table belongs:
 
 
-```json
-db:
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+{`db:
     "name":        "db",
     "typeName":    "hive_db",
     "isOptional":  false,
     "isIndexable": true,
     "isUnique":    false,
-    "cardinality": "SINGLE"
-```
+    "cardinality": "SINGLE"`}
+</SyntaxHighlighter>
 
 Note the “isOptional=true” constraint - a table entity cannot be created without a db reference.
 
 
-```json
-columns:
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+{`columns:
     "name":        "columns",
     "typeName":    "array<hive_column>",
     "isOptional":  optional,
     "isIndexable": true,
     “isUnique":    false,
-    "constraints": [ { "type": "ownedRef" } ]
-```
+    "constraints": [ { "type": "ownedRef" } ]`}
+</SyntaxHighlighter>
 
 > Note: The “ownedRef” constraint for columns. By doing this, we are indicating that the defined column entities should
 always be bound to the table entity they are defined with.

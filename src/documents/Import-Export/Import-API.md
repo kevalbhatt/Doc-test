@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Import API
 
 The general approach is:
@@ -41,20 +45,22 @@ The general approach is:
 |_Notes_| The file to be imported needs to be present on the server at the location specified by the _FILENAME_ parameter.|
 
 __Method Signature for Import__
-```
-@POST
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`@POST
 @Path("/import")
 @Produces("application/json; charset=UTF-8")
-@Consumes("multipart/form-data")
-```
+@Consumes("multipart/form-data")`}
+</SyntaxHighlighter>
 
 __Method Signature for Import File__
-```
-@POST
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`@POST
 @Path("/importfile")
 @Produces("application/json; charset=UTF-8")
-@Consumes("application/json")
-```
+@Consumes("application/json")`}
+</SyntaxHighlighter>
 
 __Import Options__
 Please see [here](Import-API-Options) for the available options during import process.
@@ -68,28 +74,31 @@ The API will return the results of the import operation in the format defined by
 
 ### Examples Using CURL Calls
 The call below performs Import of _!QuickStart_ database using POST.
-```
-curl -g -X POST -u adminuser:password -H "Content-Type: multipart/form-data"
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -g -X POST -u adminuser:password -H "Content-Type: multipart/form-data"
             -H "Cache-Control: no-cache"
             -F request=@importOptions.json
             -F data=@quickStartDB.zip
-            "http://localhost:21000/api/atlas/admin/import"
-```
+            "http://localhost:21000/api/atlas/admin/import"`}
+</SyntaxHighlighter>
 
 The _request_ parameter is optional. If import has to be run without any options use:
-```
-curl -g -X POST -u adminuser:password -H "Content-Type: multipart/form-data"
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -g -X POST -u adminuser:password -H "Content-Type: multipart/form-data"
             -H "Cache-Control: no-cache"
             -F data=@quickStartDB.zip
-            "http://localhost:21000/api/atlas/admin/import"
-```
+            "http://localhost:21000/api/atlas/admin/import"`}
+</SyntaxHighlighter>
 
 
 The call below performs Import of _QuickStart_ database using a ZIP file available on server.
-```
-curl -X POST -u adminuser:password -H "Cache-Control: no-cache" -d ./importOptions.json
-"http://localhost:21000/api/atlas/admin/importFile" > quickStartDB-import-result.json
-```
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -X POST -u adminuser:password -H "Cache-Control: no-cache" -d ./importOptions.json
+"http://localhost:21000/api/atlas/admin/importFile" > quickStartDB-import-result.json`}
+</SyntaxHighlighter>
 
 Below is the _AtlasImportResult_ JSON for an import that contains _hive_db_.
 
@@ -97,8 +106,8 @@ The _processedEntities_ contains the _guids_ of all the entities imported.
 
 The _metrics_ contain a breakdown of the types and entities imported along with the operation performed on them viz. _created_ or _updated_.
 
-```
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "request": {
         "options": {}
     },
@@ -122,13 +131,11 @@ The _metrics_ contain a breakdown of the types and entities imported along with 
     "processedEntities": [
         "2c4aa713-030b-4fb3-98b1-1cab23d9ac81",
         "e4aa71ed-70fd-4fa7-9dfb-8250a573e293",
-
        ...
-
         "ea0f9bdb-1dfc-4e48-9848-a006129929f9",
         "b5e2cb41-3e7d-4468-84e1-d87c320e75f9"
     ],
     "operationStatus": "SUCCESS"
-}
-```
+}`}
+</SyntaxHighlighter>
 

@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # (New) Entity Transforms Framework
 
 #### Background
@@ -63,87 +67,91 @@ CLEAR              | Clear value of an attribute                  |
 ###### Add Classification
 
 During import, hive_db entity whose _qualifiedName_ is _stocks@cl1_ will get the classification _clSrcImported_.
-```json 
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "conditions": {
         "hive_db.qualifiedName": "stocks@cl1"
     },
     "action": {
         "__entity": "ADD_CLASSIFICATION: clSrcImported"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 Every imported entity will get the classification by simply changing the condition. The __entity is special condition which matches entity.
 
-```json 
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "conditions": {
         "__entity": ""
     },
     "action": {
         "__entity": "ADD_CLASSIFICATION: clSrcImported"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 To add classification to only the top-level entity (entity that is used as starting point for an export), use:
 
-```json 
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "conditions": {
         "__entity": "topLevel:"
     },
     "action": {
         "__entity": "ADD_CLASSIFICATION: clSrcImported"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
+
 ###### Replace Prefix
 
 This action works on string values. The first parameter is the prefix that is searched for a match, once matched, it is replaced with the provided replacement string.
 
 The sample below searches for _/aa/bb/_, once found replaces it with _/xx/yy/_.
-```json 
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "conditions": {
         "hdfs_path.clusterName": "EQUALS: CL1"
     },
     "action": {
         "hdfs_path.path": "REPLACE_PREFIX: = :/aa/bb/=/xx/yy/"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 ###### To Lower
 
 Entity whose hdfs_path.clusterName is CL1 will get its path attribute converted to lower case.
 
-```json 
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}> 
+{`{
     "conditions": {
         "hdfs_path.clusterName": "EQUALS: CL1"
     },
     "action": {
         "hdfs_path.path": "TO_LOWER:"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 ###### Clear
 
 Entity whose hdfs_path.clusterName has value set, will get its _replicatedTo_ attribute value cleared.
 
-```json 
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}> 
+{`{
     "conditions": {
         "hdfs_path.clusterName": "HAS_VALUE:"
     },
     "action": {
         "hdfs_path.replicatedTo": "CLEAR:"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 
 #### Additional Examples

@@ -5,6 +5,10 @@ menu: Documentation
 submenu: security
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Security Features of Apache Atlas
 
 
@@ -67,15 +71,14 @@ In a secure cluster, some of the components (such as Kafka) that Atlas interacts
 For example, the following property settings in jaas-application.properties file
 
 
-```
-atlas.jaas.KafkaClient.loginModuleName = com.sun.security.auth.module.Krb5LoginModule
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`atlas.jaas.KafkaClient.loginModuleName = com.sun.security.auth.module.Krb5LoginModule
 atlas.jaas.KafkaClient.loginModuleControlFlag = required
 atlas.jaas.KafkaClient.option.useKeyTab = true
 atlas.jaas.KafkaClient.option.storeKey = true
 atlas.jaas.KafkaClient.option.serviceName = kafka
 atlas.jaas.KafkaClient.option.keyTab = /etc/security/keytabs/kafka_client.keytab
 atlas.jaas.KafkaClient.option.principal = kafka-client-1@EXAMPLE.COM
-
 atlas.jaas.MyClient.0.loginModuleName = com.sun.security.auth.module.Krb5LoginModule
 atlas.jaas.MyClient.0.loginModuleControlFlag = required
 atlas.jaas.MyClient.0.option.useKeyTab = true
@@ -83,21 +86,19 @@ atlas.jaas.MyClient.0.option.storeKey = true
 atlas.jaas.MyClient.0.option.serviceName = kafka
 atlas.jaas.MyClient.0.option.keyTab = /etc/security/keytabs/kafka_client.keytab
 atlas.jaas.MyClient.0.option.principal = kafka-client-1@EXAMPLE.COM
-
 atlas.jaas.MyClient.1.loginModuleName = com.sun.security.auth.module.Krb5LoginModule
 atlas.jaas.MyClient.1.loginModuleControlFlag = optional
 atlas.jaas.MyClient.1.option.useKeyTab = true
 atlas.jaas.MyClient.1.option.storeKey = true
 atlas.jaas.MyClient.1.option.serviceName = kafka
 atlas.jaas.MyClient.1.option.keyTab = /etc/security/keytabs/kafka_client.keytab
-atlas.jaas.MyClient.1.option.principal = kafka-client-1@EXAMPLE.COM
-
-```
+atlas.jaas.MyClient.1.option.principal = kafka-client-1@EXAMPLE.COM`}
+</SyntaxHighlighter>
 
 will set the JAAS configuration that is equivalent to the following jaas.conf file entries.
 
-```json
-KafkaClient {
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`KafkaClient {
    com.sun.security.auth.module.Krb5LoginModule required
    useKeyTab=true
    storeKey=true
@@ -119,8 +120,8 @@ MyClient {
    serviceName=kafka
    keyTab="/etc/security/keytabs/kafka_client.keytab"
    principal="kafka-client-1@EXAMPLE.COM";
-};
-```
+};`}
+</SyntaxHighlighter>
 
 
 ## SPNEGO-based HTTP Authentication
@@ -168,59 +169,57 @@ See [the Apache SOLR Kerberos configuration](https://cwiki.apache.org/confluence
 
 
 
-```shell
-kadmin.local
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`kadmin.local
 kadmin.local:  addprinc -randkey solr/<hostname>@EXAMPLE.COM
 kadmin.local:  xst -k solr.keytab solr/<hostname>@EXAMPLE.COM
-kadmin.local:  quit
-```
+kadmin.local:  quit`}
+</SyntaxHighlighter>
 
    * Add principal and generate the keytab file for authenticating HTTP request. (Note that if Ambari is used to Kerberize the cluster, the keytab /etc/security/keytabs/spnego.service.keytab can be used)
 
 
-```shell
-kadmin.local
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`kadmin.local
 kadmin.local:  addprinc -randkey HTTP/<hostname>@EXAMPLE.COM
 kadmin.local:  xst -k HTTP.keytab HTTP/<hostname>@EXAMPLE.COM
-kadmin.local:  quit
-```
+kadmin.local:  quit`}
+</SyntaxHighlighter>
 
    * Copy the keytab file to all the hosts running Solr.
 
 
-```shell
-cp solr.keytab /etc/security/keytabs/
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`cp solr.keytab /etc/security/keytabs/
 chmod 400 /etc/security/keytabs/solr.keytab
-
 cp HTTP.keytab /etc/security/keytabs/
-chmod 400 /etc/security/keytabs/HTTP.keytab
-```
+chmod 400 /etc/security/keytabs/HTTP.keytab`}
+</SyntaxHighlighter>
 
 
 
    * Create path in Zookeeper for storing the Solr configs and other parameters.
 
 
-```shell
-$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -zkhost $ZK_HOST:2181 -cmd makepath solr
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -zkhost $ZK_HOST:2181 -cmd makepath solr`}
+</SyntaxHighlighter>
 
 
    * Upload the configuration to Zookeeper.
 
 
-```shell
-$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -cmd upconfig  -zkhost $ZK_HOST:2181/solr -confname basic_configs -confdir $SOLR_INSTALL_HOME/server/solr/configsets/_default/conf
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -cmd upconfig  -zkhost $ZK_HOST:2181/solr -confname basic_configs -confdir $SOLR_INSTALL_HOME/server/solr/configsets/_default/conf`}
+</SyntaxHighlighter>
 
 
 
    * Create the JAAS configuration.
 
 
-```shell
-vi /etc/solr/conf/solr_jaas.conf
-
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`vi /etc/solr/conf/solr_jaas.conf
 Client {
   com.sun.security.auth.module.Krb5LoginModule required
   useKeyTab=true
@@ -229,9 +228,8 @@ Client {
   useTicketCache=true
   debug=true
   principal="solr/<hostname>@EXAMPLE.COM";
-};
-
-```
+};`}
+</SyntaxHighlighter>
 
 
    * Copy /etc/solr/conf/solr_jaas.conf to all hosts running Solr.
@@ -239,47 +237,42 @@ Client {
    * Edit solr.in.sh in $SOLR_INSTALL_HOME/bin/
 
 
-```shell
-vi $SOLR_INSTALL_HOME/bin/solr.in.sh
-
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`vi $SOLR_INSTALL_HOME/bin/solr.in.sh
 SOLR_JAAS_FILE=/etc/solr/conf/solr_jaas.conf
-SOLR_HOST=`hostname -f`
+SOLR_HOST='hostname -f'
 ZK_HOST="$ZK_HOST1:2181,$ZK_HOST2:2181,$ZK_HOST3:2181/solr"
 KERBEROS_REALM="EXAMPLE.COM"
 SOLR_KEYTAB=/etc/solr/conf/solr.keytab
 SOLR_KERB_PRINCIPAL=HTTP@${KERBEROS_REALM}
 SOLR_KERB_KEYTAB=/etc/solr/conf/HTTP.keytab
 SOLR_AUTHENTICATION_CLIENT_CONFIGURER="org.apache.solr.client.solrj.impl.Krb5HttpClientConfigurer"
-SOLR_AUTHENTICATION_OPTS=" -DauthenticationPlugin=org.apache.solr.security.KerberosPlugin -Djava.security.auth.login.config=${SOLR_JAAS_FILE} -Dsolr.kerberos.principal=${SOLR_KERB_PRINCIPAL} -Dsolr.kerberos.keytab=${SOLR_KERB_KEYTAB} -Dsolr.kerberos.cookie.domain=${SOLR_HOST} -Dhost=${SOLR_HOST} -Dsolr.kerberos.name.rules=DEFAULT"
-
-```
+SOLR_AUTHENTICATION_OPTS=" -DauthenticationPlugin=org.apache.solr.security.KerberosPlugin -Djava.security.auth.login.config=${SOLR_JAAS_FILE} -Dsolr.kerberos.principal=${SOLR_KERB_PRINCIPAL} -Dsolr.kerberos.keytab=${SOLR_KERB_KEYTAB} -Dsolr.kerberos.cookie.domain=${SOLR_HOST} -Dhost=${SOLR_HOST} -Dsolr.kerberos.name.rules=DEFAULT"`}
+</SyntaxHighlighter>
 
    * Copy solr.in.sh to all hosts running Solr.
 
    * Set up Solr to use the Kerberos plugin by uploading the security.json.
 
 
-```shell
-$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -zkhost <zk host>:2181 -cmd put /security.json '{"authentication":{"class": "org.apache.solr.security.KerberosPlugin"}}'
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`$SOLR_INSTALL_HOME/server/scripts/cloud-scripts/zkcli.sh -zkhost <zk host>:2181 -cmd put /security.json '{"authentication":{"class": "org.apache.solr.security.KerberosPlugin"}}'`}
+</SyntaxHighlighter>
 
 
    * Start Solr.
 
-```shell
-
-$SOLR_INSTALL_HOME/bin/solr start -cloud -z $ZK_HOST1:2181,$ZK_HOST2:2181,$ZK_HOST3:2181 -noprompt
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`$SOLR_INSTALL_HOME/bin/solr start -cloud -z $ZK_HOST1:2181,$ZK_HOST2:2181,$ZK_HOST3:2181 -noprompt`}
+</SyntaxHighlighter>
 
 
    * Test Solr
 
 
-```shell
-kinit -k -t /etc/security/keytabs/HTTP.keytab HTTP/<host>@EXAMPLE.COM
-curl --negotiate -u : "http://<host>:8983/solr/"
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`kinit -k -t /etc/security/keytabs/HTTP.keytab HTTP/<host>@EXAMPLE.COM
+curl --negotiate -u : "http://<host>:8983/solr/"`}
+</SyntaxHighlighter>
 
-```
-
-
-   * Create collections in Solr corresponding to the indexes that Atlas uses and change the Atlas configuration to point to the Solr instance setup as described in the [Install Steps](InstallationSteps)
+ * Create collections in Solr corresponding to the indexes that Atlas uses and change the Atlas configuration to point to the Solr instance setup as described in the [Install Steps](InstallationSteps)

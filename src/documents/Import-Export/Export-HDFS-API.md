@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Export & Import APIs for HDFS Path
 
 ### Introduction
@@ -31,8 +35,8 @@ To export entities that represent HDFS path, use the Export API using the _match
 ### Example Using CURL Calls
 Below are sample CURL calls that performs export operation on the _Sample HDFS Setup_ shown above.
 
-```
-curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
     "itemsToExport": [
             { "typeName": "hdfs_path", "uniqueAttributes": { "name": "FinanceAll" }
         }
@@ -41,8 +45,8 @@ curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache
      "fetchType": "full",
      "matchType": "startsWith"
     }
-}' "http://localhost:21000/api/atlas/admin/export" > financeAll.zip
-```
+}' "http://localhost:21000/api/atlas/admin/export" > financeAll.zip`}
+</SyntaxHighlighter>
 
 ### Automatic Creation of HDFS entities
 Given that HDFS entity creation is a manual process. The Export API offers a mechanism for creation of requested HDFS entities.

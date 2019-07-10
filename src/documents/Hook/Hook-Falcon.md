@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Hooks
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Falcon Atlas Bridge
 
 ## Falcon Model
@@ -44,9 +48,11 @@ Follow the instructions below to setup Atlas hook in Falcon:
    * Copy entire contents of folder apache-atlas-falcon-hook-${project.version}/hook/falcon to `<atlas-home>`/hook/falcon
    * Link Atlas hook jars in Falcon classpath - 'ln -s `<atlas-home>`/hook/falcon/* `<falcon-home>`/server/webapp/falcon/WEB-INF/lib/'
    * In `<falcon_conf>`/falcon-env.sh, set an environment variable as follows:
-     ```shell
-     export FALCON_SERVER_OPTS="`<atlas_home>`/hook/falcon/*:$FALCON_SERVER_OPTS"
-     ```
+     
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
+     {`export FALCON_SERVER_OPTS="<atlas_home>/hook/falcon/*:$FALCON_SERVER_OPTS"`}
+     </SyntaxHighlighter>
+
 
 The following properties in `<atlas-conf>`/atlas-application.properties control the thread pool and notification details:
    * atlas.hook.falcon.synchronous   - boolean, true to run the hook synchronously. default false

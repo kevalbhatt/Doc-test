@@ -48,16 +48,17 @@ The table has following columns:
 ###### Example
 
 The following export request will end up creating _AtlasServer_ entity with _clMain_ as its name. The audit record of this operation will be displayed within the property page of this entity.
-```json 
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}> 
+{`{
     "itemsToExport": [
         { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "stocks@cl1" }}
     ],
     "options": {
         "replicatedTo": "clMain"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 #### Support for Cluster's Full Name
 
@@ -87,13 +88,14 @@ Error Response  | Errors Returned as AtlasBaseException |
 
 ###### CURL
 
-```
-curl -X GET -u admin:admin -H "Content-Type: application/json" -H "Cache-Control: no-cache" http://localhost:21000/api/atlas/admin/server/cl2
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -X GET -u admin:admin -H "Content-Type: application/json" -H "Cache-Control:no-cache" http://localhost:21000/api/atlas/admin/server/cl2`}
+</SyntaxHighlighter>
 
 Output: 
-```json
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "guid": "f87e4fd1-bfb5-482d-9ab1-e735621b7d16",
     "name": "cl2",
     "qualifiedName": "cl2",
@@ -102,7 +104,7 @@ Output:
         "replicationOperation": "EXPORT",
         "topLevelEntity": "stocks@cl1"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 

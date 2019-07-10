@@ -5,6 +5,9 @@ menu: Documentation
 submenu: Soft Reference
 --- 
 
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Entity Attribute Option: SoftReference
 
 #### Background
@@ -21,18 +24,18 @@ Attribute with _isSoftReference_ option set to _true_, is non-primitive attribut
 
 Below is an example of using the new attribute option.
 
-```json 
-  "attributeDefs": [
-    {
-      "name": "replicatedFrom",
-      "typeName": "array<AtlasServer>",
-      "cardinality": "SET",
-      "isIndexable": false,
-      "isOptional": true,
-      "isUnique": false,
-      "options": {
-        "isSoftReference": "true"
-      }
-    },
-```
+<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+  {`"attributeDefs": [
+      {
+        "name": "replicatedFrom",
+        "typeName": "array<AtlasServer>",
+        "cardinality": "SET",
+        "isIndexable": false,
+        "isOptional": true,
+        "isUnique": false,
+        "options": {
+          "isSoftReference": "true"
+        }
+      }`}
+</SyntaxHighlighter>
 

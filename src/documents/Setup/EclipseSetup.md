@@ -5,6 +5,9 @@ menu: Documentation
 submenu: EclipseSetup 
 ---
 
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Tools required to build and run Apache Atlas on Eclipse
 
 These instructions are provided as-is. They worked at a point in time; other variants of software may work. These instructions may become stale if the build dependencies change.
@@ -65,9 +68,11 @@ a. File - Import - Maven - Existing Maven Projects b. Browse to your Atlas folde
 
 On the Mac, the Maven import fails with message
 
-```shell
-"Cannot complete the install because one or more required items could not be found. Software being installed: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) Missing requirement: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) requires 'org.eclipse.ajdt.core 1.5.0' but it could not be found".
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+{`"Cannot complete the install because one or more required items could not be found.
+Software being installed: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302)
+Missing requirement: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) requires 'org.eclipse.ajdt.core 1.5.0' but it could not be found".`}
+</SyntaxHighlighter>
 
 Install http://download.eclipse.org/tools/ajdt/46/dev/update and rerun. The Maven AspectJ should plugin install - allowing the references to Aspects in Maven to be resolved.
 
@@ -98,22 +103,22 @@ You should now have a clean workspace.
 You will need to change some of these scripts to point to your installation targets.
    * Run this script to setup your command line build environment
 
-```shell
-#!/bin/bash # export JAVA_HOME=/Library/Java/JavaVirtualMachines/macosxx6480sr3fp10hybrid-20160719_01-sdk
+<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+{`#!/bin/bash # export JAVA_HOME=/Library/Java/JavaVirtualMachines/macosxx6480sr3fp10hybrid-20160719_01-sdk
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9 # Git is installed in the system path
 export PYTHON_HOME='/Applications/Python 2.7'
 export PATH=$PYTHON_HOME:$M2_HOME/bin:$JAVA_HOME/bin:$PATH
-export MAVEN_OPTS="-Xmx1536m -Drat.numUnapprovedLicenses=100"
-```
+export MAVEN_OPTS="-Xmx1536m -Drat.numUnapprovedLicenses=100"`}
+</SyntaxHighlighter>
 
    * If you do  not want to set Java 8 as your system java, you can use this  bash script to setup the environment and run Eclipse (which you can drop in Applications and rename to neon).
 
-```shell
-#!/bin/bash
+<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+{`#!/bin/bash
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9
 # Git is installed in the system path
 export PYTHON_HOME='/Applications/Python 2.7'
-export PATH=$PYTHON_HOME:$M2_HOME/bin:$JAVA_HOME/bin:$PATH/Applications/neon.app/Contents/MacOS/eclipse
-```
+export PATH=$PYTHON_HOME:$M2_HOME/bin:$JAVA_HOME/bin:$PATH/Applications/neon.app/Contents/MacOS/eclipse`}
+</SyntaxHighlighter>

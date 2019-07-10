@@ -5,6 +5,9 @@ menu: Documentation
 submenu: Search 
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import Img from 'theme/components/shared/Img'
 
 # Basic Search
@@ -13,8 +16,8 @@ The basic search allows you to query using typename of an entity, associated cla
 
 The entire query structure can be represented using the following JSON structure (called !SearchParameters)
 
- ```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
   "typeName":               "hive_column",
   "excludeDeletedEntities": true,
   "classification":         "PII",
@@ -24,22 +27,22 @@ The entire query structure can be represented using the following JSON structure
   "entityFilters":          {  },
   "tagFilters":             { },
   "attributes":             [ "table", "qualifiedName"]
-}
-```
+}`}
+</SyntaxHighlighter>
 
 **Field description**
 
- ```json
-   typeName:               the type of entity to look for
-   excludeDeletedEntities: should the search exclude deleted entities? (default: true)
-   classification:         only include entities with given classification
-   query:                  any free text occurrence that the entity should have (generic/wildcard queries might be slow)
-   offset:                 starting offset of the result set (useful for pagination)
-   limit:                  max number of results to fetch
-   entityFilters:          entity attribute filter(s)
-   tagFilters:             classification attribute filter(s)
-   attributes:             attributes to include in the search result
-```
+ <SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+   {`typeName:               the type of entity to look for
+excludeDeletedEntities: should the search exclude deleted entities? (default: true)
+classification:         only include entities with given classification
+query:                  any free text occurrence that the entity should have (generic/wildcard queries might be slow)
+offset:                 starting offset of the result set (useful for pagination)
+limit:                  max number of results to fetch
+entityFilters:          entity attribute filter(s)
+tagFilters:             classification attribute filter(s)
+attributes:             attributes to include in the search result`}
+</SyntaxHighlighter>
 
 <Img src={`/images/twiki/search-basic-hive_column-PII.png`} height="400" width="600"/>
 
@@ -47,8 +50,9 @@ The entire query structure can be represented using the following JSON structure
 
 **Examples of filtering (for hive_table attributes)**
    * Single attribute
-   ```json
-   {
+   
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`   {
      "typeName":               "hive_table",
      "excludeDeletedEntities": true,
      "offset":                 0,
@@ -59,14 +63,15 @@ The entire query structure can be represented using the following JSON structure
         "attributeValue": "customers"
      },
      "attributes": [ "db", "qualifiedName" ]
-   }
-  ```
+   }`}
+</SyntaxHighlighter>
 
 <Img src={`/images/twiki/search-basic-hive_table-customers.png`} height="400" width="600"/>
 
    * Multi-attribute with OR
- ```json
-   {
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`   {
      "typeName":               "hive_table",
      "excludeDeletedEntities": true,
      "offset":                 0,
@@ -87,14 +92,15 @@ The entire query structure can be represented using the following JSON structure
         ]
      },
      "attributes": [ "db", "qualifiedName" ]
-   }
-```
+   }`}
+</SyntaxHighlighter>
 
 <Img src={`/images/twiki/search-basic-hive_table-customers-or-provider.png`} height="400" width="600"/>
 
    * Multi-attribute with AND
- ```json
-   {
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`   {
      "typeName":               "hive_table",
      "excludeDeletedEntities": true,
      "offset":                 0,
@@ -115,8 +121,8 @@ The entire query structure can be represented using the following JSON structure
         ]
      },
      "attributes": [ "db", "qualifiedName" ]
-  }
-```
+  }`}
+</SyntaxHighlighter>
 
 <Img src={`/images/twiki/search-basic-hive_table-customers-owner_is_hive.png`} height="400" width="600"/>
 
@@ -135,8 +141,8 @@ The entire query structure can be represented using the following JSON structure
 
 **CURL Samples**
 
- ```shell
-curl -sivk -g
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -sivk -g
     -u <user>:<password>
     -X POST
     -d '{
@@ -163,6 +169,5 @@ curl -sivk -g
             },
             "attributes": [ "db", "qualifiedName" ]
           }'
-    <protocol>://<atlas_host>:<atlas_port>/api/atlas/v2/search/basic
-
-```
+    <protocol>://<atlas_host>:<atlas_port>/api/atlas/v2/search/basic`}
+</SyntaxHighlighter>

@@ -4,6 +4,10 @@ route: /Downloads
 menu: Documentation
 submenu: Downloads
 ---
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Downloads
 
 
@@ -37,24 +41,24 @@ The PGP signature can be verified using PGP or GPG, with the following steps:
    * Download [Apache Atlas KEYS file](https://www.apache.org/dist/atlas/KEYS)
    * Verify the signatures using one of the following:
 
-```java
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
 % gpg --import KEYS
 % gpg --verify downloaded_file.asc downloaded_file
-```
+</SyntaxHighlighter>
 
 or
 
-```java
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
 % pgpk -a KEYS
 % pgpv downloaded_file.asc
-```
+</SyntaxHighlighter>
 
 or
 
-```java
+<SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
 % pgp -ka KEYS
 % pgp downloaded_file.asc
-```
+</SyntaxHighlighter>
 
 ## Release Notes
 **[Atlas 2.0.0](../2.0.0/index) (Released on 2019/05/14)**

@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Migration
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Migrating data from Apache Atlas 0.8 to Apache Atlas 1.0
 
 Apache Atlas 1.0 uses !JanusGraph graph database to store its type and entity details. Prior versions of Apache Atlas
@@ -30,9 +34,10 @@ upgrade process better.
 
 To estimate the time needed to export data, first you need to find the number of entities in Apache Atlas 0.8. This can
 be done by running the following DSL query:
-```
-Referenceable select count()
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`Referenceable select count()`}
+</SyntaxHighlighter>
 
 Assuming Apache Atlas is deployed in a quad-core CPU with 4 GB of RAM allocated:
    * Export from Apache Atlas 0.8 will process approximately 2 million entities per hour.
@@ -51,26 +56,29 @@ Move the _Atlas Migration Utility_ directory to the Apache Atlas 0.8 cluster.
 Follow these steps to export the data:
    * Shutdown _Apache Atlas 0.8_, so that the database is not updated while the migration is in progress.
    * Execute the following command to export Apache Atlas data in Titan graph database to the specified directory:
-```
-   atlas_migration_export.py -d <output directory>
- ```
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+   {`atlas_migration_export.py -d <output directory>`}
+</SyntaxHighlighter>
 
 Example:
-```
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
    /home/atlas-migration-utility/atlas_migration_export.py -d /home/atlas-0.8-data
-```
+</SyntaxHighlighter>
 
 On successful execution, _Atlas Migration Utility_ tool will display messages like these:
-```
-atlas-migration-export: starting migration export. Log file location /var/log/atlas/atlas-migration-exporter.log
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`atlas-migration-export: starting migration export. Log file location /var/log/atlas/atlas-migration-exporter.log
 atlas-migration-export: initializing
 atlas-migration-export: initialized
 atlas-migration-export: exporting typesDef to file /home/atlas-0.8-data/atlas-migration-typesdef.json
 atlas-migration-export: exported  typesDef to file /home/atlas-0.8-data/atlas-migration-typesdef.json
 atlas-migration-export: exporting data to file /home/atlas-0.8-data/atlas-migration-data.json
 atlas-migration-export: exported  data to file /home/atlas-0.8-data/atlas-migration-data.json
-atlas-migration-export: completed migration export!
-```
+atlas-migration-export: completed migration export!`}
+</SyntaxHighlighter>
 
 More details on the progress of export can be found in a log file named _atlas-migration-exporter.log_, in the log directory
 specified in _atlas-log4j.xml_.
@@ -79,19 +87,21 @@ specified in _atlas-log4j.xml_.
    * For Apache Atlas deployments that use Solr as index store, please ensure that existing Apache Atlas specific collections are deleted or renamed before installing Apache Atlas 1.0.
 
 Apache Atlas specific Solr collections can be deleted using CURL commands shown below:
-```
-curl 'http://<solrHost:port>/solr/admin/collections?action=DELETE&name=vertex_index'
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl 'http://<solrHost:port>/solr/admin/collections?action=DELETE&name=vertex_index'
 curl 'http://<solrHost:port>/solr/admin/collections?action=DELETE&name=edge_index'
-curl 'http://<solrHost:port>/solr/admin/collections?action=DELETE&name=fulltext_index'
-```
+curl 'http://<solrHost:port>/solr/admin/collections?action=DELETE&name=fulltext_index'`}
+</SyntaxHighlighter>
 
    * Create Solr collections for Apache Atlas 1.0
 Apache Atlas specific Solr collections can be created using CURL commands shown below:
-```
-curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=vertex_index&numShards=1&replicationFactor=1&collection.configName=atlas_configs'
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=vertex_index&numShards=1&replicationFactor=1&collection.configName=atlas_configs'
 curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=edge_index&numShards=1&replicationFactor=1&collection.configName=atlas_configs'
-curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=fulltext_index&numShards=1&replicationFactor=1&collection.configName=atlas_configs'
-```
+curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=fulltext_index&numShards=1&replicationFactor=1&collection.configName=atlas_configs'`}
+</SyntaxHighlighter>
 
    * For Apache Atlas deployments that use HBase as backend store, please note that HBase table used by earlier version can't be used by Apache Atlas 1.0. If you are constrained on disk storage space, the table used by earlier version can be removed after successful export of data.
       * Apache Atlas 0.8 uses HBase table named 'atlas_titan' (by default)
@@ -106,26 +116,29 @@ curl 'http://<solrHost:port>/solr/admin/collections?action=CREATE&name=fulltext_
 Please follow the steps below to import the data exported above into Apache Atlas 1.0:
    * Specify the location of the directory containing exported data in following property to _atlas-application.properties_:
 
-```
-atlas.migration.data.filename=<location of the directory containing exported data>
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`atlas.migration.data.filename=<location of the directory containing exported data>`}
+</SyntaxHighlighter>
 
    * Start Apache Atlas 1.0. Apache Atlas will start in migration mode. It will start importing data from the specified directory.
 
    * Monitor the progress of import process with the following curl command:
-```
-curl -X GET -u admin:<password> -H "Content-Type: application/json" -H "Cache-Control: no-cache" http://<atlasHost>:port/api/atlas/admin/status
-```
+
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -X GET -u admin:<password> -H "Content-Type: application/json" -H "Cache-Control: no-cache" http://<atlasHost>:port/api/atlas/admin/status`}
+</SyntaxHighlighter>
 
 Progress of import will be indicated by a message like this:
-```
-{"Status":"MIGRATING","MigrationStatus":{"operationStatus":"IN_PROGRESS","startTime":1526512275110,"endTime":1526512302750,"currentIndex":10,"currentCounter":101,"totalCount":0}}
-```
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{"Status":"MIGRATING","MigrationStatus":{"operationStatus":"IN_PROGRESS","startTime":1526512275110,"endTime":1526512302750,"currentIndex":10,"currentCounter":101,"totalCount":0}}`}
+</SyntaxHighlighter>
 
 Successful completion of the operation will show a message like this:
-```
-{"Status":"MIGRATING","MigrationStatus":{"operationStatus":"SUCCESS","startTime":1526512275110,"endTime":1526512302750,"currentIndex":0,"currentCounter":0,"totalCount":371}}
-```
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{"Status":"MIGRATING","MigrationStatus":{"operationStatus":"SUCCESS","startTime":1526512275110,"endTime":1526512302750,"currentIndex":0,"currentCounter":0,"totalCount":371}}`}
+</SyntaxHighlighter>
 
 Once migration import is complete, i.e. _operationStatus_ is _SUCCESS_, follow the steps given below to restart Apache Atlas
 in _ACTIVE_ mode for regular use:

@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Search 
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 #  Advanced Search
 
 ### **Background**
@@ -41,10 +45,10 @@ Specifying the _from_ clause is mandatory. Using the _from_ keyword itself is op
 
 Example: To retrieve all entities of type _DB_:
 
-```sql
-DB
-from DB
-```
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`DB
+from DB`}
+</SyntaxHighlighter>
 
 In the absence of _where_ for filtering on the source, the dataset fetched by the _from_ clause is everything from the database. Based on the size of the data present in the database, there is a potential to overwhelm the server. The query processor thus adds _limit_ clause with a default value set. See the section on _limit_ clause for details.
 
@@ -56,39 +60,43 @@ A conditions is identifier followed by an operator followed by a literal. Litera
 
 Example: To retrieve entity of type _Table_ with a specific name say time_dim:
 
-```sql
-from Table where name = 'time_dim'
-```
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where name = 'time_dim'`}
+</SyntaxHighlighter>
 
 It is possible to specify multiple conditions by combining them using _and_, _or_ operators.
 
 Example: To retrieve entity of type Table with name that can be either time_dim or customer_dim:
 
-```sql
-from Table where name = 'time_dim' or name = 'customer_dim'
-```
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where name = 'time_dim' or name = 'customer_dim'`}
+</SyntaxHighlighter>
 
 Filtering based on a list of values is done using by specifying the values in the square brackets. A value array is a list of values enclosed within square brackets. This is a simple way to specify an OR clause on an identifier.
 
 Note that having several OR clauses on the same attribute may be inefficient. Alternate way is to use the value array as shown in the example below.
 
 Example: The query in the example above can be written using a value array as shown below.
-```sql
-from Table where name = ["customer_dim", "time_dim"]
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where name = ["customer_dim", "time_dim"]`}
+</SyntaxHighlighter>
 
 A condition that uses the LIKE operator, allows for filtering using wildcards like '*' or '?'.
 Example: To retrieve entity of type _Table_ whose name ends with '_dim':
-```sql
-from Table where name LIKE '*_dim'
-```
+
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where name LIKE '*_dim'`}
+</SyntaxHighlighter>
 
 Additional forms of regular expressions can also be used.
 
 Example: To retrieve _DB_ whose name starts with _R_ followed by has any 3 characters, followed by _rt_ followed by at least 1 character, followed by none or any number of characters.
-```sql
-DB where name like "R???rt?*"
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`DB where name like "R???rt?*"`}
+</SyntaxHighlighter>
 
 
 ### Using Date Literals
@@ -99,22 +107,25 @@ Dates in this format follow this notation:
    * _yyyy-MM-dd_. Which means, year-month-day.
 
 Example: Date represents December 11, 2017 at 2:35 AM.
-```sql
-2017-12-11T02:35:0.0Z
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`2017-12-11T02:35:0.0Z`}
+</SyntaxHighlighter>
 
 Example: To retrieve entity of type _Table_ created within 2017 and 2018.
-```sql
-from Table where createTime < '2018-01-01' and createTime > '2017-01-01'
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where createTime < '2018-01-01' and createTime > '2017-01-01'`}
+</SyntaxHighlighter>
 
 #### Using Boolean Literals
 Properties of entities of type boolean can be used within queries.
 
 Eample: To retrieve entity of type hdfs_path whose attribute _isFile_ is set to _true_ and whose name is _Invoice_.
-```sql
-from hdfs_path where isFile = true or name = "Invoice"
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from hdfs_path where isFile = true or name = "Invoice"`}
+</SyntaxHighlighter>
 
 Valid values for boolean literals are 'true' and 'false'.
 
@@ -122,29 +133,33 @@ Valid values for boolean literals are 'true' and 'false'.
 The has keyword can be used with or without the where clause. It is used to check existence of a property in an entity.
 
 Example: To retreive entity of type Table with a property locationUri.
-```sql
-Table has locationUri
-from Table where Table has locationUri
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table has locationUri
+from Table where Table has locationUri`}
+</SyntaxHighlighter>
 ### Select Clause
 If you noticed the output displayed on the web page, it displays a tabular display, each row corresponding to an entity and columns are properties of that entity. The select clause allows for choosing the properties of entity that are of interest.
 
 
 Example: To retrieve entity of type _Table_ with few properties:
-```sql
-from Table select owner, name, qualifiedName
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table select owner, name, qualifiedName`}
+</SyntaxHighlighter>
 Example: To retrieve entity of type Table for a specific table with some properties.
-```sql
-from Table where name = 'customer_dim' select owner, name, qualifiedName
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table where name = 'customer_dim' select owner, name, qualifiedName`}
+</SyntaxHighlighter>
 
 To display column headers that are more meaningful, aliases can be added using the 'as' clause.
 
 Example: To display column headers as 'Owner', 'Name' and 'FullName'.
-```sql
-from Table select owner as Owner, name as Name, qualifiedName as FullName
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`from Table select owner as Owner, name as Name, qualifiedName as FullName`}
+</SyntaxHighlighter>
 
 #### Note About Select Clauses
 
@@ -155,55 +170,63 @@ Given the complexity involved in using select clauses, these are the few rules t
 
 Example: To retrieve entity of type Table with name 'Sales' and display 'name' and 'owner' attribute of the referred entity DB.
 
-```sql
-Table where name = 'abcd' select DB.name, DB.owner
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`Table where name = 'abcd' select DB.name, DB.owner`}
+</SyntaxHighlighter>
 
 Current implementation does not allow the following:
-```sql
-Table where name = 'abcd' select DB.name, Table.name
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table where name = 'abcd' select DB.name, Table.name`}
+</SyntaxHighlighter>
 
 ### Classification-based Filtering
 In order to retrieve entities based on classification, a query would use _is_ or _isa_ keywords.
 
 Example: To retrieve all entities of type _Table_ that are tagged with _Dimension_ classification.
-```sql
-from Table isa Dimension
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`from Table isa Dimension`}
+</SyntaxHighlighter>
 
 Since, from is optional and _is_ (or _isa_) are equivalent, the following queries yield the same results:
-```sql
-Table is Dimension
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table is Dimension`}
+</SyntaxHighlighter>
 
 The _is_ and _isa_ clauses can also be used in _where_ condition like:
 
-```sql
-from Table where Table isa Dimension
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`from Table where Table isa Dimension`}
+</SyntaxHighlighter>
 
 To search for all entities having a particular classification, simply use the name of the classification.
 
 Example: To retrieve all entities that have _Dimension_ classification.
-```sql
-Dimension
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`Dimension`}
+</SyntaxHighlighter>
 
 ### Limit & Offset Clauses
 Often a query yields large number of results. To limit the outcome of the query, the limit and offset clauses are used.
 
 Example: To retrieve only the 5 entities from a result set.
-```sql
-Column limit 5
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`Column limit 5`}
+</SyntaxHighlighter>
 
 The offset clauses retrieves results after the offset value.
 
 Example: To retrieve only 5 entities from the result set after skipping the first 10.
-```sql
-Column limit 5 offset 10
-```
+
+<SyntaxHighlighter wrapLines={true} language="sql" style={theme.dark}>
+{`Column limit 5 offset 10`}
+</SyntaxHighlighter>
 
 The _limit_ and _offset_ clauses are usually specified in conjunction.
 
@@ -219,15 +242,17 @@ Ordering can be changed by using:
    * DESC Sort in descending order. This needs to be explicitly specified after the _orderby_ clause.
 
 Example: To retrieve the entities of type _Column_ that are sorted in ascending order using the name property.
-```sql
-from Column orderby name
-from Column orderby name asc
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`from Column orderby name
+from Column orderby name asc`}
+</SyntaxHighlighter>
 
 Example: Same results as above except that they are sorted in descending order.
-```sql
-from Column orderby name desc
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`from Column orderby name desc`}
+</SyntaxHighlighter>
 
 ### Aggregate Functions
 Let's look at aggregate functions:
@@ -245,59 +270,68 @@ Other examples of these in the _Grouping Results_ section.
 Shows the number of items in a result set.
 
 Example: To know how may entities of a type Column.
-```sql
-Column select count()
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Column select count()`}
+</SyntaxHighlighter>
 Example: Same as above with alias.
-```sql
-Column select count() as Cols
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Column select count() as Cols`}
+</SyntaxHighlighter>
 
 Example: To find the number of tables in a database.
-```sql
-Table where db.name = "Reporting" select count()
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table where db.name = "Reporting" select count()`}
+</SyntaxHighlighter>
 
 ### The max Keyword
 Using this keyword it is possible to retrieve the maximum value of a property for an entity.
 
 Example: Get the most recently created value of the _createTime_ property of the Table entity.
-```sql
-Table select max(createTime)
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table select max(createTime)`}
+</SyntaxHighlighter>
 
 ### The min Keyword
 Using this keyword it is possible to retrieve the minimum value of a property for an entity.
 
 Example: Get the least recently created value of the _createTime_ property of the Table entity.
-```sql
-Table select min(createTime)
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table select min(createTime)`}
+</SyntaxHighlighter>
 
 ### Grouping Results
 The _groupby_ clause groups results within the result using specified property.
 
 Example: To retrieve entity of type Table such that tables belonging to an owner are together (grouped by owner).
-```sql
-Table groupby(owner)
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table groupby(owner)`}
+</SyntaxHighlighter>
 
 While _groupby_ can work without _select_, if aggregate functions are used within _select_ clause, using _groupby_ clause becomes mandatory as aggregate functions operate on a group.
 
 Example: To retrieve entity of type Table such we know the most recently created entity.
-```sql
-Table groupby(createTime) select owner, name, max(createTime)
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table groupby(createTime) select owner, name, max(createTime)`}
+</SyntaxHighlighter>
 
 Example: To retrieve entity of type Table such we know the oldest entity.
-```sql
-Table groupby(createTime) select owner, name, min(createTime)
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table groupby(createTime) select owner, name, min(createTime)`}
+</SyntaxHighlighter>
 
 Example: To know the number of entities owned by each owner.
-```sql
-Table groupby(owner) select owner, count()
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table groupby(owner) select owner, count()`}
+</SyntaxHighlighter>
 
 ### Where Clause With Complex Types
 In the discussion so far we looked at where clauses with primitive types. This section will look at using properties that are non-primitive types.
@@ -307,16 +341,18 @@ In this model, the DB is modeled such that it is aware of all the Table it conta
 Similar structure exists within the _hive_ data model.
 
 Example: To retrieve all the instances of the _Table_ belonging to a database named 'Sales':
-```sql
-Table where db.name = "Sales"
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table where db.name = "Sales"`}
+</SyntaxHighlighter>
 
 The entity Column is modeled in a similar way. Each Table entity has outward edges pointing to Column entity instances corresponding to each column within the table.
 
 Example: To retrieve all the Column entities for a given Table.
-```sql
-Table where name = "time_dim" select columns
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table where name = "time_dim" select columns`}
+</SyntaxHighlighter>
 
 The propeties of each _Column_ entity type are displayed.
 
@@ -338,19 +374,22 @@ Entity within Atlas can be in the following states:
 ### Using System Attributes in Queries
 
 Example: To retrieve all entities that are deleted.
-```sql
-Asset where __state = "DELETED"
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Asset where __state = "DELETED"`}
+</SyntaxHighlighter>
 
 Example: To retrieve entity GUIDs.
-```sql
-Table select __guid
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`Table select __guid`}
+</SyntaxHighlighter>
 
 Example: To retrieve several system attributes.
-```sql
-hive_db select __timestamp, __modificationTimestamp, __state, __createdBy
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`hive_db select __timestamp, __modificationTimestamp, __state, __createdBy`}
+</SyntaxHighlighter>
 
 ## Advanced Search REST API
 Relevant models for these operations:
@@ -378,13 +417,14 @@ Relevant models for these operations:
 ||@Produces(Servlets.JSON_MEDIA_TYPE)|
 
 *Examples*
-```sql
-curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?typeName=Table"
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+{`curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?typeName=Table"
 curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?typeName=Column&classification=PII"
 curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?typeName=Table&classification=Dimension&limit=10&offset=2"
 curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?query=Table%20isa%20Dimension"
-curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?query=Table%20isa%20Dimension&limit=5&offset=2"
-```
+curl -X GET -u admin:admin -H "Content-Type: application/json" "http://localhost:21000/api/atlas/v2/search/dsl?query=Table%20isa%20Dimension&limit=5&offset=2"`}
+</SyntaxHighlighter>
 
 ## Implementation Approach
 The general approach followed in implementation of DSL within Atlas can be enumerated in following steps:

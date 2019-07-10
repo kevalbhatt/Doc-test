@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 ## Incremental Export
 
 #### Background
@@ -13,8 +17,8 @@ Incremental export allows for export of entities after a specified timestamp. Th
 #### Export Options
 New _fetchType_ added to indicate incremental export. This option can be used with any _matchType_. When _fetchType_ is _incremental_, it is necessary to specify the _changeMarker_ option for incremental export to function, else full export will be performed.
 
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
  "itemsToExport": [
  { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "stocks@cl1" } }
  ],
@@ -22,8 +26,8 @@ New _fetchType_ added to indicate incremental export. This option can be used wi
  "fetchType": "incremental",
  "changeMarker": 10000
  }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 #### Getting Change Marker
 

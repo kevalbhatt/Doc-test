@@ -5,6 +5,10 @@ menu: Documentation
 submenu: Hooks
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Apache Atlas Hook for Apache Storm
 
 ## Introduction
@@ -86,9 +90,9 @@ Restart all daemons after you have installed the atlas hook into Storm.
 The Storm Atlas Hook needs to be configured in Storm client config
 in *$STORM_HOME/conf/storm.yaml* as:
 
-```shell
-storm.topology.submission.notifier.plugin.class: "org.apache.atlas.storm.hook.StormAtlasHook"
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`storm.topology.submission.notifier.plugin.class: "org.apache.atlas.storm.hook.StormAtlasHook"`}
+</SyntaxHighlighter>
 
 Also set a 'cluster name' that would be used as a namespace for objects registered in Atlas.
 This name would be used for namespacing the Storm topology, spouts and bolts.
@@ -101,23 +105,23 @@ the client and the cluster name is defined there. This happens similarly for HBa
 data sets. In case this configuration is not available, the cluster name set in the Storm
 configuration will be used.
 
-```shell
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 atlas.cluster.name: "cluster_name"
-```
+</SyntaxHighlighter>
 
 In *$STORM_HOME/conf/storm_env.ini*, set an environment variable as follows:
 
-```shell
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 STORM_JAR_JVM_OPTS:"-Datlas.conf=$ATLAS_HOME/conf/"
-```
+</SyntaxHighlighter>
 
 where ATLAS_HOME is pointing to where ATLAS is installed.
 
 You could also set this up programatically in Storm Config as:
 
-```shell
-    Config stormConf = new Config();
-    ...
-    stormConf.put(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN,
-            org.apache.atlas.storm.hook.StormAtlasHook.class.getName());
-```
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+    {`Config stormConf = new Config();
+        ...
+        stormConf.put(Config.STORM_TOPOLOGY_SUBMISSION_NOTIFIER_PLUGIN,
+                org.apache.atlas.storm.hook.StormAtlasHook.class.getName());`}
+</SyntaxHighlighter>

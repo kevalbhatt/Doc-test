@@ -5,6 +5,9 @@ menu: Documentation
 submenu: Import/Export
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 # Export API
 The general approach is:
@@ -27,11 +30,11 @@ See [here](http://atlas.apache.org/Export-HDFS-API.html) for details on exportin
 
 __Method Signature__
 
-```shell
-@POST
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`@POST
 @Path("/export")
-@Consumes("application/json;charset=UTF-8")
-```
+@Consumes("application/json;charset=UTF-8")`}
+</SyntaxHighlighter>
 
 ### Additional Options
 It is possible to specify additional parameters for the _Export_ operation.
@@ -69,18 +72,20 @@ The exported ZIP file has the following entries within it:
 
 ### Examples
 The _!AtlasExportRequest_ below shows filters that attempt to export 2 databases in cluster cl1:
-```json
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "itemsToExport": [
        { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "accounts@cl1" } },
        { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "hr@cl1" } }
     ]
-}
-```
+}`}
+</SyntaxHighlighter>
 
 The _!AtlasExportRequest_ below specifies the _fetchType_ as _FULL_. The _matchType_ option will fetch _accounts@cl1_.
-```json
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "itemsToExport": [
        { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "accounts@" } },
     ],
@@ -88,12 +93,13 @@ The _!AtlasExportRequest_ below specifies the _fetchType_ as _FULL_. The _matchT
         "fetchType": "FULL",
         "matchType": "startsWith"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 The _!AtlasExportRequest_ below specifies the _fetchType_ as _connected_. The _matchType_ option will fetch _accountsReceivable_, _accountsPayable_, etc present in the database.
-```json
-{
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "itemsToExport": [
        { "typeName": "hive_db", "uniqueAttributes": { "name": "accounts" } },
     ],
@@ -101,15 +107,15 @@ The _!AtlasExportRequest_ below specifies the _fetchType_ as _connected_. The _m
         "fetchType": "CONNECTED",
         "matchType": "startsWith"
     }
-}
-```
+}`}
+</SyntaxHighlighter>
 
 Below is the _!AtlasExportResult_ JSON for the export of the _Sales_ DB present in the _!QuickStart_.
 
 The _metrics_ contains the number of types and entities exported as part of the operation.
 
-```json
-{
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
+{`{
     "clientIpAddress": "10.0.2.15",
     "hostName": "10.0.2.2",
     "metrics": {
@@ -142,14 +148,14 @@ The _metrics_ contains the number of types and entities exported as part of the 
         }
     },
     "userName": "admin"
-}
-```
+}`}
+</SyntaxHighlighter>
 
 ### CURL Calls
 Below are sample CURL calls that demonstrate Export of _!QuickStart_ database.
 
-```
-curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+{`curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
     "itemsToExport": [
             { "typeName": "DB", "uniqueAttributes": { "name": "Sales" }
             { "typeName": "DB", "uniqueAttributes": { "name": "Reporting" }
@@ -157,5 +163,5 @@ curl -X POST -u adminuser:password -H "Content-Type: application/json" -H "Cache
         }
     ],
         "options": { "full" }
-    }' "http://localhost:21000/api/atlas/admin/export" > quickStartDB.zip
-```
+    }' "http://localhost:21000/api/atlas/admin/export" > quickStartDB.zip`}
+</SyntaxHighlighter>

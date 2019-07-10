@@ -4,7 +4,11 @@ route: /AtlasRepairIndex
 menu: Documentation
 submenu: AtlasRepairIndex
 ---
-  
+
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+
 # Atlas Repair Index
 
 ## Introduction
@@ -23,9 +27,9 @@ The tool is part of the normal Atlas installation, it is located under the tools
 
 If the user needs to restore all the indexes, this can be accomplished by executing the tool with no command-line parameters:
 
-```shell
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 atlas-index-repair/repair_index.py
-```
+</SyntaxHighlighter>
 
 This will result in vertex_index, edge_index and fulltext_index to be re-built completely. It is recommended that existing contents of these indexes be deleted before executing this restore.
 
@@ -36,38 +40,39 @@ Note that the full index repair is a time consuming process. Depending on the si
 
 To perform selective restore for an Atlas entity, specify the GUID of that entity:
 
-```shell
-atlas-index-repair/repair_index.py [-g \<guid>]
-```
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
+{`atlas-index-repair/repair_index.py [-g \<guid>]`}
+</SyntaxHighlighter>
 
 Example:
 
-```shell
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 atlas-index-repair/repair_index.py -g 13d77457-2a45-4e92-ad53-a172c7cb70a5
-```
+</SyntaxHighlighter>
 
 Note that Atlas will use REST APIs to fetch the entity, which will need correct authentication mechanism to be specified based on the installation.
 
 For an Atlas installation with username and password use:
 
-```shell
-atlas-index-repair/repair_index.py [-g \<guid>] [-u \<user>] [-p \<password>] 
-```
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
+{`atlas-index-repair/repair_index.py [-g \<guid>] [-u \<user>] [-p \<password>]`}
+</SyntaxHighlighter>
+	
 * guid: [optional] specify guid for which indexes are to be updated  
 * user: [optional] specify username for atlas instance
 * password: [optional] specify password for atlas instance
 
 Example: 
-```shell
-atlas-index-repair/repair_index.py -u admin -p admin123 -g 13d77457-2a45-4e92-ad53-a172c7cb70a5 
-```
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
+{`atlas-index-repair/repair_index.py -u admin -p admin123 -g
+	13d77457-2a45-4e92-ad53-a172c7cb70a5`}
+</SyntaxHighlighter>
 
 For Atlas installation that uses kerberos as authentication mode,
 use: kinit -kt /etc/security/keytabs/atlas.service.keytab atlas/fqdn@DOMAIN
 
 Example:
-```shell
-kinit -kt /etc/security/keytabs/atlas.service.keytab atlas/fqdn@EXAMPLE.com
-
-atlas-index-repair/repair_index.py -g 13d77457-2a45-4e92-ad53-a172c7cb70a5
-```
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
+{`kinit -kt /etc/security/keytabs/atlas.service.keytab atlas/fqdn@EXAMPLE.com
+	atlas-index-repair/repair_index.py -g 13d77457-2a45-4e92-ad53-a172c7cb70a5`}
+</SyntaxHighlighter>

@@ -5,6 +5,9 @@ menu: Documentation
 submenu: Project-Info 
 ---
 
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 # Overview
 
@@ -14,6 +17,7 @@ submenu: Project-Info
 
 # Issue Tracking
 * Issues, bugs, and feature requests should be submitted to the following issue tracking system for this project.
-```html
- https://issues.apache.org/jira/browse/ATLAS
-```
+
+<SyntaxHighlighter wrapLines={true} language="html" style={theme.dark}>
+ {`https://issues.apache.org/jira/browse/ATLAS`}
+</SyntaxHighlighter>
