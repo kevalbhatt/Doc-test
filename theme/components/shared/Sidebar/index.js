@@ -189,10 +189,11 @@ const entryAsMenu = entry => ({
   name: entry.name,
   route: entry.route,
   parent: entry.parent,
-  submenu: entry.submenu
+  submenu: entry.submenu,
+  menu:entry.menu
 });
 
-function flatArrFromObject(arr, prop) {
+function flatArrFromObject(arr, prop,menus) {
   const reducer = (arr, obj) => {
     const value = _get(prop)(obj);
 
@@ -210,14 +211,26 @@ const parseMenu = entries => name => ({
   menu: entriesOfMenu(name, entries)
 });
 
-const parseSubMenu = entries => name => ({
-  name,
-  submenu: entriesOfSubMenu(name, entries)
-});
+// const parseSubMenu = entries => name => ({
+//   name,
+//   submenu: entriesOfSubMenu(name, entries),
+//   menu:entries.menu
+// });
+
+
+const parseSubMenu = function parseSubMenu(entries) {
+  return function (name) {
+     return {
+      name: name,
+      submenu: entriesOfSubMenu(name, entries),
+      menu:entriesOfMenu(name, entries)
+    };
+  };
+};
 const menusFromEntries = entries => {
   const entriesWithoutMenu = entries.filter(noMenu).map(entryAsMenu);
   const menus = flatArrFromObject(entries, "menu").map(parseMenu(entries));
-  const submenus = flatArrFromObject(entries, "submenu").map(
+  const submenus = flatArrFromObject(entries, "submenu",menus).map(
     parseSubMenu(entries)
   );
 
@@ -229,8 +242,19 @@ const menusFromEntries = entries => {
       }
     }
   }
+  for (var x in menus){
+    for (var y in submenus){
+      if(menus[x].name == submenus[y].menu[0].menu){
+        if(menus[x].menu.length>0){
+        menus[x].menu.push(submenus[y])
 
-  menus[0].menu = submenus;
+        }else{
+
+        menus[x].menu.push(submenus[y]);
+        }
+      }
+    }
+  }
   return _unionBy("name", menus, entriesWithoutMenu);
 };
 const mergeMenus = (entriesMenu, configMenu) => {
@@ -330,13 +354,14 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
+  console.log(menus)
   let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
         <Content>
           <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
           <Logo showBg={true} />
-          <Search onSearch={setQuery} />
+          
 
           {menus && menus.length === 0 ? (
             <Empty>No documents founda.</Empty>
@@ -371,7 +396,7 @@ export const Sidebar = () => {
           <Content>
             <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
             <Logo showBg={!hidden} />
-            <Search onSearch={setQuery} />
+            
             <MenuLink item={menus}></MenuLink>
             <Menus>
               {menus &&

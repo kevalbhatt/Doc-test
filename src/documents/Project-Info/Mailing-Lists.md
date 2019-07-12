@@ -1,8 +1,8 @@
 ---
 name: Mailing-Lists
 route: /Mailing-Lists
-menu: Documentation
-submenu: Project-Info  
+menu: Project Info
+submenu: Mailing-Lists  
 ---
 
 # Project Mailing Lists

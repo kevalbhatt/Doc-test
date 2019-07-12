@@ -4,6 +4,9 @@ route: /AtlasServer
 menu: Documentation
 submenu: Setup 
 ---
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 import Img from 'theme/components/shared/Img'
 
 # Atlas Server Entity Type

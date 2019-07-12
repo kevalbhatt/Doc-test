@@ -2,7 +2,7 @@
 name: Soft Reference
 route: /SoftReference
 menu: Documentation
-submenu: Soft Reference
+submenu: Features
 --- 
 
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';

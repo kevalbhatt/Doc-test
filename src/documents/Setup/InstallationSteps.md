@@ -1,8 +1,8 @@
 ---
 name: Installation Steps
 route: /InstallationSteps
-menu: Documentation
-submenu: Setup 
+menu: For Developers
+submenu: InstallationSteps 
 ---
 
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';

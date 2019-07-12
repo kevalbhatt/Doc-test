@@ -1,8 +1,8 @@
 ---
 name: Team-List
 route: /Team-List
-menu: Documentation
-submenu: Project-Info 
+menu: Project Info
+submenu: Team List 
 ---
 
 # The Team

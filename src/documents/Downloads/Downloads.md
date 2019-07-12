@@ -1,8 +1,8 @@
 ---
 name: Downloads
 route: /Downloads 
-menu: Documentation
-submenu: Downloads
+menu: Downloads
+submenu: Download
 ---
 import  themen  from 'theme/styles/styled-colors';
 import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';

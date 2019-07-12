@@ -1,7 +1,7 @@
 ---
 name: WhatsNew-2.0
 route: /WhatsNew-2.0
-menu: Documentation
+menu: Downloads
 submenu: Whats-New  
 --- 
 

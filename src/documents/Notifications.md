@@ -2,7 +2,7 @@
 name: Notifications
 route: /Notifications
 menu: Documentation
-submenu: Notifications
+submenu: Features
 ---
 
 import  themen  from 'theme/styles/styled-colors';

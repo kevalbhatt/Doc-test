@@ -1,7 +1,7 @@
 ---
 name: Migration-0.8 to 1.0
 route: /Migration-0.8-to-1.0
-menu: Documentation
+menu: Downloads
 submenu: Migration
 ---
 

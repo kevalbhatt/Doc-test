@@ -2,7 +2,7 @@
 name: Type System
 route: /TypeSystem
 menu: Documentation
-submenu: Type System  
+submenu: Features 
 ---
 
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';

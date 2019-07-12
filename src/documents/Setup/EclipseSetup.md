@@ -1,7 +1,7 @@
 ---
 name: EclipseSetup
 route: /EclipseSetup
-menu: Documentation
+menu: For Developers
 submenu: EclipseSetup 
 ---
 

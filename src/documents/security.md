@@ -2,7 +2,7 @@
 name: Security
 route: /security
 menu: Documentation
-submenu: security
+submenu: Features
 ---
 
 import  themen  from 'theme/styles/styled-colors';
@@ -244,10 +244,10 @@ SOLR_HOST='hostname -f'
 ZK_HOST="$ZK_HOST1:2181,$ZK_HOST2:2181,$ZK_HOST3:2181/solr"
 KERBEROS_REALM="EXAMPLE.COM"
 SOLR_KEYTAB=/etc/solr/conf/solr.keytab
-SOLR_KERB_PRINCIPAL=HTTP@${KERBEROS_REALM}
+SOLR_KERB_PRINCIPAL=HTTP@{KERBEROS_REALM}
 SOLR_KERB_KEYTAB=/etc/solr/conf/HTTP.keytab
 SOLR_AUTHENTICATION_CLIENT_CONFIGURER="org.apache.solr.client.solrj.impl.Krb5HttpClientConfigurer"
-SOLR_AUTHENTICATION_OPTS=" -DauthenticationPlugin=org.apache.solr.security.KerberosPlugin -Djava.security.auth.login.config=${SOLR_JAAS_FILE} -Dsolr.kerberos.principal=${SOLR_KERB_PRINCIPAL} -Dsolr.kerberos.keytab=${SOLR_KERB_KEYTAB} -Dsolr.kerberos.cookie.domain=${SOLR_HOST} -Dhost=${SOLR_HOST} -Dsolr.kerberos.name.rules=DEFAULT"`}
+SOLR_AUTHENTICATION_OPTS=" -DauthenticationPlugin=org.apache.solr.security.KerberosPlugin -Djava.security.auth.login.config={SOLR_JAAS_FILE} -Dsolr.kerberos.principal={SOLR_KERB_PRINCIPAL} -Dsolr.kerberos.keytab={SOLR_KERB_KEYTAB} -Dsolr.kerberos.cookie.domain={SOLR_HOST} -Dhost={SOLR_HOST} -Dsolr.kerberos.name.rules=DEFAULT"`}
 </SyntaxHighlighter>
 
    * Copy solr.in.sh to all hosts running Solr.

@@ -2,7 +2,7 @@
 name: ClassificationPropagation
 route: /ClassificationPropagation
 menu: Documentation
-submenu: ClassificationPropagation
+submenu: Features
 ---
 import Img from 'theme/components/shared/Img'
 

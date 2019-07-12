@@ -2,7 +2,7 @@
 name: HighAvailability
 route: /HighAvailability
 menu: Documentation
-submenu: HighAvailability
+submenu: Features
 ---
 
 import  themen  from 'theme/styles/styled-colors';

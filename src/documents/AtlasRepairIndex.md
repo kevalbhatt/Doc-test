@@ -2,7 +2,7 @@
 name: Atlas Repair Index
 route: /AtlasRepairIndex
 menu: Documentation
-submenu: AtlasRepairIndex
+submenu: Features
 ---
 
 import  themen  from 'theme/styles/styled-colors';

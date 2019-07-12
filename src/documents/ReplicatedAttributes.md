@@ -1,8 +1,8 @@
 ---
 name: Replicated Attributes
-route: /Replicated Attributes
+route: /ReplicatedAttributes
 menu: Documentation
-submenu: Replicated Attributes
+submenu: Features
 ---
 # Replicated Attributes
 

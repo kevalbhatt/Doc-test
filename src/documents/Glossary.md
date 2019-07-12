@@ -2,7 +2,7 @@
 name: Glossary
 route: /Glossary
 menu: Documentation
-submenu: Glossary
+submenu: Features
 ---
 import  themen  from 'theme/styles/styled-colors';
 import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';

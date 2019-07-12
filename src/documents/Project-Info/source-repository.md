@@ -1,8 +1,8 @@
 ---
 name: Source-Repository
 route: /Source-Repository
-menu: Documentation
-submenu: Project-Info 
+menu: Project Info
+submenu: Source-Repository 
 ---
 
 import  themen  from 'theme/styles/styled-colors';
