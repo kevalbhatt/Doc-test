@@ -5,8 +5,10 @@ menu: Documentation
 submenu: Features 
 ---
 
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
 
 # Type System
 
@@ -23,7 +25,7 @@ A Type in Atlas is a definition of how a particular type of metadata objects are
 An example of a type that comes natively defined with Atlas is a Hive table. A Hive table is defined with these
 attributes:
 
-<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`Name:         hive_table
 TypeCategory: Entity
 SuperTypes:   DataSet
@@ -66,7 +68,7 @@ An ‘entity’ in Atlas is a specific value or instance of an Entity ‘type’
 An example of an entity will be a specific Hive Table. Say Hive has a table called ‘customers’ in the ‘default’database. This table will be an ‘entity’ in Atlas of type hive_table. By virtue of being an instance of an entity type, it will have values for every attribute that are a part of the Hive table ‘type’, such as:
 
 
-<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`guid:     "9ba387dd-fa76-429c-b791-ffc338d3c91f"
 typeName: "hive_table"
 status:   "ACTIVE"
@@ -117,7 +119,7 @@ properties that define more concepts related to the type system.
 
 An attribute has the following properties:
 
-<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`name:        string,
 typeName:    string,
 isOptional:  boolean,
@@ -145,7 +147,7 @@ Using the above, let us expand on the attribute definition of one of the attribu
 Let us look at the attribute called ‘db’ which represents the database to which the hive table belongs:
 
 
-<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`db:
     "name":        "db",
     "typeName":    "hive_db",
@@ -158,7 +160,7 @@ Let us look at the attribute called ‘db’ which represents the database to wh
 Note the “isOptional=true” constraint - a table entity cannot be created without a db reference.
 
 
-<SyntaxHighlighter wrapLines={true} language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`columns:
     "name":        "columns",
     "typeName":    "array<hive_column>",

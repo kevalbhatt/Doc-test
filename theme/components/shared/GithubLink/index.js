@@ -23,7 +23,8 @@ const GithubLinkProps = {
   repository: "https://github.com/apache/atlas/"
 };
 
-export const GithubLink = ({ repository }) => (
+export const GithubLink = ({ repository }) => {
+  return(
   <GitHubDivContainer>
     <GitHubDivContent>
       <GitHubButton
@@ -51,4 +52,5 @@ export const GithubLink = ({ repository }) => (
       </GitHubButton>
     </GitHubDivContent>
   </GitHubDivContainer>
-);
+  )
+};

@@ -354,8 +354,7 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
-  console.log(menus)
-  let outputHtml = (
+    let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
         <Content>

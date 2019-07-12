@@ -5,8 +5,12 @@ menu: For Developers
 submenu: EclipseSetup 
 ---
 
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
 
 # Tools required to build and run Apache Atlas on Eclipse
 
@@ -68,7 +72,7 @@ a. File - Import - Maven - Existing Maven Projects b. Browse to your Atlas folde
 
 On the Mac, the Maven import fails with message
 
-<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 {`"Cannot complete the install because one or more required items could not be found.
 Software being installed: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302)
 Missing requirement: Maven Integration for AJDT (Optional) 0.14.0.201506231302 (org.maven.ide.eclipse.ajdt.feature.feature.group 0.14.0.201506231302) requires 'org.eclipse.ajdt.core 1.5.0' but it could not be found".`}
@@ -103,7 +107,7 @@ You should now have a clean workspace.
 You will need to change some of these scripts to point to your installation targets.
    * Run this script to setup your command line build environment
 
-<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 {`#!/bin/bash # export JAVA_HOME=/Library/Java/JavaVirtualMachines/macosxx6480sr3fp10hybrid-20160719_01-sdk
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9 # Git is installed in the system path
@@ -114,7 +118,7 @@ export MAVEN_OPTS="-Xmx1536m -Drat.numUnapprovedLicenses=100"`}
 
    * If you do  not want to set Java 8 as your system java, you can use this  bash script to setup the environment and run Eclipse (which you can drop in Applications and rename to neon).
 
-<SyntaxHighlighter wrapLines={true} language="shell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 {`#!/bin/bash
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
 export M2_HOME=/Applications/apache-maven-3.3.9

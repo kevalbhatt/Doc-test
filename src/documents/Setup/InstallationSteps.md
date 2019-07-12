@@ -5,9 +5,9 @@ menu: For Developers
 submenu: InstallationSteps 
 ---
 
-import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import  themen  from 'theme/styles/styled-colors';
+import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-
 
 ## Building & Installing Apache Atlas
 
@@ -17,7 +17,7 @@ Then follow the instructions below to to build Apache Atlas.
 
 
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`tar xvfz apache-atlas-1.0.0-sources.tar.gz
 cd apache-atlas-sources-1.0.0/ 
 export MAVEN_OPTS="-Xms2g -Xmx2g" 
@@ -28,7 +28,7 @@ mvn clean -DskipTests install`}
 ### Packaging Apache Atlas
 To create Apache Atlas package for deployment in an environment having functional Apache HBase and Apache Solr instances, build with the following command:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 mvn clean -DskipTests package -Pdist
 </SyntaxHighlighter>
 
@@ -47,7 +47,7 @@ Above will build Apache Atlas for an environment having functional HBase and Sol
 ### Packaging Apache Atlas with embedded Apache HBase & Apache Solr
 To create Apache Atlas package that includes Apache HBase and Apache Solr, build with the embedded-hbase-solr profile as shown below:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`mvn clean -DskipTests package -Pdist,embedded-hbase-solr`}
 </SyntaxHighlighter>
 
@@ -58,7 +58,7 @@ Using the embedded-hbase-solr profile will configure Apache Atlas so that an Apa
 ### Packaging Apache Atlas with embedded Apache Cassandra & Apache Solr
 To create Apache Atlas package that includes Apache Cassandra and Apache Solr, build with the embedded-cassandra-solr profile as shown below:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`mvn clean package -Pdist,embedded-cassandra-solr`}
 </SyntaxHighlighter>
 
@@ -70,7 +70,7 @@ Using the embedded-cassandra-solr profile will configure Apache Atlas so that an
 Build will create following files, which are used to install Apache Atlas.
 
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`distro/target/apache-atlas-{project.version}-bin.tar.gz
 distro/target/apache-atlas-{project.version}-hbase-hook.tar.gz
 distro/target/apache-atlas-{project.version}-hive-hook.gz
@@ -86,7 +86,7 @@ distro/target/apache-atlas-{project.version}-storm-hook.tar.gz`}
 #### Installing Apache Atlas
 From the directory you would like Apache Atlas to be installed, run the following commands:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`tar -xzvf apache-atlas-{project.version}-server.tar.gz
 cd atlas-{project.version}`}
 </SyntaxHighlighter>
@@ -94,7 +94,7 @@ cd atlas-{project.version}`}
 #### Running Apache Atlas with Local Apache HBase & Apache Solr
 To run Apache Atlas with local Apache HBase & Apache Solr instances that are started/stopped along with Atlas start/stop, run following commands:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`export MANAGE_LOCAL_HBASE=true
 export MANAGE_LOCAL_SOLR=true
 bin/atlas_start.py`}
@@ -103,14 +103,14 @@ bin/atlas_start.py`}
 #### Using Apache Atlas
 
   * To verify if Apache Atlas server is up and running, run curl command as shown below:
-    <SyntaxHighlighter wrapLines={true} showLineNumbers= "true" style={dark}>
+    <SyntaxHighlighter wrapLines={true} style={theme.dark}>
     {`curl -u username:password http://localhost:21000/api/atlas/admin/version
     {"Description":"Metadata Management and Data Governance Platform over Hadoop","Version":"1.0.0","Name":"apache-atlas"}`}
     </SyntaxHighlighter>
 
   * Run quick start to load sample model and data
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
   {`bin/quick_start.py
 Enter username for atlas :-
 Enter password for atlas :-`}
@@ -121,7 +121,7 @@ Enter password for atlas :-`}
 #### Stopping Apache Atlas Server
 To stop Apache Atlas, run following command:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`bin/atlas_stop.py`}
 </SyntaxHighlighter>
 
@@ -131,7 +131,7 @@ By default config directory used by Apache Atlas is _{package dir}/conf_. To ove
 
 Environment variables needed to run Apache Atlas can be set in _atlas-env.sh_ file in the conf directory. This file will be sourced by Apache Atlas scripts before any commands are executed. The following environment variables are available to set.
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`# The java implementation to use. If JAVA_HOME is not found we expect java and jar to be in path
 #export JAVA_HOME=
 
@@ -169,7 +169,7 @@ If you plan to store large number of metadata objects, it is recommended that yo
 
 The following values are common server side options:
 
-<SyntaxHighlighter wrapLines={true} language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`export ATLAS_SERVER_OPTS="-server -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+PrintTenuringDistribution -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=dumps/atlas_server.hprof -Xloggc:logs/gc-worker.log -verbose:gc -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=1m -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps"`}
 </SyntaxHighlighter>
 
@@ -177,7 +177,7 @@ The `=-XX:SoftRefLRUPolicyMSPerMB`= option was found to be particularly helpful 
 
 The following values are recommended for JDK 8:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 export ATLAS_SERVER_HEAP="-Xms15360m -Xmx15360m -XX:MaxNewSize=5120m -XX:MetaspaceSize=100M -XX:MaxMetaspaceSize=512m"
 </SyntaxHighlighter>
 
@@ -185,13 +185,13 @@ export ATLAS_SERVER_HEAP="-Xms15360m -Xmx15360m -XX:MaxNewSize=5120m -XX:Metaspa
 If you are using a Mac OS, you will need to configure the ATLAS_SERVER_OPTS (explained above).
 
 In _{package dir}/conf/atlas-env.sh_ uncomment the following line
-<SyntaxHighlighter wrapLines={true} language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 #export ATLAS_SERVER_OPTS=
 </SyntaxHighlighter>
 
 and change it to look as below
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 export ATLAS_SERVER_OPTS="-Djava.awt.headless=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
 </SyntaxHighlighter>
 
@@ -201,7 +201,7 @@ By default, Apache Atlas uses JanusGraph as the graph repository and is the only
 
 Apache HBase tables used by Apache Atlas can be set using the following configurations:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas.graph.storage.hbase.table=atlas
 atlas.audit.hbase.tablename=apache_atlas_entity_audit`}
 </SyntaxHighlighter>
@@ -218,13 +218,13 @@ SolrCloud mode uses a ZooKeeper Service as a highly available, central location 
   Note: Apache Atlas currently supports Apache Solr in "cloud" mode only. "http" mode is not supported. For more information, refer Apache Solr documentation - https://cwiki.apache.org/confluence/display/solr/SolrCloud
 
    * For e.g., to bring up an Apache Solr node listening on port 8983 on a machine, you can use the command:
-    <SyntaxHighlighter wrapLines={true} language="powershell" style={dark}>
+    <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
       {`$SOLR_HOME/bin/solr start -c -z <zookeeper_host:port> -p 8983`}
 	  </SyntaxHighlighter>
 
    * Run the following commands from SOLR_BIN (e.g. $SOLR_HOME/bin) directory to create collections in Apache Solr corresponding to the indexes that Apache Atlas uses. In the case that the Apache Atlas and Apache Solr instances are on 2 different hosts, first copy the required configuration files from ATLAS_HOME/conf/solr on the Apache Atlas instance host to Apache Solr instance host. SOLR_CONF in the below mentioned commands refer to the directory where Apache Solr configuration files have been copied to on Apache Solr host:
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
   {`$SOLR_BIN/solr create -c vertex_index -d SOLR_CONF -shards #numShards -replicationFactor #replicationFactor
 $SOLR_BIN/solr create -c edge_index -d SOLR_CONF -shards #numShards -replicationFactor #replicationFactor
 $SOLR_BIN/solr create -c fulltext_index -d SOLR_CONF -shards #numShards -replicationFactor #replicationFactor`}
@@ -241,7 +241,7 @@ $SOLR_BIN/solr create -c fulltext_index -d SOLR_CONF -shards #numShards -replica
 
    * Change ATLAS configuration to point to Apache Solr instance setup. Please make sure the following configurations are set to the below values in ATLAS_HOME/conf/atlas-application.properties
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas.graph.index.search.backend=solr
 atlas.graph.index.search.solr.mode=cloud
 atlas.graph.index.search.solr.zookeeper-url=<the ZK quorum setup for solr as comma separated value> eg: 10.1.6.4:2181,10.1.6.5:2181
@@ -267,7 +267,7 @@ By default, Apache Atlas uses [JanusGraph](https://atlas.apache.org/JanusGraph.h
    * For simple testing a single Elasticsearch node can be started by using the 'elasticsearch' command in the bin directory of the Elasticsearch distribution.
 
    * Change Apache Atlas configuration to point to the Elasticsearch instance setup. Please make sure the following configurations are set to the below values in ATLAS_HOME/conf/atlas-application.properties
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas.graph.index.search.backend=elasticsearch
 atlas.graph.index.search.hostname=<the hostname(s) of the Elasticsearch master nodes comma separated>
 atlas.graph.index.search.elasticsearch.client-only=true`}
@@ -297,7 +297,8 @@ However, Apache Atlas server does take care of parallel executions of the setup 
 ### Examples: calling Apache Atlas REST APIs
 Here are few examples of calling Apache Atlas REST APIs via curl command.
    * List the types in the repository
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="powershell" style={dark}>
+
+<SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
   {`curl -u username:password http://localhost:21000/api/atlas/v2/types/typedefs/headers
     [ {"guid":"fa421be8-c21b-4cf8-a226-fdde559ad598","name":"Referenceable","category":"ENTITY"},
       {"guid":"7f3f5712-521d-450d-9bb2-ba996b6f2a4e","name":"Asset","category":"ENTITY"},
@@ -309,7 +310,7 @@ Here are few examples of calling Apache Atlas REST APIs via curl command.
 
    * List the instances for a given type
 
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="json" style={dark}>
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
   {`curl -u username:password http://localhost:21000/api/atlas/v2/search/basic?typeName=hive_db
     {
       "queryType":"BASIC",
@@ -356,7 +357,8 @@ Here are few examples of calling Apache Atlas REST APIs via curl command.
 </SyntaxHighlighter>
 
    * Search for entities
-<SyntaxHighlighter wrapLines={true} showLineNumbers= "true" language="json" style={dark}>
+
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
   {`curl -u username:password http://localhost:21000/api/atlas/v2/search/dsl?query=hive_db%20where%20name='default'
       {
         "queryType":"DSL",
