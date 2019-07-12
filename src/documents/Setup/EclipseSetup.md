@@ -5,12 +5,9 @@ menu: For Developers
 submenu: EclipseSetup 
 ---
 
-
-
 import  themen  from 'theme/styles/styled-colors';
 import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-
 
 # Tools required to build and run Apache Atlas on Eclipse
 

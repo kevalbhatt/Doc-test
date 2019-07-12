@@ -29,24 +29,5 @@ export const MenuHeadings = ({ route, onClick }) => {
   const { linkComponent: Link } = useConfig();
   const headings = docs && getHeadings(route, docs);
 
-  return headings && headings.length > 0 ? (
-    <Location>
-      {({ location }) => (
-        <Submenu>
-          {headings.map(heading => (
-            <SmallLink
-              as={Link}
-              location={location}
-              key={heading.slug}
-              onClick={onClick}
-              to={`${route}#${heading.slug}`}
-              slug={heading.slug}
-            >
-              {heading.value}
-            </SmallLink>
-          ))}
-        </Submenu>
-      )}
-    </Location>
-  ) : null;
+  return null;
 };
