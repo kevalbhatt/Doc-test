@@ -1,8 +1,8 @@
 ---
-name: Project-Info
+name: Project Information
 route: /Project-Info
 menu: Project Info
-submenu: Project-Information
+submenu: Project Information
 ---
 
 

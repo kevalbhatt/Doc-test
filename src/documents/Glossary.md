@@ -79,25 +79,25 @@ Category view allows an user to perform the following operations:
 
 Users can switch between term view and category view using toggle provided in GLOSSARY tab.
 
-<Img src={`/images/markdown/terms_view.png`}  />
+<Img src={`/images/markdown/terms_view.png`}  width="300px" />
 
-<Img src={`/images/markdown/category_view_1.png`}/>
-  
+<Img src={`/images/markdown/category_view_1.png`}  width="300px" />
+
 
 ##### Term context menu
 
-* Create a new term  
+* Create a new term
 Clicking on the **ellipsis (...)** next to a glossary name shows a pop-over menu that allows users to create a term in
 the glossary or delete the glossary - as shown below.
 
-<Img src={`/images/markdown/term_view_context.png`}/>
+<Img src={`/images/markdown/term_view_context.png`}  width="360px" />
 
 
-* To delete a term  
+* To delete a term
 Clicking on the **ellipsis (...)** next to a term name shows a pop-over menu that allows users to delete the term - as
 shown below.
 
-<Img src={`/images/markdown/term_delete_context.png`}/>
+<Img src={`/images/markdown/term_delete_context.png`} width="600px" />
 
 
 ##### Term detail page
@@ -108,92 +108,92 @@ page provides different details of the term.
 * Classifications tab shows the classification(s) associated with the selected term
 * Related terms tab shows the terms that are related to the selected term
 
-<Img src={`/images/markdown/term_details.png`}/>  
+<Img src={`/images/markdown/term_details.png`} />
 
 
 ##### Add classification to Term
 
 Clicking on **+** next to classification label to add a classification to the term.
 
-<Img src={`/images/markdown/term_add_classification_1.png`} alt="Add classification"/>
+<Img src={`/images/markdown/term_add_classification_1.png`} alt="Add classification"  width="400px" />
 
-<Img src={`/images/markdown/term_add_classification_2.png`} alt="Add classification - details"/>
+<Img src={`/images/markdown/term_add_classification_2.png`} alt="Add classification - details"  width="400px" />
 
-<Img src={`/images/markdown/term_with_classification.png`} alt="Classifications associated with term"/>
+<Img src={`/images/markdown/term_with_classification.png`} alt="Classifications associated with term"  width="400px" />
 
 
 ##### Create term relationship with other term
 Click on "Related Terms" tab when viewing term details. Clicking on **+** will allow linking a term with the current term.
 
-<Img src={`/images/markdown/terms_related_terms.png`}/>
+<Img src={`/images/markdown/terms_related_terms.png`} />
 
 
 ##### Categorize a term
 
 Click on **+** next to categories label to categorize a term. A modal dialog will be presented for choosing a category.
 
-<Img src={`/images/markdown/term_add_category.png`} /> 
+<Img src={`/images/markdown/term_add_category.png`}  width="400px" />
 
 
 #### **Category view**
 
-When the toggle switch is on category, the panel will list down all glossaries along-with the category hierarchy. Here's a list of possible 
+When the toggle switch is on category, the panel will list down all glossaries along-with the category hierarchy. Here's a list of possible
 interactions under this view.
 
-* Expanded view  
-<Img src={`/images/markdown/category_view_2.png`} />
-  
+* Expanded view
+<Img src={`/images/markdown/category_view_2.png`}  width="300px" />
+
 
 ##### Category context menu
 
 Clicking on **ellipsis (...)** next to the category name will present a category context menu.
 
-* To create a new category   
+* To create a new category
 
-<Img src={`/images/markdown/category_view_glossary_context.png`}/>
+<Img src={`/images/markdown/category_view_glossary_context.png`}  width="600px" />
 
-* To create a sub-category or delete a category  
+* To create a sub-category or delete a category
 
-<Img src={`/images/markdown/category_view_category_context_1.png`}/>
+<Img src={`/images/markdown/category_view_category_context_1.png`}  width="600px" />
 
 
 ##### Category detail page
 
 Once a category is selected, the details will be presented in the right pane.
 
-<Img src={`/images/markdown/category_details_with_terms.png`}/>
+<Img src={`/images/markdown/category_details_with_terms.png`}  width="600px" />
 
 
 ##### Categorize term
 
 Click on **+** next to the terms label to link a term under selected category.
 
-<Img src={`/images/markdown/category_add_term.png`}/>
+<Img src={`/images/markdown/category_add_term.png`}  width="600px" />
 
-<Img src={`/images/markdown/category_add_term_1.png`} />
+<Img src={`/images/markdown/category_add_term_1.png`}  width="400px" />
 
-<Img src={`/images/markdown/category_add_term_2.png`} />
- 
+<Img src={`/images/markdown/category_add_term_2.png`}  width="400px" />
+
 
 #### **Term assignment flow**
 
-Terms can be assigned to an entity either from the results page or entity details page.  
-        
+Terms can be assigned to an entity either from the results page or entity details page.
+
 ##### Assign term
 
 Click on **+** under "terms" column (if associating term from search page)
 
-<Img src={`/images/markdown/entity_search_add_term.png`} />  
+<Img src={`/images/markdown/entity_search_add_term.png`} />
 
 
 Click on **+** next to "terms" label (if viewing a specific entity details)
 
-<Img src={`/images/markdown/entity_details_add_term.png`} />  
+<Img src={`/images/markdown/entity_details_add_term.png`} />
 
 
-Both the actions will present the following modal, follow prompts on screen to complete term assignment.  
+Both the actions will present the following modal, follow prompts on screen to complete term assignment.
 
-<Img src={`/images/markdown/entity_add_term_modal.png`} />
+<Img src={`/images/markdown/entity_add_term_modal.png`}  width="400px" />
 
 
 ##### Propagated classification
@@ -202,15 +202,15 @@ If a term has classification then the entity is has been assigned inherits the s
 
 <Img src={`/images/markdown/term_details_with_classification.png`} />
 
-<Img src={`/images/markdown/entity_assigned_term_with_tag.png`} />
+<Img src={`/images/markdown/entity_assigned_term_with_tag.png`}  width="600px" />
 
 
-#### **Search using a term**    
+#### **Search using a term**
 
 Apache Atlas basic-search API and UI have been updated to support term as a search criteria. This allows users to find
-entities associated with a given term. Basic search UI now includes a new input drop-down for term based searches.   
+entities associated with a given term. Basic search UI now includes a new input drop-down for term based searches.
 
-<Img src={`/images/markdown/term_search.png`} />
+<Img src={`/images/markdown/term_search.png`}  width="300px" />
 
 
 ***
@@ -340,7 +340,7 @@ Following operations are supported by Atlas, the details of REST interface can b
 6. Create a category with hierarchy
 7. Create category and categorize term(s)
 8. Assign term to entities
-    
+
 **NOTE:**
 
 * During create operations glossary, term and category get an auto assigned GUID and qualifiedName.
@@ -356,7 +356,7 @@ Following operations are supported by Atlas, the details of REST interface can b
 2. Get all Glossaries - Gives all glossaries with terms and categories (headers) belonging to the respective glossary.
 3. Get a term by GUID - Gives details about the term, categories it belongs to (if any) and any related term(s).
 4. Get a category by GUID - Gives details about the category, category hierarchy (if any) and term(s) belonging to the category.
-5. Get all terms of a given glossary - Gives all terms (with details as mentioned in #3) belonging to given glossary. 
+5. Get all terms of a given glossary - Gives all terms (with details as mentioned in #3) belonging to given glossary.
 6. Get all categories of a given glossary - Gives all categories (with details as mentioned in #4) belonging to given glossary.
 7. Get all terms related to given term - Gives all terms related/linked to the given term.
 8. Get all categories related to a given category (parent and children)
@@ -374,13 +374,13 @@ Following operations are supported by Atlas, the details of REST interface can b
 6. Update a given category
 
 **NOTE:**
- 
-* Partial update only deals with the **_primitive attributes_** defined in the Glossary model file. 
+
+* Partial update only deals with the **_primitive attributes_** defined in the Glossary model file.
 * GUID and qualifiedName can't be changed once assigned. Only way to this is to delete and recreate the required object.
 * Anchors **can't** be removed in any updates
 * Update APIs expect the JSON to be modified **in-place** after the **GET** call. Any **_missing_** attributes/relations will be **_deleted_**.
 * Any update to category's hierarchy leads to a cascaded update of the hierarchy under it e.g. anchor change would affect all children,
-   parent change would affect the qualifiedName of self and children. 
+   parent change would affect the qualifiedName of self and children.
 
 ***
 ##### DELETE operations
@@ -389,4 +389,3 @@ Following operations are supported by Atlas, the details of REST interface can b
 2. Delete term - Only deletes the term **_if_** it's not associated/assigned to any entity.
 3. Delete category - **_Only_** deletes the given category, all children become top-level categories.
 4. Remove term assignment from entity
-

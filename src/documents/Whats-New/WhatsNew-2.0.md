@@ -2,8 +2,8 @@
 name: WhatsNew-2.0
 route: /WhatsNew-2.0
 menu: Downloads
-submenu: Whats-New  
---- 
+submenu: Whats New
+---
 
 # What's new in Apache Atlas 2.0?
 

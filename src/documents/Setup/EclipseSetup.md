@@ -1,8 +1,8 @@
 ---
-name: EclipseSetup
+name: Eclipse Setup
 route: /EclipseSetup
 menu: For Developers
-submenu: EclipseSetup 
+submenu: Eclipse Setup
 ---
 
 import  themen  from 'theme/styles/styled-colors';

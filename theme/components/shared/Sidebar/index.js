@@ -58,7 +58,7 @@ const Wrapper = styled.div`
 
   dl {
     padding: 0;
-    margin: 0 16px;
+    margin: 0 14px;
   }
 
   dl a {
@@ -360,7 +360,7 @@ export const Sidebar = () => {
         <Content>
           <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
           <Logo showBg={true} />
-          
+
 
           {menus && menus.length === 0 ? (
             <Empty>No documents founda.</Empty>
@@ -395,7 +395,7 @@ export const Sidebar = () => {
           <Content>
             <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
             <Logo showBg={!hidden} />
-            
+
             <MenuLink item={menus}></MenuLink>
             <Menus>
               {menus &&

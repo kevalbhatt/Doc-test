@@ -2,9 +2,9 @@
 name: WhatsNew-1.0
 route: /WhatsNew-1.0
 menu: Downloads
-submenu: Whats-New  
---- 
-  
+submenu: Whats New
+---
+
 # What's new in Apache Atlas 1.0?
 
 ## Features
@@ -16,7 +16,7 @@ submenu: Whats-New
 * Introduction of V2 style notifications
 * Introduction of Atlas hook for HBase
 * Support for Cassandra and Elasticsearch (tech-preview)
-    
+
 ## Updates
 
 * Graph store has been updated from Titan 0.5.4 to JanusGraph 0.2.0
@@ -34,10 +34,10 @@ releases. More DSL related changes can be found [here](Search-Advanced.html).
    * When filtering or narrowing results using string attribute, the value **MUST** be enclosed in double quotes
       * Table name="Table1"
       * Table where name="Table1"
-   * Join queries are no longer supported e.g. hive_table, hive_db 
+   * Join queries are no longer supported e.g. hive_table, hive_db
    * Select clauses only work with immediate entity attributes or a single referred (entity) type.
       * Table select name, owner
-      * Table select Columns 
+      * Table select Columns
       * Table select name, owner, Columns _*(won't work)*_
    * OrderBy clause can only be used with a _*single primitive*_ attribute.
    * GroupBy clause can only be used with a _*single primitive*_ attribute.

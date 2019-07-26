@@ -1,8 +1,8 @@
 ---
-name: Source-Repository
+name: Source Repository
 route: /Source-Repository
 menu: Project Info
-submenu: Source-Repository 
+submenu: Source Repository
 ---
 
 import  themen  from 'theme/styles/styled-colors';
@@ -31,4 +31,3 @@ https://gitbox.apache.org/repos/asf/atlas.git
 </SyntaxHighlighter>
 # Access from behind a firewall
 Refer to the documentation of the SCM used for more information about access behind a firewall.
-

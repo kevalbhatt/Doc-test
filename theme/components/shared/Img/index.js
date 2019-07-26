@@ -8,7 +8,7 @@ const Img = props => {
 	const { baseUrl } = useConfig();
 	return (
 		<div>
-			<img src={`${baseUrl}${src}`} height={`${height}`} width={`${width}`} />
+			<img src={`${baseUrl}${src}`} height={`${height || 'auto'}`} width={`${width || '100%'}`} />
 		</div>
 	);
 };

@@ -34,7 +34,7 @@ axios
     .catch(err => {});
 
 const TeamList = props => {
-  
+
   // axios
   //   .get(`https://raw.githubusercontent.com/apache/atlas/master/pom.xml`)
   //   .then(res => {
