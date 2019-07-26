@@ -1,6 +1,6 @@
 ---
-name: Downloads
-route: /Downloads 
+name: Download
+route: /Downloads
 menu: Downloads
 submenu: Download
 ---

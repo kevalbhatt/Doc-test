@@ -1,8 +1,8 @@
 ---
-name: Issue-Tracking
+name: Issue Tracking
 route: /Issue-Tracking
-menu: Project Info 
-submenu: Issue-Tracking
+menu: Project Info
+submenu: Issue Tracking
 ---
 
 import  themen  from 'theme/styles/styled-colors';

@@ -2,7 +2,7 @@
 name: Atlas Repair Index
 route: /AtlasRepairIndex
 menu: Documentation
-submenu: Features
+submenu: Tools
 ---
 
 import  themen  from 'theme/styles/styled-colors';
@@ -57,12 +57,12 @@ For an Atlas installation with username and password use:
 <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas-index-repair/repair_index.py [-g \<guid>] [-u \<user>] [-p \<password>]`}
 </SyntaxHighlighter>
-	
-* guid: [optional] specify guid for which indexes are to be updated  
+
+* guid: [optional] specify guid for which indexes are to be updated
 * user: [optional] specify username for atlas instance
 * password: [optional] specify password for atlas instance
 
-Example: 
+Example:
 <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas-index-repair/repair_index.py -u admin -p admin123 -g
 	13d77457-2a45-4e92-ad53-a172c7cb70a5`}

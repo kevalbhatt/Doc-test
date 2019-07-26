@@ -74,8 +74,8 @@ export const SubMenu = props => {
   const lengthOfSubMenu = item.submenu && item.submenu.length;
 
   let output = "";
-  
-  if (lengthOfSubMenu > 1) {
+
+  if (lengthOfSubMenu > 0 && item.name !== item.submenu[0].name) {
     output = (
       <Wrapper>
         <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>

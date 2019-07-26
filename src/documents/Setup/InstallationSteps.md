@@ -2,7 +2,7 @@
 name: Installation Steps
 route: /InstallationSteps
 menu: For Developers
-submenu: InstallationSteps 
+submenu: Installation Steps
 ---
 
 import  themen  from 'theme/styles/styled-colors';
@@ -19,8 +19,8 @@ Then follow the instructions below to to build Apache Atlas.
 
 <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`tar xvfz apache-atlas-1.0.0-sources.tar.gz
-cd apache-atlas-sources-1.0.0/ 
-export MAVEN_OPTS="-Xms2g -Xmx2g" 
+cd apache-atlas-sources-1.0.0/
+export MAVEN_OPTS="-Xms2g -Xmx2g"
 mvn clean -DskipTests install`}
 </SyntaxHighlighter>
 
@@ -115,7 +115,7 @@ bin/atlas_start.py`}
 Enter username for atlas :-
 Enter password for atlas :-`}
 </SyntaxHighlighter>
-  
+
   * Access Apache Atlas UI using a browser: http://localhost:21000
 
 #### Stopping Apache Atlas Server
@@ -395,4 +395,3 @@ run setup again.
 
 If the setup failed due to Apache HBase schema setup errors, it may be necessary to repair Apache HBase schema. If no
 data has been stored, one can also disable and drop the Apache HBase tables used by Apache Atlas and run setup again.
-
