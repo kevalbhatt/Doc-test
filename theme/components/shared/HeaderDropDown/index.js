@@ -25,10 +25,10 @@ const DropDownDivContent = styled.div`
 	position: fixed;
 	top: 0px;
 	right: 250px;
-	width: 150px;
+	width: 200px;
 `;
 const DropDownOptions = [
-	{ id: 1, href: "/", title: "Latest", label: "Latest" },
+	{ id: 1, href: "/Doc-test/", title: "Latest", label: "Latest" },
 	{ id: 2, href: "/2.0.0/index.html", title: "2.0.0", label: "2.0.0" },
 	{ id: 4, href: "/1.1.0/index.html", title: "1.1.0", label: "1.1.0" },
 	{ id: 5, href: "/1.0.0/index.html", title: "1.0.0", label: "1.0.0" },

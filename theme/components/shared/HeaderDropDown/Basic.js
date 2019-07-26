@@ -9,7 +9,7 @@ const Basic = props => {
     { id: 1, href: "/", title: "Latest", label: "Latest" }
   ]);
 
-  const ComponentStyle = styled.div` > div { display: inline-block } label {margin-right: 5px}`;
+  const ComponentStyle = styled.div` > div { display: inline-block; width: 130px } label {margin-right: 5px}`;
 
   return (
     <ComponentStyle>
