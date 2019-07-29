@@ -1,7 +1,5 @@
 import * as React from "react";
-import { SFC } from "react";
-import { get } from "../../../utils/theme";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import GitHubButton from "react-github-btn";
 
 const GitHubDivContainer = styled.div`

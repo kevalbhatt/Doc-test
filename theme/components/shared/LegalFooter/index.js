@@ -22,7 +22,7 @@ const LinkStyled = styled.a`
 `
 const FooterDiv = styled.div`
 	position: absolute;
-	padding-left: 350px;
+	margin-left: 350px;
 	width: 70%;
 	font-size: 10px;
 `;

@@ -10,7 +10,7 @@ const TeamListStyle = styled.div`
     display: table;
     table-layout: auto;
     color: #13161F;
-    width: 50%;
+    width:100%;
     padding: 0;
     box-shadow: 0 0 0 1px #529d8b;
     background-color: transparent;

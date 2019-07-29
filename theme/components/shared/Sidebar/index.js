@@ -93,6 +93,7 @@ const Content = styled.div`
   min-width: 320px;
   height: 100%;
   max-height: 100vh;
+  background: ${sidebarBg};
 `;
 
 const Menus = styled.nav`
