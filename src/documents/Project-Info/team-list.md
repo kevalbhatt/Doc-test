@@ -16,9 +16,4 @@ import TeamList from 'theme/components/shared/TeamList'
 
 #### The following is a list of developers with commit privileges that have directly contributed to the project in one way or another.
 
-
-
-|Id |Name |Email |Organization |Roles |Time Zone |Actual Time (GMT)|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-
 <TeamList/>
