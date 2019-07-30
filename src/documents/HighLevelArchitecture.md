@@ -5,7 +5,6 @@ menu: Documentation
 submenu: Features
 ---
 import Img from 'theme/components/shared/Img'
-import {CustomLink} from "theme/components/shared/common/CustomLink";
 
 # Architecture
 
@@ -56,11 +55,11 @@ notification events. Events are written by the hooks and Atlas to different Kafk
 ### Metadata sources
 Atlas supports integration with many sources of metadata out of the box. More integrations will be added in future
 as well. Currently, Atlas supports ingesting and managing metadata from the following sources:
-   *  <CustomLink href="http://atlas.apache.org/Hook-HBase.html">HBase</CustomLink>
-   *  <CustomLink href="http://atlas.apache.org/Hook-Hive.html">Hive</CustomLink>
-   *  <CustomLink href="http://atlas.apache.org/Hook-Sqoop.html">Sqoop</CustomLink>
-   *  <CustomLink href="http://atlas.apache.org/Hook-Storm.html">Storm</CustomLink>
-   *  <CustomLink href="http://atlas.apache.org/Bridge-Kafka.html">Kafka</CustomLink>
+   *  [HBase](Hook-HBase)
+   *  [Hive](Hook-Hive)
+   *  [Sqoop](Hook-Sqoop)
+   *  [Storm](Hook-Storm)
+   *  [Kafka](Hook-Kafka)
 
 The integration implies two things:
 There are metadata models that Atlas defines natively to represent objects of these components.
