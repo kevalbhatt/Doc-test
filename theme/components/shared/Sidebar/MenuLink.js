@@ -51,7 +51,7 @@ Wrapper.defaultProps = WrapperProps;
 export const createLink = Link => styled(Link)`
   position: relative;
   display: block;
-  padding: 4px 24px;
+  padding: 4px 15px;
   font-weight: 600;
   font-size: 18px;
   letter-spacing: -0.02em;

@@ -14,7 +14,7 @@ const GitHubDivContainer = styled.div`
 const GitHubDivContent = styled.div`
   position: fixed;
   top: 0px;
-  right: 0px;
+  right: 2px;
 `;
 
 const GithubLinkProps = {

@@ -90,7 +90,7 @@ export const SubMenu = props => {
         {hasChildren && (
           <List opened={show}>
             {item.submenu &&
-              item.submenu.map(dataItem => (
+              item.menu.map(dataItem => (
                 <dt key={dataItem.name}>
                   <MenuLink
                     item={dataItem}

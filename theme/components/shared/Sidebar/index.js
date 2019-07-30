@@ -58,7 +58,7 @@ const Wrapper = styled.div`
 
   dl {
     padding: 0;
-    margin: 0 14px;
+    margin: 0 10px;
   }
 
   dl a {
@@ -284,7 +284,7 @@ const sortMenus = (first, second = []) => {
     return Object.assign({}, item, {
       menu: foundMenu
         ? sortMenus(item.menu, foundMenu)
-        : sort(item.menu, sortByName)
+        : item.menu
     });
   });
 };
@@ -334,6 +334,7 @@ export const Sidebar = () => {
   const windowSize = useWindowSize();
   const isDesktop = windowSize.innerWidth >= breakpoints.desktop;
   const prevIsDesktop = usePrevious(isDesktop);
+  const navRef = useRef();
 
   useEffect(() => {
     if (!hidden && !prevIsDesktop && isDesktop) {
@@ -341,6 +342,13 @@ export const Sidebar = () => {
       document.documentElement.classList.remove("with-overlay");
     }
   });
+
+  useEffect(() => {
+    const navTop = parseInt(localStorage.getItem('nav'));
+    if (navTop) {
+      navRef.current.scrollTop = navTop;
+    }
+  }, []);
 
   const addOverlayClass = isHidden => {
     const method = !isHidden ? "add" : "remove";
@@ -355,6 +363,9 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
+  const handleScroll = () => {
+    localStorage.setItem('nav', navRef.current.scrollTop);
+  }
     let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
@@ -366,7 +377,7 @@ export const Sidebar = () => {
           {menus && menus.length === 0 ? (
             <Empty>No documents founda.</Empty>
           ) : (
-            <Menus>
+            <Menus ref={navRef} onScroll={handleScroll}>
               {menus &&
                 menus.map(menu => (
                   <Menu
@@ -398,7 +409,7 @@ export const Sidebar = () => {
             <Logo showBg={!hidden} />
 
             <MenuLink item={menus}></MenuLink>
-            <Menus>
+            <Menus ref={navRef} onScroll={handleScroll}>
               {menus &&
                 menus.map(menu => (
                   <SubMenu

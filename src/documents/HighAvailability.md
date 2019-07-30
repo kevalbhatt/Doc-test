@@ -1,5 +1,5 @@
 ---
-name: HighAvailability
+name: High Availability
 route: /HighAvailability
 menu: Documentation
 submenu: Features
@@ -44,8 +44,8 @@ requests that return information about that instance.
 
 When configured in a High Availability mode, users can get the following operational benefits:
 
-   * *Uninterrupted service during maintenance intervals*: If an active instance of the Atlas Web Service needs to be brought down for maintenance, another instance would automatically become active and can service requests.
-   * *Uninterrupted service in event of unexpected failures*: If an active instance of the Atlas Web Service fails due to software or hardware errors, another instance would automatically become active and can service requests.
+   * **Uninterrupted service during maintenance intervals**: If an active instance of the Atlas Web Service needs to be brought down for maintenance, another instance would automatically become active and can service requests.
+   * **Uninterrupted service in event of unexpected failures**: If an active instance of the Atlas Web Service fails due to software or hardware errors, another instance would automatically become active and can service requests.
 
 In the following sub-sections, we describe the steps required to setup High Availability for the Atlas Web Service.
 We also describe how the deployment and client can be designed to take advantage of this capability.
@@ -58,16 +58,16 @@ The following pre-requisites must be met for setting up the High Availability fe
    * Ensure that you install Apache Zookeeper on a cluster of machines (a minimum of 3 servers is recommended for production).
    * Select 2 or more physical machines to run the Atlas Web Service instances on. These machines define what we refer to as a 'server ensemble' for Atlas.
 
-To setup High Availability in Atlas, a few configuration options must be defined in the =atlas-application.properties=
+To setup High Availability in Atlas, a few configuration options must be defined in the `atlas-application.properties`
 file. While the complete list of configuration items are defined in the [Configuration Page](Configuration), this
 section lists a few of the main options.
 
-   * High Availability is an optional feature in Atlas. Hence, it must be enabled by setting the configuration option =atlas.server.ha.enabled= to true.
-   * Next, define a list of identifiers, one for each physical machine you have selected for the Atlas Web Service instance. These identifiers can be simple strings like =id1=, =id2= etc. They should be unique and should not contain a comma.
-   * Define a comma separated list of these identifiers as the value of the option =atlas.server.ids=.
-   * For each physical machine, list the IP Address/hostname and port as the value of the configuration =atlas.server.address.id=, where =id= refers to the identifier string for this physical machine.
+   * High Availability is an optional feature in Atlas. Hence, it must be enabled by setting the configuration option `atlas.server.ha.enabled` to true.
+   * Next, define a list of identifiers, one for each physical machine you have selected for the Atlas Web Service instance. These identifiers can be simple strings like `id1`, `id2` etc. They should be unique and should not contain a comma.
+   * Define a comma separated list of these identifiers as the value of the option `atlas.server.ids`.
+   * For each physical machine, list the IP Address/hostname and port as the value of the configuration `atlas.server.address.id`, where `id` refers to the identifier string for this physical machine.
 
-      * For e.g., if you have selected 2 machines with hostnames =host1.company.com= and =host2.company.com=, you can define the configuration options as below:
+      * For e.g., if you have selected 2 machines with hostnames `host1.company.com` and `host2.company.com`, you can define the configuration options as below:
 
 <SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
 {`atlas.server.ids=id1,id2
@@ -81,10 +81,10 @@ atlas.server.address.id2=host2.company.com:21000`}
       atlas.server.ha.zookeeper.connect=zk1.company.com:2181,zk2.company.com:2181,zk3.company.com:2181
     </SyntaxHighlighter>
 
-   * You can review other configuration options that are defined for the High Availability feature, and set them up as desired in the =atlas-application.properties= file.
+   * You can review other configuration options that are defined for the High Availability feature, and set them up as desired in the `atlas-application.properties` file.
    * For production environments, the components that Atlas depends on must also be set up in High Availability mode. This is described in detail in the following sections. Follow those instructions to setup and configure them.
    * Install the Atlas software on the selected physical machines.
-   * Copy the =atlas-application.properties= file created using the steps above to the configuration directory of all the machines.
+   * Copy the `atlas-application.properties` file created using the steps above to the configuration directory of all the machines.
    * Start the dependent components.
    * Start each instance of the Atlas Web Service.
 
@@ -96,10 +96,10 @@ $ATLAS_HOME/bin/atlas_admin.py -status
 </SyntaxHighlighter>
 This script can print one of the values below as response:
 
-   * *ACTIVE*: This instance is active and can respond to user requests.
-   * *PASSIVE*: This instance is PASSIVE. It will redirect any user requests it receives to the current active instance.
-   * *BECOMING_ACTIVE*: This would be printed if the server is transitioning to become an ACTIVE instance. The server cannot service any metadata user requests in this state.
-   * *BECOMING_PASSIVE*: This would be printed if the server is transitioning to become a PASSIVE instance. The server cannot service any metadata user requests in this state.
+   * **ACTIVE**: This instance is active and can respond to user requests.
+   * **PASSIVE**: This instance is PASSIVE. It will redirect any user requests it receives to the current active instance.
+   * **BECOMING_ACTIVE**: This would be printed if the server is transitioning to become an ACTIVE instance. The server cannot service any metadata user requests in this state.
+   * **BECOMING_PASSIVE**: This would be printed if the server is transitioning to become a PASSIVE instance. The server cannot service any metadata user requests in this state.
 
 Under normal operating circumstances, only one of these instances should print the value *ACTIVE* as response to
 the script, and the others would print *PASSIVE*.
@@ -108,8 +108,8 @@ the script, and the others would print *PASSIVE*.
 
 The Atlas Web Service can be accessed in two ways:
 
-   * *Using the Atlas Web UI*: This is a browser based client that can be used to query the metadata stored in Atlas.
-   * *Using the Atlas REST API*: As Atlas exposes a RESTful API, one can use any standard REST client including libraries in other applications. In fact, Atlas ships with a client called !AtlasClient that can be used as an example to build REST client access.
+   * **Using the Atlas Web UI**: This is a browser based client that can be used to query the metadata stored in Atlas.
+   * **Using the Atlas REST API**: As Atlas exposes a RESTful API, one can use any standard REST client including libraries in other applications. In fact, Atlas ships with a client called !AtlasClient that can be used as an example to build REST client access.
 
 In order to take advantage of the High Availability feature in the clients, there are two options possible.
 
@@ -138,7 +138,7 @@ listen atlas
 
 The above configuration binds HAProxy to listen on port 41000 for incoming client connections. It then routes
 the connections to either of the hosts host1 or host2 depending on a HTTP status check. The status check is
-done using a HTTP GET on the REST URL =/api/atlas/admin/status=, and is deemed successful only if the HTTP response
+done using a HTTP GET on the REST URL `/api/atlas/admin/status`, and is deemed successful only if the HTTP response
 contains the string ACTIVE.
 
 #### Using automatic detection of active instance
@@ -146,8 +146,8 @@ contains the string ACTIVE.
 If one does not want to setup and manage a separate proxy, then the other option to use the High Availability
 feature is to build a client application that is capable of detecting status and retrying operations. In such a
 setting, the client application can be launched with the URLs of all Atlas Web Service instances that form the
-ensemble. The client should then call the REST URL =/api/atlas/admin/status= on each of these to determine which is
-the active instance. The response from the Active instance would be of the form ={Status:ACTIVE}=. Also, when the
+ensemble. The client should then call the REST URL `/api/atlas/admin/status` on each of these to determine which is
+the active instance. The response from the Active instance would be of the form `{Status:ACTIVE}`. Also, when the
 client faces any exceptions in the course of an operation, it should again determine which of the remaining URLs
 is active and retry the operation.
 
@@ -160,7 +160,7 @@ If a proxy is set up in between, then its address can be used when running quick
 
 ### Implementation Details of Atlas High Availability
 
-The Atlas High Availability work is tracked under the master JIRA 
+The Atlas High Availability work is tracked under the master JIRA
 [ATLAS-510](https://issues.apache.org/jira/browse/ATLAS-510).
 The JIRAs filed under it have detailed information about how the High Availability feature has been implemented.
 At a high level the following points can be called out:
@@ -207,8 +207,8 @@ In order to configure Atlas to use Elasticsearch in HA mode, do the following:
 
 ## Notification Server
 
-Metadata notification events from Hooks are sent to Atlas by writing them to a Kafka topic called *ATLAS_HOOK*. Similarly, events from
-Atlas to other integrating components like Ranger, are written to a Kafka topic called *ATLAS_ENTITIES*. Since Kafka
+Metadata notification events from Hooks are sent to Atlas by writing them to a Kafka topic called **ATLAS_HOOK**. Similarly, events from
+Atlas to other integrating components like Ranger, are written to a Kafka topic called **ATLAS_ENTITIES**. Since Kafka
 persists these messages, the events will not be lost even if the consumers are down as the events are being sent. In
 addition, we recommend Kafka is also setup for fault tolerance so that it has higher availability guarantees. In order
 to configure Atlas to use Kafka in HA mode, do the following:
@@ -228,7 +228,7 @@ to configure Atlas to use Kafka in HA mode, do the following:
    </SyntaxHighlighter>
 
    * In atlas-application.properties, set the following configuration:
-   
+
    <SyntaxHighlighter wrapLines={true} language="java" style={theme.dark}>
      {`atlas.notification.embedded=false
     atlas.kafka.zookeeper.connect=<comma separated list of servers forming Zookeeper quorum used by Kafka>

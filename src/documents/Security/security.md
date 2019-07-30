@@ -1,8 +1,8 @@
 ---
-name: Security
+name: Security Details
 route: /security
 menu: Documentation
-submenu: Features
+submenu: Security
 ---
 
 import  themen  from 'theme/styles/styled-colors';
@@ -15,7 +15,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 ## Overview
 
 The following features are available for enhancing the security of the platform:
-   * SSL 
+   * SSL
    * Service Authentication
    * SPNEGO-based HTTP Authentication
 
@@ -27,8 +27,8 @@ Both SSL one-way (server authentication) and two-way (server and client authenti
    * `keystore.file` - the path to the keystore file leveraged by the server.  This file contains the server certificate.
    * `truststore.file` - the path to the truststore file. This file contains the certificates of other trusted entities (e.g. the certificates for client processes if two-way SSL is enabled).  In most instances this can be set to the same value as the keystore.file property (especially if one-way SSL is enabled).
    * `client.auth.enabled` (false|true) [default: false] - enable/disable client authentication.  If enabled, the client will have to authenticate to the server during the transport session key creation process (i.e. two-way SSL is in effect).
-   * `cert.stores.credential.provider.path` - the path to the Credential Provider store file.  The passwords for the keystore, truststore, and server certificate are maintained in this secure file.  Utilize the cputil script in the 'bin' directoy (see below) to populate this file with the passwords required. 
-   * `atlas.ssl.exclude.cipher.suites` - the excluded Cipher Suites list -  *NULL.*,.*RC4.*,.*MD5.*,.*DES.*,.*DSS.* are weak and unsafe Cipher Suites that are excluded by default. If additional Ciphers need to be excluded, set this property with the default Cipher Suites such as atlas.ssl.exclude.cipher.suites=.*NULL.*, .*RC4.*, .*MD5.*, .*DES.*, .*DSS.*, and add the additional Ciper Suites to the list with a comma separator. They can be added with their full name or a regular expression. The Cipher Suites listed in the atlas.ssl.exclude.cipher.suites property will have precedence over the default Cipher Suites. One would keep the default Cipher Suites, and add additional ones to be safe. 
+   * `cert.stores.credential.provider.path` - the path to the Credential Provider store file.  The passwords for the keystore, truststore, and server certificate are maintained in this secure file.  Utilize the cputil script in the 'bin' directoy (see below) to populate this file with the passwords required.
+   * `atlas.ssl.exclude.cipher.suites` - the excluded Cipher Suites list -  *NULL.*,.*RC4.*,.*MD5.*,.*DES.*,.*DSS.* are weak and unsafe Cipher Suites that are excluded by default. If additional Ciphers need to be excluded, set this property with the default Cipher Suites such as atlas.ssl.exclude.cipher.suites=.*NULL.*, .*RC4.*, .*MD5.*, .*DES.*, .*DSS.*, and add the additional Ciper Suites to the list with a comma separator. They can be added with their full name or a regular expression. The Cipher Suites listed in the atlas.ssl.exclude.cipher.suites property will have precedence over the default Cipher Suites. One would keep the default Cipher Suites, and add additional ones to be safe.
 
 ####  Credential Provider Utility Script
 

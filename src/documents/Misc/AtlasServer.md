@@ -2,7 +2,7 @@
 name: Atlas Server
 route: /AtlasServer
 menu: Documentation
-submenu: Setup 
+submenu: Misc
 ---
 import  themen  from 'theme/styles/styled-colors';
 import  * as theme  from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -15,7 +15,7 @@ import Img from 'theme/components/shared/Img'
 
 The _AtlasServer_ entity type is special entity type in following ways:
 
-* Gets created during Export or Import operation. 
+* Gets created during Export or Import operation.
 * It also has special property pages that display detailed audits for export and import operations.
 * Entities are linked to it using the new option within entity's attribute _[SoftReference](SoftReference)_.
 
@@ -52,7 +52,7 @@ The table has following columns:
 
 The following export request will end up creating _AtlasServer_ entity with _clMain_ as its name. The audit record of this operation will be displayed within the property page of this entity.
 
-<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}> 
+<SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`{
     "itemsToExport": [
         { "typeName": "hive_db", "uniqueAttributes": { "qualifiedName": "stocks@cl1" }}
@@ -65,7 +65,7 @@ The following export request will end up creating _AtlasServer_ entity with _clM
 
 #### Support for Cluster's Full Name
 
-Often times it is necessary to disambiguate the name of the cluster by specifying the location or the data center within which the Atlas instance resides. 
+Often times it is necessary to disambiguate the name of the cluster by specifying the location or the data center within which the Atlas instance resides.
 
 The name of the cluster can be specified by separating the location name and cluster name by '$'. For example, a clsuter name specified as 'SFO$cl1' can be a cluster in San Fancisco (SFO) data center with the name 'cl1'.
 
@@ -74,7 +74,7 @@ The _AtlasServer_ will handle this and set its name as 'cl1' and _fullName_ as '
 
 #### Additional Information
 
-This property in _AtlasServer_ is a map with key and value both as String. This can be used to store any information pertaining to this instance. 
+This property in _AtlasServer_ is a map with key and value both as String. This can be used to store any information pertaining to this instance.
 
 Please see [Incremental Export](IncrementalExport) for and example of how this property can be used.
 
@@ -95,7 +95,7 @@ Error Response  | Errors Returned as AtlasBaseException |
 {`curl -X GET -u admin:admin -H "Content-Type: application/json" -H "Cache-Control:no-cache" http://localhost:21000/api/atlas/admin/server/cl2`}
 </SyntaxHighlighter>
 
-Output: 
+Output:
 
 <SyntaxHighlighter wrapLines={true} language="json" style={theme.dark}>
 {`{
@@ -109,5 +109,3 @@ Output:
     }
 }`}
 </SyntaxHighlighter>
-
-

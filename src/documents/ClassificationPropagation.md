@@ -1,5 +1,5 @@
 ---
-name: ClassificationPropagation
+name: Classification Propagation
 route: /ClassificationPropagation
 menu: Documentation
 submenu: Features
@@ -8,7 +8,7 @@ import Img from 'theme/components/shared/Img'
 
 # Classification Propagation
 
-* Classification propagation enables classifications associated to an entity to be automatically associated with other related entities of the entity. This is very useful in dealing with scenarios where a dataset derives it data from other datasets - like a table loaded with data in a file, a report generated from a table/view, etc. 
+* Classification propagation enables classifications associated to an entity to be automatically associated with other related entities of the entity. This is very useful in dealing with scenarios where a dataset derives it data from other datasets - like a table loaded with data in a file, a report generated from a table/view, etc.
 * For example, when a table is classified as *PII*, tables or views that derive data from this table (via CTAS or ‘create view’ operation) will be automatically classified as *PII*.
 
 
@@ -42,7 +42,7 @@ For example, when a view is created from a table, classifications associated wit
 ## Delete an entity
 
 **Case 1:**
-When an entity is deleted, classifications associated with this entity will be removed from all entities the classifications are propagated to. 
+When an entity is deleted, classifications associated with this entity will be removed from all entities the classifications are propagated to.
 For example. when _employees_ table is deleted, classifications associated with this table are removed from 'employees_view' view.
 <Img src={`/images/twiki/classification-propagation-6.png`}/>
 
@@ -62,25 +62,25 @@ For example. when 'us_employees' table is deleted, classifications  propagating 
 
 ## Control Propagation
 
-Apache Atlas provides few options to control whether/where a classification is propagated. 
+Apache Atlas provides few options to control whether/where a classification is propagated.
 This section details available options.
 
 ## Propagate flag in classification
 
-Each association of classification to an entity has a boolean flag that controls whether the classification is propagated or not. 
+Each association of classification to an entity has a boolean flag that controls whether the classification is propagated or not.
 When a classification is associated with an entity, this flag is set to ‘true’ i.e. the classification will be propagated to all impacted entities. This flag can be updated to desired value during initial association or later.
 <Img src={`/images/twiki/classification-propagation-7.png`}/>
 
 ## Propagate flag in lineage edge
 
-Apache Atlas supports a flag at lineage edge to enable/disable propagation of classifications through the edge. By default, the propagation is enabled for lineage edges. 
-When the flag is turned off, no classification will be propagated through this edge; and propagation of currently propagated classifications through the edge will be reevaluated, so that they can be removed from impacted entities. 
+Apache Atlas supports a flag at lineage edge to enable/disable propagation of classifications through the edge. By default, the propagation is enabled for lineage edges.
+When the flag is turned off, no classification will be propagated through this edge; and propagation of currently propagated classifications through the edge will be reevaluated, so that they can be removed from impacted entities.
 When the flag is turned on, propagation of classifications of the source entity will be reevaluated, so that they can be propagated to all impacted entities.
 
 ## Block propagation of specific classifications in lineage edge
 
-Apache Atlas supports blocking propagation of specific classifications in at lineage edges. 
-This can be useful, for example, to handle scenarios like: a column classified as PII is masked when creating a view; in such scenario, if corresponding column in the created view might not have PII, hence the propagation of PII classification should be blocked. 
+Apache Atlas supports blocking propagation of specific classifications in at lineage edges.
+This can be useful, for example, to handle scenarios like: a column classified as PII is masked when creating a view; in such scenario, if corresponding column in the created view might not have PII, hence the propagation of PII classification should be blocked.
 This can be done by updating the lineage edge to add the PII classification in _‘blocked propagated classifications’_ list.
 Classifications in blocked propagated classifications will not be propagated in the derivative/downstream entities.
 <Img src={`/images/twiki/classification-propagation-8.png`}/>

@@ -45,7 +45,7 @@ export const LegalFooter = props => {
 						</LinkStyled>
 						Copyright © 2011-2018 The Apache Software Foundation.
 						Licensed under the{" "}
-						<LinkStyled href="https://www.apache.org/licenses/">
+						<LinkStyled href="https://www.apache.org/licenses/LICENSE-2.0">
 							Apache License, Version 2.0
 						</LinkStyled>
 						.Apache Atlas, Atlas, Apache, the Apache feather logo
