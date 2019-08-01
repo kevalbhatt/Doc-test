@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import { MenuLink } from "./MenuLink";
 import { get } from "../../../utils/theme";
+import Utils from '../../../utils/utils';
 
 export const MenuItem = {
   id: "",
@@ -60,16 +61,15 @@ const MenuState = {
   hasActive: true
 };
 export const SubMenu = props => {
-  const [opened, setOpened] = useState(true);
-  const toggle = () => setOpened(s => !s);
-  const { item, sidebarToggle, collapseAll } = props;
-  const show = collapseAll || opened;
+  const { item, sidebarToggle, handleActiveMenu } = props;
+  const opened = Utils.checkMenuIsOPen(props);
+  const show =  opened;
   const hasChildren = !item.href && item.submenu && item.submenu.length > 0;
   const hasToggle = !item.href && !item.route;
   const hasSubMenu = "";
   const handleToggle = ev => {
     ev.preventDefault();
-    toggle();
+    handleActiveMenu(item);
   };
   const lengthOfSubMenu = item.submenu && item.submenu.length;
 
@@ -95,7 +95,6 @@ export const SubMenu = props => {
                   <MenuLink
                     item={dataItem}
                     onClick={sidebarToggle}
-                    onActiveChange={setOpened}
                   >
                     {`${dataItem.name}`}
                   </MenuLink>
@@ -112,9 +111,7 @@ export const SubMenu = props => {
           item.submenu.map(dataItem => (
             <dt key={dataItem.name}>
               <MenuLink
-                item={dataItem}
-                onActiveChange={setOpened}
-              >
+                item={dataItem}>
                 {`${dataItem.name}`}
               </MenuLink>
             </dt>

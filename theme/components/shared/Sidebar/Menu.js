@@ -7,6 +7,7 @@ import { MenuLink } from "./MenuLink";
 import { get } from "../../../utils/theme";
 
 import { SubMenu } from "./SubMenu";
+import Utils from '../../../utils/utils';
 export const MenuItem = {
   id: "",
   name: "",
@@ -60,18 +61,16 @@ const MenuState = {
   hasActive: false
 };
 export const Menu = props => {
-  const [opened, setOpened] = useState(true);
-  const toggle = () => setOpened(s => !s);
-
-  const { item, sidebarToggle, collapseAll } = props;
-  const show = collapseAll || opened;
+  const { item, sidebarToggle, handleActiveMenu,activeMenu } = props;
+  const opened = Utils.checkMenuIsOPen(props);
+  const show = opened;
   const hasChildren = !item.href && item.menu && item.menu.length > 0;
   const hasToggle = !item.href && !item.route;
   const handleToggle = ev => {
     ev.preventDefault();
-    toggle();
+    handleActiveMenu(item);
   };
-
+  const options = {handleActiveMenu, activeMenu};
   let OutputHtml = (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
@@ -87,7 +86,7 @@ export const Menu = props => {
           {item.menu &&
             item.menu.map(dataItem => (
               <List opened={show} key={dataItem.name}>
-                <SubMenu item={dataItem} />
+                <SubMenu item={dataItem} {...options}/>
               </List>
             ))}
         </List>

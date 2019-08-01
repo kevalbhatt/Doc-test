@@ -1,20 +1,6 @@
 export default [
-    "Introduction", {
-        name: "Project Info", menu: [
-            "Project Information",
-            "Mailing Lists",
-            "Team List",
-            "Issue Tracking",
-            "Source Repository"
-        ]
-    }, {
-        name: "Downloads",
-        menu: [
-            "Download",
-            "Whats New",
-            "Migration"
-        ]
-    } , {
+    "Introduction",
+    {
         name: "Documentation",
         menu: [
             {
@@ -25,8 +11,7 @@ export default [
                     "Glossary",
                     "Classification Propagation",
                     "Notifications",
-                    "High Availability",
-                    "Soft Reference"
+                    "High Availability"
                 ]
             },
             {
@@ -79,7 +64,7 @@ export default [
                     "Installation Instruction"
                 ]
             },
-            "Rest API",
+            "REST API",
             {
                 name: "Tools",
                 menu: [
@@ -90,8 +75,25 @@ export default [
                 name: "Misc",
                 menu: [
                     "Atlas Server",
-                    "Replicated Attributes"
+                    "Replicated Attributes",
+                    "Soft Reference"
                 ]
             }
         ]
-    },"For Developers", "ASF" ];
+    },  {
+        name: "Downloads",
+        menu: [
+            "Download",
+            "Whats New",
+            "Migration"
+        ]
+    } ,"For Developers",
+    {
+        name: "Project Info", menu: [
+            "Project Information",
+            "Mailing Lists",
+            "Team List",
+            "Issue Tracking",
+            "Source Repository"
+        ]
+    },  "ASF" ];

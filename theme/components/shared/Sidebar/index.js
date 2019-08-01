@@ -28,6 +28,7 @@ import { MenuLink } from "./MenuLink";
 import { SubMenu } from "./SubMenu";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
+import Utils from '../../../utils/utils';
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
 const _omit = _interopDefault(require("lodash/fp/omit"));
@@ -263,7 +264,6 @@ const mergeMenus = (entriesMenu, configMenu) => {
   const second = configMenu.map(normalizeAndClean);
 
   const merged = _unionBy("name", first, second);
-
   return merged.map(item => {
     if (!item.menu) return item;
     const found = second.find(i => i.name === item.name);
@@ -327,7 +327,17 @@ const useMenusCustom = opts => {
 };
 
 ToggleBackground.defaultProps = OpenProps;
+const getActiveMenu = () => {
+  const {localStorageKeys} = Utils;
+  let act_menu = JSON.parse(localStorage.getItem(localStorageKeys.ACTIVEMENU));
+  if (!act_menu) {
+    act_menu =  ['Documentation'];
+    localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(act_menu));
+  }
+  return  act_menu;
+}
 export const Sidebar = () => {
+  const [activeMenu, setActiveMenu] = useState(getActiveMenu());
   const [hidden, setHidden] = useState(true);
   const [query, setQuery] = useState("");
   const menus = useMenusCustom({ query });
@@ -344,7 +354,8 @@ export const Sidebar = () => {
   });
 
   useEffect(() => {
-    const navTop = parseInt(localStorage.getItem('nav'));
+    const {localStorageKeys} = Utils;
+    const navTop = parseInt(localStorage.getItem(localStorageKeys.NAVPOSITION));
     if (navTop) {
       navRef.current.scrollTop = navTop;
     }
@@ -364,7 +375,21 @@ export const Sidebar = () => {
     addOverlayClass(!hidden);
   };
   const handleScroll = () => {
-    localStorage.setItem('nav', navRef.current.scrollTop);
+    const {localStorageKeys} = Utils;
+    localStorage.setItem(localStorageKeys.NAVPOSITION, navRef.current.scrollTop);
+  }
+  const handleActiveMenu = (menu) => {
+    const {localStorageKeys} = Utils;
+    const t_activeMenu = JSON.parse(JSON.stringify(activeMenu));
+    const index = t_activeMenu.findIndex((a) => a === menu.name);
+    if (index === -1) {
+      t_activeMenu.push(menu.name);
+      setActiveMenu(t_activeMenu);
+    } else {
+      t_activeMenu.splice(index, 1);
+      setActiveMenu([...t_activeMenu]);
+    }
+    localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(t_activeMenu));
   }
     let outputHtml = (
     <Fragment>
@@ -384,7 +409,8 @@ export const Sidebar = () => {
                     key={menu.id}
                     item={menu}
                     sidebarToggle={handleSidebarToggle}
-                    collapseAll={Boolean(query.length)}
+                    activeMenu={activeMenu}
+                    handleActiveMenu={handleActiveMenu}
                   />
                 ))}
             </Menus>

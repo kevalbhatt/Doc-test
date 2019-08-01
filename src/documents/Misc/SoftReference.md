@@ -2,8 +2,8 @@
 name: Soft Reference
 route: /SoftReference
 menu: Documentation
-submenu: Features
---- 
+submenu: Misc
+---
 
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -12,9 +12,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 
 #### Background
 
-Entity attributes are specified using attribute definitions. An attributes persistence strategy is determined by based on their type. 
+Entity attributes are specified using attribute definitions. An attributes persistence strategy is determined by based on their type.
 
-Primitive types are persisted as properties within the vertex of their parent. 
+Primitive types are persisted as properties within the vertex of their parent.
 
 Non-primitive attributes get a vertex of their own and and edge is created between the parent the child to establish ownership.
 
@@ -38,4 +38,3 @@ Below is an example of using the new attribute option.
         }
       }`}
 </SyntaxHighlighter>
-

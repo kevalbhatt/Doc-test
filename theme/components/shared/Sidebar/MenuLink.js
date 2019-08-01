@@ -118,7 +118,7 @@ export const MenuLink = React.forwardRef(
       if (prevActive !== isActive) {
         setActive(isActive);
         $el && checkActiveClass($el.current, isActive);
-        onActiveChange && onActiveChange(isActive);
+        //isActive && onActiveChange && onActiveChange(item.name);
       }
     });
     return (
