@@ -84,7 +84,10 @@ export default [
         name: "Downloads",
         menu: [
             "Download",
-            "Whats New",
+            {
+                name: "Whats New",
+                menu: ["WhatsNew-2.0", "WhatsNew-1.0"]
+            },
             "Migration"
         ]
     } ,"For Developers",
@@ -94,6 +97,7 @@ export default [
             "Mailing Lists",
             "Team List",
             "Issue Tracking",
+            "License",
             "Source Repository"
         ]
     },  "ASF" ];

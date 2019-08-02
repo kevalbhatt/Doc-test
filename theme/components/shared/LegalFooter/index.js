@@ -25,6 +25,14 @@ const FooterDiv = styled.div`
 	margin-left: 350px;
 	width: 70%;
 	font-size: 10px;
+	@media screen and (max-width: ${breakpoints.oldDesktop}px) {
+		width: 90%;
+		margin: 0 50px;
+	}
+	@media screen and (max-width: ${breakpoints.tablet - 1}px) {
+		width: 90%;
+		margin: 0 50px;
+	}
 `;
 const ParagraphFooter = styled.div``;
 export const LegalFooter = props => {
