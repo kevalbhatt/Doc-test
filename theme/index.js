@@ -7,8 +7,6 @@ import { components } from "./components/ui";
 import { Global } from "./styles/global";
 import { config } from "./config";
 import { ThemeProvider } from "./utils/theme";
-import { GithubLink } from "./components/shared/GithubLink";
-import { HeaderDropDown } from "./components/shared/HeaderDropDown";
 import { LegalFooter } from "./components/shared/LegalFooter";
 
 const Theme = ({ children }) => {
@@ -18,8 +16,6 @@ const Theme = ({ children }) => {
       <ComponentsProvider components={components}>
         {children}
       </ComponentsProvider>
-      <GithubLink />
-      <HeaderDropDown />
       <LegalFooter />
     </ThemeProvider>
   );

@@ -8,6 +8,8 @@ import { ButtonLink } from "./Button";
 import { GithubLink, Sidebar, Main } from "../shared";
 import { get } from "../../utils/theme";
 import { mq } from "../../styles/responsive";
+import  Header  from '../shared/Header';
+import Utils from '../../utils/utils';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -63,6 +65,8 @@ const EditIcon = styled(Edit)`
 `;
 export const Page = ({ children, doc: { link, fullpage, edit = false } }) => {
   const { repository } = useConfig();
+  const {props} = children;
+  const show = Utils.pagesForGithubLink.toString().includes(props.doc.name);
   const content = (
     <Fragment>
       {link && edit && (
@@ -70,6 +74,7 @@ export const Page = ({ children, doc: { link, fullpage, edit = false } }) => {
           <EditIcon width={14} /> Edit page
         </EditPage>
       )}
+      <Header showGithubLink={show}/>
       {children}
     </Fragment>
   );

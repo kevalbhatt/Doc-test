@@ -2,29 +2,22 @@ import * as React from "react";
 import styled from "styled-components";
 import GitHubButton from "react-github-btn";
 
-const GitHubDivContainer = styled.div`
-  width: 100%;
-  position: fixed;
-  background: rgb(255, 255, 255);
-  padding: 20px 0;
-  color: #fff;
-  top: 0px;
-  opacity: 1;
-`;
 const GitHubDivContent = styled.div`
-  position: fixed;
-  top: 0px;
-  right: 2px;
+  width: auto;
+  padding: 0;
+  float: right;
+  margin-right: 2px;
+  margin-left: 12px;
+  display: ${(p) => p.showGithubLink ? 'display-inline' : 'none'}
 `;
 
 const GithubLinkProps = {
   repository: "https://github.com/apache/atlas/"
 };
 
-export const GithubLink = ({ repository }) => {
+export const GithubLink = ({ repository, ...props }) => {
   return(
-  <GitHubDivContainer>
-    <GitHubDivContent>
+    <GitHubDivContent {...props}>
       <GitHubButton
         href="https://github.com/apache/atlas/fork"
         data-size="large"
@@ -49,6 +42,5 @@ export const GithubLink = ({ repository }) => {
         Star
       </GitHubButton>
     </GitHubDivContent>
-  </GitHubDivContainer>
   )
 };

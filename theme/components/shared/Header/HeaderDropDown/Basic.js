@@ -1,7 +1,7 @@
 import Select from "react-dropdown-select";
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
-import * as colors from "../../../styles/colors";
+import * as colors from "../../../../styles/colors";
 
 const Basic = props => {
   let { options, ...rest } = props;
