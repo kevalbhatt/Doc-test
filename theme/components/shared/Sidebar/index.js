@@ -15,7 +15,7 @@ import {
 } from "react";
 import * as React from "react";
 
-import { useMenus, useWindowSize, usePrevious, doczState } from "docz";
+import { useMenus, useWindowSize, usePrevious, doczState } from "../../../../docz-lib/docz/dist";
 import styled from "styled-components";
 import _unionBy from "lodash/fp/unionBy";
 import _get from "lodash/fp/get";
@@ -28,6 +28,7 @@ import { MenuLink } from "./MenuLink";
 import { SubMenu } from "./SubMenu";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
+import Utils from '../../../utils/utils';
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
 const _omit = _interopDefault(require("lodash/fp/omit"));
@@ -58,7 +59,7 @@ const Wrapper = styled.div`
 
   dl {
     padding: 0;
-    margin: 0 14px;
+    margin: 0 10px;
   }
 
   dl a {
@@ -93,6 +94,7 @@ const Content = styled.div`
   min-width: 320px;
   height: 100%;
   max-height: 100vh;
+  background: ${sidebarBg};
 `;
 
 const Menus = styled.nav`
@@ -262,7 +264,6 @@ const mergeMenus = (entriesMenu, configMenu) => {
   const second = configMenu.map(normalizeAndClean);
 
   const merged = _unionBy("name", first, second);
-
   return merged.map(item => {
     if (!item.menu) return item;
     const found = second.find(i => i.name === item.name);
@@ -283,7 +284,7 @@ const sortMenus = (first, second = []) => {
     return Object.assign({}, item, {
       menu: foundMenu
         ? sortMenus(item.menu, foundMenu)
-        : sort(item.menu, sortByName)
+        : item.menu
     });
   });
 };
@@ -326,13 +327,24 @@ const useMenusCustom = opts => {
 };
 
 ToggleBackground.defaultProps = OpenProps;
+const getActiveMenu = () => {
+  const {localStorageKeys} = Utils;
+  let act_menu = JSON.parse(localStorage.getItem(localStorageKeys.ACTIVEMENU));
+  if (!act_menu) {
+    act_menu =  ['Documentation'];
+    localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(act_menu));
+  }
+  return  act_menu;
+}
 export const Sidebar = () => {
+  const [activeMenu, setActiveMenu] = useState(getActiveMenu());
   const [hidden, setHidden] = useState(true);
   const [query, setQuery] = useState("");
   const menus = useMenusCustom({ query });
   const windowSize = useWindowSize();
   const isDesktop = windowSize.innerWidth >= breakpoints.desktop;
   const prevIsDesktop = usePrevious(isDesktop);
+  const navRef = useRef();
 
   useEffect(() => {
     if (!hidden && !prevIsDesktop && isDesktop) {
@@ -341,11 +353,19 @@ export const Sidebar = () => {
     }
   });
 
+  useEffect(() => {
+    const {localStorageKeys} = Utils;
+    const navTop = parseInt(localStorage.getItem(localStorageKeys.NAVPOSITION));
+    if (navTop) {
+      navRef.current.scrollTop = navTop;
+    }
+  }, []);
+
   const addOverlayClass = isHidden => {
     const method = !isHidden ? "add" : "remove";
 
     if (typeof window !== "undefined" && !isDesktop) {
-      document.documentElementyyy.classList[method]("with-overlay");
+      document.documentElement.classList[method]("with-overlay");
     }
   };
 
@@ -354,6 +374,23 @@ export const Sidebar = () => {
     setHidden(s => !s);
     addOverlayClass(!hidden);
   };
+  const handleScroll = () => {
+    const {localStorageKeys} = Utils;
+    localStorage.setItem(localStorageKeys.NAVPOSITION, navRef.current.scrollTop);
+  }
+  const handleActiveMenu = (menu) => {
+    const {localStorageKeys} = Utils;
+    const t_activeMenu = JSON.parse(JSON.stringify(activeMenu));
+    const index = t_activeMenu.findIndex((a) => a === menu.name);
+    if (index === -1) {
+      t_activeMenu.push(menu.name);
+      setActiveMenu(t_activeMenu);
+    } else {
+      t_activeMenu.splice(index, 1);
+      setActiveMenu([...t_activeMenu]);
+    }
+    localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(t_activeMenu));
+  }
     let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
@@ -365,14 +402,15 @@ export const Sidebar = () => {
           {menus && menus.length === 0 ? (
             <Empty>No documents founda.</Empty>
           ) : (
-            <Menus>
+            <Menus ref={navRef} onScroll={handleScroll}>
               {menus &&
                 menus.map(menu => (
                   <Menu
                     key={menu.id}
                     item={menu}
                     sidebarToggle={handleSidebarToggle}
-                    collapseAll={Boolean(query.length)}
+                    activeMenu={activeMenu}
+                    handleActiveMenu={handleActiveMenu}
                   />
                 ))}
             </Menus>
@@ -397,7 +435,7 @@ export const Sidebar = () => {
             <Logo showBg={!hidden} />
 
             <MenuLink item={menus}></MenuLink>
-            <Menus>
+            <Menus ref={navRef} onScroll={handleScroll}>
               {menus &&
                 menus.map(menu => (
                   <SubMenu

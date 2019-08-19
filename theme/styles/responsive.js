@@ -3,6 +3,7 @@ import facepaint from "facepaint";
 export const breakpoints = {
 	mobile: 420,
 	tablet: 920,
+	oldDesktop: 1024,
 	desktop: 1120
 };
 

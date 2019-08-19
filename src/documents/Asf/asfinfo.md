@@ -1,8 +1,7 @@
 ---
-name: ASF Info
+name: ASF
 route: /asf
 menu: ASF
-submenu: ASF Info
 ---
 
 import {CustomLink} from "theme/components/shared/common/CustomLink";

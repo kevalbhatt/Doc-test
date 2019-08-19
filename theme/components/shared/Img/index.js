@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
-import { useConfig } from "docz";
+import { useConfig } from "../../../../docz-lib/docz/dist";
 const Img = props => {
 	const { src,width,height } = props;
 	const { baseUrl } = useConfig();

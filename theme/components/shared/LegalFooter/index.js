@@ -22,9 +22,17 @@ const LinkStyled = styled.a`
 `
 const FooterDiv = styled.div`
 	position: absolute;
-	padding-left: 350px;
+	margin-left: 350px;
 	width: 70%;
 	font-size: 10px;
+	@media screen and (max-width: ${breakpoints.oldDesktop}px) {
+		width: 90%;
+		margin: 0 50px;
+	}
+	@media screen and (max-width: ${breakpoints.tablet - 1}px) {
+		width: 90%;
+		margin: 0 50px;
+	}
 `;
 const ParagraphFooter = styled.div``;
 export const LegalFooter = props => {
@@ -45,7 +53,7 @@ export const LegalFooter = props => {
 						</LinkStyled>
 						Copyright © 2011-2018 The Apache Software Foundation.
 						Licensed under the{" "}
-						<LinkStyled href="https://www.apache.org/licenses/">
+						<LinkStyled href="https://www.apache.org/licenses/LICENSE-2.0">
 							Apache License, Version 2.0
 						</LinkStyled>
 						.Apache Atlas, Atlas, Apache, the Apache feather logo

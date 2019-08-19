@@ -1,7 +1,5 @@
-import { css } from "docz-plugin-css";
-import menu from "./config/menu";
-
-
+import menu from "./docz-lib/config/menu";
+import versions from './docz-lib/config/versions';
 
 module.exports = {
 	title: "Apache Atlas",
@@ -10,12 +8,8 @@ module.exports = {
 	baseUrl:"./public",
 	src: "./src",
 	public: "./src/resources",
-	plugins: [
-		css({
-			preprocessor: "sass"
-		})
-	],
 	menu: menu,
+	atlasVersions: versions,
 	theme: "theme/",
 	modifyBundlerConfig: config => {
 		config.module.rules.push(

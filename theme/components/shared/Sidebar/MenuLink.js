@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useMemo, useEffect, useRef, useState } from "react";
-import { useConfig, usePrevious } from "docz";
+import { useConfig, usePrevious } from "../../../../docz-lib/docz/dist";
 //import { MenuItem } from "./Menu";
 import styled, { css } from "styled-components";
+import _isArray from "lodash/fp/isArray";
 
 import { MenuHeadings } from "./MenuHeadings";
 import { get } from "../../../utils/theme";
@@ -21,6 +22,15 @@ const WrapperProps = {
   active: false,
   theme: null
 };
+
+const hrefLinks = css`
+  font-weight: normal !important;
+  color: #807e7e !important;
+  &:hover,
+  &.active {
+    color: ${p => get("colors.sidebarPrimary")(p) || get("colors.primary")(p)} !important;
+  }
+`;
 
 const activeWrapper = css`
   padding-left: 0;
@@ -51,7 +61,7 @@ Wrapper.defaultProps = WrapperProps;
 export const createLink = Link => styled(Link)`
   position: relative;
   display: block;
-  padding: 4px 24px;
+  padding: 4px 15px;
   font-weight: 600;
   font-size: 18px;
   letter-spacing: -0.02em;
@@ -69,7 +79,15 @@ export const createLink = Link => styled(Link)`
     color: ${p => get("colors.sidebarPrimary")(p) || get("colors.primary")(p)};
     font-weight: 600;
   }
+  ${p => {
+    return checkChildMenu(p) ? hrefLinks : ''
+  }}
 `;
+
+const checkChildMenu = obj => {
+  const {partiallyActive, to, children} = obj;
+     return (partiallyActive && !`REST API,ASF`.includes(children.trim()))
+}
 
 const LinkAnchor = createLink(styled.a``);
 
@@ -118,7 +136,7 @@ export const MenuLink = React.forwardRef(
       if (prevActive !== isActive) {
         setActive(isActive);
         $el && checkActiveClass($el.current, isActive);
-        onActiveChange && onActiveChange(isActive);
+        //isActive && onActiveChange && onActiveChange(item.name);
       }
     });
     return (
