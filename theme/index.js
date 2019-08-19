@@ -1,5 +1,5 @@
 import * as React from "react";
-import { theme, ComponentsProvider } from "docz";
+import { theme, ComponentsProvider } from "../docz-lib/docz/dist";
 import get from "lodash/get";
 
 import * as modes from "./styles/modes";

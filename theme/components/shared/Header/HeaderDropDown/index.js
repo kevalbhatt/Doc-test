@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 import styled from "styled-components";
 import Basic from "./Basic";
-import { doczState } from "docz";
+import { doczState } from "../../../../../docz-lib/docz/dist";
 
 const DropDownDivContainer = styled.div`
 	width: 220px;

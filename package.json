@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "docz dev",
-    "build": "docz build",
+    "start": "./docz-lib/docz/bin/index.js dev",
+    "build": "./docz-lib/docz/bin/index.js build",
     "predeploy": "npm install && npm run build",
     "deploy": "gh-pages -d .docz/dist"
   },
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "docz": "^1.2.0",
-    "docz-plugin-css": "^0.11.0",
     "facepaint": "^1.2.1",
+    "hash-source": "^1.0.4",
     "react-feather": "^1.1.6",
     "styled-components": "^4.3.1"
   }

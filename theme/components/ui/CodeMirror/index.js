@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useEffect, useRef, SFC } from 'react'
-import { useConfig } from 'docz'
+import { useConfig } from '../../../../docz-lib/docz/dist'
 import { Controlled as BaseCodeMirror } from 'react-codemirror2'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import styled from 'styled-components'

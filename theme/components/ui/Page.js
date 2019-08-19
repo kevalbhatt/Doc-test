@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SFC, Fragment } from "react";
-import { PageProps, useConfig } from "docz";
+import { PageProps, useConfig } from "../../../docz-lib/docz/dist";
 import Edit from "react-feather/dist/icons/edit-2";
 import styled from "styled-components";
 

@@ -5,13 +5,14 @@ import { GithubLink } from './GithubLink';
 import { HeaderDropDown } from './HeaderDropDown';
 
 const HeaderStyleComp = styled.div`
-  width: inherit;
+  width: 100%;
   height: auto;
   padding: 0;
   position: fixed;
   z-index: 999;
   top:0;
   right: 0;
+  left: 0;
   background: rgb(255, 255, 255);
 `
 

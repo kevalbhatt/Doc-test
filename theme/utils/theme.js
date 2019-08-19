@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
-import { useConfig } from "docz";
+import { useConfig } from "../../docz-lib/docz/dist";
 import getter from "lodash/get";
 
 export const get = (val, defaultValue) => p =>

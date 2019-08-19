@@ -15,7 +15,7 @@ import {
 } from "react";
 import * as React from "react";
 
-import { useMenus, useWindowSize, usePrevious, doczState } from "docz";
+import { useMenus, useWindowSize, usePrevious, doczState } from "../../../../docz-lib/docz/dist";
 import styled from "styled-components";
 import _unionBy from "lodash/fp/unionBy";
 import _get from "lodash/fp/get";
@@ -365,7 +365,7 @@ export const Sidebar = () => {
     const method = !isHidden ? "add" : "remove";
 
     if (typeof window !== "undefined" && !isDesktop) {
-      document.documentElementyyy.classList[method]("with-overlay");
+      document.documentElement.classList[method]("with-overlay");
     }
   };
 

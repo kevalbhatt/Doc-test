@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useMemo, useEffect, useRef, useState } from "react";
-import { useConfig, usePrevious } from "docz";
+import { useConfig, usePrevious } from "../../../../docz-lib/docz/dist";
 //import { MenuItem } from "./Menu";
 import styled, { css } from "styled-components";
 import _isArray from "lodash/fp/isArray";
@@ -86,7 +86,7 @@ export const createLink = Link => styled(Link)`
 
 const checkChildMenu = obj => {
   const {partiallyActive, to, children} = obj;
-     return (partiallyActive && to.length > 10 && !`REST API,ASF`.includes(children.trim()))
+     return (partiallyActive && !`REST API,ASF`.includes(children.trim()))
 }
 
 const LinkAnchor = createLink(styled.a``);
