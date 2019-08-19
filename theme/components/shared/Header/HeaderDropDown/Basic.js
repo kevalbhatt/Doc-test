@@ -27,7 +27,7 @@ const Basic = props => {
                  target = '_self';
                 setValue(selectedValue);
                 if (selectedValue[0].title !== "Latest") {
-                  href = `http://atlas.apache.org/${selectedValue[0].href}`;
+                  href = `http://atlas.apache.org${selectedValue[0].href}`;
                   target = '_blank';
                 }
                 window.open(href, target);
