@@ -1,3 +1,21 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 function _interopDefault(ex) {
   return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
 }
@@ -15,7 +33,12 @@ import {
 } from "react";
 import * as React from "react";
 
-import { useMenus, useWindowSize, usePrevious, doczState } from "../../../../docz-lib/docz/dist";
+import {
+  useMenus,
+  useWindowSize,
+  usePrevious,
+  doczState
+} from "../../../../docz-lib/docz/dist";
 import styled from "styled-components";
 import _unionBy from "lodash/fp/unionBy";
 import _get from "lodash/fp/get";
@@ -28,7 +51,7 @@ import { MenuLink } from "./MenuLink";
 import { SubMenu } from "./SubMenu";
 import { get } from "../../../utils/theme";
 import { mq, breakpoints } from "../../../styles/responsive";
-import Utils from '../../../utils/utils';
+import Utils from "../../../utils/utils";
 
 const _pipe = _interopDefault(require("lodash/fp/pipe"));
 const _omit = _interopDefault(require("lodash/fp/omit"));
@@ -192,10 +215,10 @@ const entryAsMenu = entry => ({
   route: entry.route,
   parent: entry.parent,
   submenu: entry.submenu,
-  menu:entry.menu
+  menu: entry.menu
 });
 
-function flatArrFromObject(arr, prop,menus) {
+function flatArrFromObject(arr, prop, menus) {
   const reducer = (arr, obj) => {
     const value = _get(prop)(obj);
 
@@ -219,20 +242,19 @@ const parseMenu = entries => name => ({
 //   menu:entries.menu
 // });
 
-
 const parseSubMenu = function parseSubMenu(entries) {
-  return function (name) {
-     return {
+  return function(name) {
+    return {
       name: name,
       submenu: entriesOfSubMenu(name, entries),
-      menu:entriesOfMenu(name, entries)
+      menu: entriesOfMenu(name, entries)
     };
   };
 };
 const menusFromEntries = entries => {
   const entriesWithoutMenu = entries.filter(noMenu).map(entryAsMenu);
   const menus = flatArrFromObject(entries, "menu").map(parseMenu(entries));
-  const submenus = flatArrFromObject(entries, "submenu",menus).map(
+  const submenus = flatArrFromObject(entries, "submenu", menus).map(
     parseSubMenu(entries)
   );
 
@@ -244,15 +266,13 @@ const menusFromEntries = entries => {
       }
     }
   }
-  for (var x in menus){
-    for (var y in submenus){
-      if(menus[x].name == submenus[y].menu[0].menu){
-        if(menus[x].menu.length>0){
-        menus[x].menu.push(submenus[y])
-
-        }else{
-
-        menus[x].menu.push(submenus[y]);
+  for (var x in menus) {
+    for (var y in submenus) {
+      if (menus[x].name == submenus[y].menu[0].menu) {
+        if (menus[x].menu.length > 0) {
+          menus[x].menu.push(submenus[y]);
+        } else {
+          menus[x].menu.push(submenus[y]);
         }
       }
     }
@@ -282,9 +302,7 @@ const sortMenus = (first, second = []) => {
     const found = second.find(menu => menu.name === item.name);
     const foundMenu = found && found.menu;
     return Object.assign({}, item, {
-      menu: foundMenu
-        ? sortMenus(item.menu, foundMenu)
-        : item.menu
+      menu: foundMenu ? sortMenus(item.menu, foundMenu) : item.menu
     });
   });
 };
@@ -328,14 +346,14 @@ const useMenusCustom = opts => {
 
 ToggleBackground.defaultProps = OpenProps;
 const getActiveMenu = () => {
-  const {localStorageKeys} = Utils;
+  const { localStorageKeys } = Utils;
   let act_menu = JSON.parse(localStorage.getItem(localStorageKeys.ACTIVEMENU));
   if (!act_menu) {
-    act_menu =  ['Documentation'];
+    act_menu = ["Documentation"];
     localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(act_menu));
   }
-  return  act_menu;
-}
+  return act_menu;
+};
 export const Sidebar = () => {
   const [activeMenu, setActiveMenu] = useState(getActiveMenu());
   const [hidden, setHidden] = useState(true);
@@ -354,7 +372,7 @@ export const Sidebar = () => {
   });
 
   useEffect(() => {
-    const {localStorageKeys} = Utils;
+    const { localStorageKeys } = Utils;
     const navTop = parseInt(localStorage.getItem(localStorageKeys.NAVPOSITION));
     if (navTop) {
       navRef.current.scrollTop = navTop;
@@ -375,13 +393,16 @@ export const Sidebar = () => {
     addOverlayClass(!hidden);
   };
   const handleScroll = () => {
-    const {localStorageKeys} = Utils;
-    localStorage.setItem(localStorageKeys.NAVPOSITION, navRef.current.scrollTop);
-  }
-  const handleActiveMenu = (menu) => {
-    const {localStorageKeys} = Utils;
+    const { localStorageKeys } = Utils;
+    localStorage.setItem(
+      localStorageKeys.NAVPOSITION,
+      navRef.current.scrollTop
+    );
+  };
+  const handleActiveMenu = menu => {
+    const { localStorageKeys } = Utils;
     const t_activeMenu = JSON.parse(JSON.stringify(activeMenu));
-    const index = t_activeMenu.findIndex((a) => a === menu.name);
+    const index = t_activeMenu.findIndex(a => a === menu.name);
     if (index === -1) {
       t_activeMenu.push(menu.name);
       setActiveMenu(t_activeMenu);
@@ -389,15 +410,17 @@ export const Sidebar = () => {
       t_activeMenu.splice(index, 1);
       setActiveMenu([...t_activeMenu]);
     }
-    localStorage.setItem(localStorageKeys.ACTIVEMENU, JSON.stringify(t_activeMenu));
-  }
-    let outputHtml = (
+    localStorage.setItem(
+      localStorageKeys.ACTIVEMENU,
+      JSON.stringify(t_activeMenu)
+    );
+  };
+  let outputHtml = (
     <Fragment>
       <Wrapper opened={hidden}>
         <Content>
           <Hamburger opened={!hidden} onClick={handleSidebarToggle} />
           <Logo showBg={true} />
-
 
           {menus && menus.length === 0 ? (
             <Empty>No documents founda.</Empty>

@@ -16,7 +16,7 @@ All configuration in Atlas uses java properties style configuration. The main co
 ## Graph Configs
 
 ### Graph Persistence engine - HBase
-Set the following properties to configure [JanusGraph](http://atlas.apache.org/JanusGraph.html) to use HBase as the persistence engine. Please refer to [link](http://docs.janusgraph.org/0.2.0/configuration.html#_hbase_caching) for more details.
+Set the following properties to configure [JanusGraph](https://janusgraph.org/) to use HBase as the persistence engine. Please refer to [link](http://docs.janusgraph.org/0.2.0/configuration.html#_hbase_caching) for more details.
 
 <SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
 {`atlas.graph.storage.backend=hbase
@@ -176,7 +176,10 @@ atlas.webserver.maxthreads=100
 # Keepalive time in secs for the thread pool of the atlas web server
 atlas.webserver.keepalivetimesecs=60
 # Queue size for the requests(when max threads are busy) for the atlas web server
-atlas.webserver.queuesize=100`}
+atlas.webserver.queuesize=100
+# Set to the property to true to enable warn on no relationships defined between entities on a particular attribute
+# Not having relationships defined can lead to performance loss while adding new entities
+atlas.relationships.warnOnNoRelationships=false`}
 </SyntaxHighlighter>
 
 ### Recording performance metrics

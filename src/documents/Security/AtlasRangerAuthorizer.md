@@ -16,7 +16,7 @@ import Img from 'theme/components/shared/Img'
 
 ## Setting up Apache Atlas to use Apache Ranger Authorization
 
-As detailed in [Atlas Authorization Model](http://atlas.apache.org//Atlas-Authorization-Model.html), Apache Atlas supports pluggable authorization
+As detailed in [Atlas Authorization Model](#/AuthorizationModel), Apache Atlas supports pluggable authorization
 model. Apache Ranger provides an authorizer implementation that uses Apache Ranger policies for authorization. In
 addition, the authorizer provided by Apache Ranger audits all authorizations into a central audit store.
 
@@ -25,23 +25,26 @@ To configure Apache Atlas to use Apache Ranger authorizer, please follow the ins
 
 * Include the following property in atlas-application.properties config file:
 
-   <SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
+<SyntaxHighlighter wrapLines={true} language="shell" style={theme.dark}>
    {`atlas.authorizer.impl=ranger`}
-   </SyntaxHighlighter>
+</SyntaxHighlighter>
 
    If you use Apache Ambari to deploy Apache Atlas and Apache Ranger, enable Atlas plugin in configuration pages for
    Apache Ranger.
 
+
 * Include libraries of Apache Ranger plugin in libext directory of Apache Atlas
-      * `<Atlas installation directory>`/libext/ranger-atlas-plugin-impl/
-      * `<Atlas installation directory>`/libext/ranger-atlas-plugin-shim-<version/>.jar
-      * `<Atlas installation directory>`/libext/ranger-plugin-classloader-<version/>.jar
+   * `<Atlas installation directory>`/libext/ranger-atlas-plugin-impl/
+   * `<Atlas installation directory>`/libext/ranger-atlas-plugin-shim-<version/>.jar
+   * `<Atlas installation directory>`/libext/ranger-plugin-classloader-<version/>.jar
+
+
 
 * Include configuration files for Apache Ranger plugin in configuration directory of Apache Atlas - typically under /etc/atlas/conf directory. For more details on configuration file contents, please refer to appropriate documentation in Apache Ranger.
-      * `<Atlas configuration directory>`/ranger-atlas-audit.xml
-      * `<Atlas configuration directory>`/ranger-atlas-security.xml
-      * `<Atlas configuration directory>`/ranger-policymgr-ssl.xml
-      * `<Atlas configuration directory>`/ranger-security.xml
+   * `<Atlas configuration directory>`/ranger-atlas-audit.xml
+   * `<Atlas configuration directory>`/ranger-atlas-security.xml
+   * `<Atlas configuration directory>`/ranger-policymgr-ssl.xml
+   * `<Atlas configuration directory>`/ranger-security.xml
 
 
 

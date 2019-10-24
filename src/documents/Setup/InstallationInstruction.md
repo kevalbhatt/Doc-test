@@ -33,10 +33,13 @@ bin/atlas_start.py`}
 #### Using Apache Atlas
 
   * To verify if Apache Atlas server is up and running, run curl command as shown below:
-    <SyntaxHighlighter wrapLines={true} style={theme.dark}>
+
+
+<SyntaxHighlighter wrapLines={true} style={theme.dark}>
     {`curl -u username:password http://localhost:21000/api/atlas/admin/version
     {"Description":"Metadata Management and Data Governance Platform over Hadoop","Version":"1.0.0","Name":"apache-atlas"}`}
-    </SyntaxHighlighter>
+</SyntaxHighlighter>
+
 
   * Run quick start to load sample model and data
 
@@ -127,7 +130,7 @@ and change it to look as below
 
 #### Configuring Apache HBase as the storage backend for the Graph Repository
 
-By default, Apache Atlas uses JanusGraph as the graph repository and is the only graph repository implementation available currently. Apache HBase versions currently supported are 1.1.x. For configuring Apache Atlas graph persistence on Apache HBase, please see "Graph persistence engine - HBase" in the [Configuration](Configuration) section for more details.
+By default, Apache Atlas uses JanusGraph as the graph repository and is the only graph repository implementation available currently. Apache HBase versions currently supported are 1.1.x. For configuring Apache Atlas graph persistence on Apache HBase, please see "Graph persistence engine - HBase" in the [Configuration](#/Configuration) section for more details.
 
 Apache HBase tables used by Apache Atlas can be set using the following configurations:
 
@@ -140,17 +143,23 @@ atlas.audit.hbase.tablename=apache_atlas_entity_audit`}
 
 By default, Apache Atlas uses JanusGraph as the graph repository and is the only graph repository implementation available currently. For configuring JanusGraph to work with Apache Solr, please follow the instructions below
 
-   * Install Apache Solr if not already running. The version of Apache Solr supported is 5.5.1. Could be installed from http://archive.apache.org/dist/lucene/solr/5.5.1/solr-5.5.1.tgz
+  * Install Apache Solr if not already running. The version of Apache Solr supported is 5.5.1. Could be installed from http://archive.apache.org/dist/lucene/solr/5.5.1/solr-5.5.1.tgz
 
-   * Start Apache Solr in cloud mode.
+
+
+* Start Apache Solr in cloud mode.
 
 SolrCloud mode uses a ZooKeeper Service as a highly available, central location for cluster management. For a small cluster, running with an existing ZooKeeper quorum should be fine. For larger clusters, you would want to run separate multiple ZooKeeper quorum with at least 3 servers.
   Note: Apache Atlas currently supports Apache Solr in "cloud" mode only. "http" mode is not supported. For more information, refer Apache Solr documentation - https://cwiki.apache.org/confluence/display/solr/SolrCloud
 
+
    * For e.g., to bring up an Apache Solr node listening on port 8983 on a machine, you can use the command:
-    <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
-      {`$SOLR_HOME/bin/solr start -c -z <zookeeper_host:port> -p 8983`}
-	  </SyntaxHighlighter>
+
+
+  <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
+    {`$SOLR_HOME/bin/solr start -c -z <zookeeper_host:port> -p 8983`}
+  </SyntaxHighlighter>
+
 
    * Run the following commands from SOLR_BIN (e.g. $SOLR_HOME/bin) directory to create collections in Apache Solr corresponding to the indexes that Apache Atlas uses. In the case that the Apache Atlas and Apache Solr instances are on 2 different hosts, first copy the required configuration files from ATLAS_HOME/conf/solr on the Apache Atlas instance host to Apache Solr instance host. SOLR_CONF in the below mentioned commands refer to the directory where Apache Solr configuration files have been copied to on Apache Solr host:
 
@@ -162,7 +171,7 @@ $SOLR_BIN/solr create -c fulltext_index -d SOLR_CONF -shards #numShards -replica
 
   Note: If numShards and replicationFactor are not specified, they default to 1 which suffices if you are trying out solr with ATLAS on a single node instance.
   Otherwise specify numShards according to the number of hosts that are in the Solr cluster and the maxShardsPerNode configuration.
-  The number of shards cannot exceed the total number of Solr nodes in your !SolrCloud cluster.
+  The number of shards cannot exceed the total number of Solr nodes in your SolrCloud cluster.
 
   The number of replicas (replicationFactor) can be set according to the redundancy required.
 
@@ -185,18 +194,23 @@ Pre-requisites for running Apache Solr in cloud mode
   * Memory - Apache Solr is both memory and CPU intensive. Make sure the server running Apache Solr has adequate memory, CPU and disk.
     Apache Solr works well with 32GB RAM. Plan to provide as much memory as possible to Apache Solr process
   * Disk - If the number of entities that need to be stored are large, plan to have at least 500 GB free space in the volume where Apache Solr is going to store the index data
-  * !SolrCloud has support for replication and sharding. It is highly recommended to use !SolrCloud with at least two Apache Solr nodes running on different servers with replication enabled.
-    If using !SolrCloud, then you also need !ZooKeeper installed and configured with 3 or 5 !ZooKeeper nodes
+  * SolrCloud has support for replication and sharding. It is highly recommended to use SolrCloud with at least two Apache Solr nodes running on different servers with replication enabled.
+    If using SolrCloud, then you also need ZooKeeper installed and configured with 3 or 5 ZooKeeper nodes
 
 *Configuring Elasticsearch as the indexing backend for the Graph Repository (Tech Preview)*
 
-By default, Apache Atlas uses [JanusGraph](https://atlas.apache.org/JanusGraph.html) as the graph repository and is the only graph repository implementation available currently. For configuring [JanusGraph](https://atlas.apache.org/JanusGraph.html) to work with Elasticsearch, please follow the instructions below
+By default, Apache Atlas uses [JanusGraph](https://janusgraph.org/) as the graph repository and is the only graph repository implementation available currently. For configuring [JanusGraph](https://janusgraph.org/) to work with Elasticsearch, please follow the instructions below
+
 
    * Install an Elasticsearch cluster. The version currently supported is 5.6.4, and can be acquired from: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.4.tar.gz
 
+
    * For simple testing a single Elasticsearch node can be started by using the 'elasticsearch' command in the bin directory of the Elasticsearch distribution.
 
+
    * Change Apache Atlas configuration to point to the Elasticsearch instance setup. Please make sure the following configurations are set to the below values in ATLAS_HOME/conf/atlas-application.properties
+
+
 <SyntaxHighlighter wrapLines={true} language="powershell" style={theme.dark}>
 {`atlas.graph.index.search.backend=elasticsearch
 atlas.graph.index.search.hostname=<the hostname(s) of the Elasticsearch master nodes comma separated>
@@ -207,18 +221,18 @@ For more information on JanusGraph configuration for elasticsearch, please refer
 
 #### Configuring Kafka Topics
 
-Apache Atlas uses Apache Kafka to ingest metadata from other components at runtime. This is described in the [[Architecture][Architecture page]]
+Apache Atlas uses Apache Kafka to ingest metadata from other components at runtime. This is described in the [Architecture](#/Architecture)
 in more detail. Depending on the configuration of Apache Kafka, sometimes you might need to setup the topics explicitly before
 using Apache Atlas. To do so, Apache Atlas provides a script =bin/atlas_kafka_setup.py= which can be run from Apache Atlas server. In some
 environments, the hooks might start getting used first before Apache Atlas server itself is setup. In such cases, the topics
 can be run on the hosts where hooks are installed using a similar script `hook-bin/atlas_kafka_setup_hook.py`. Both these
-use configuration in `atlas-application.properties` for setting up the topics. Please refer to the [[Configuration][Configuration page]]
+use configuration in `atlas-application.properties` for setting up the topics. Please refer to the [Configuration](#/Configuration])
 for these details.
 
 #### Setting up Apache Atlas
 There are a few steps that setup dependencies of Apache Atlas. One such example is setting up the JanusGraph schema in the storage backend of choice. In a simple single server setup, these are automatically setup with default configuration when the server first accesses these dependencies.
 
-However, there are scenarios when we may want to run setup steps explicitly as one time operations. For example, in a multiple server scenario using [High Availability](HighAvailability), it is preferable to run setup steps from one of the server instances the first time, and then start the services.
+However, there are scenarios when we may want to run setup steps explicitly as one time operations. For example, in a multiple server scenario using [High Availability](#/HighAvailability), it is preferable to run setup steps from one of the server instances the first time, and then start the services.
 
 To run these steps one time, execute the command =bin/atlas_start.py -setup= from a single Apache Atlas server instance.
 

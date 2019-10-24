@@ -1,22 +1,40 @@
-import * as React from 'react'
-import { useEffect, useRef, SFC } from 'react'
-import { useConfig } from '../../../../docz-lib/docz/dist'
-import { Controlled as BaseCodeMirror } from 'react-codemirror2'
-import PerfectScrollbar from 'react-perfect-scrollbar'
-import styled from 'styled-components'
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-import { get } from '~utils/theme'
+import * as React from "react";
+import { useEffect, useRef, SFC } from "react";
+import { useConfig } from "../../../../docz-lib/docz/dist";
+import { Controlled as BaseCodeMirror } from "react-codemirror2";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import styled from "styled-components";
 
-import { ScrollbarStyles } from './ps-scrollbar'
-import * as themes from './themes'
+import { get } from "~utils/theme";
 
-import 'codemirror/mode/markdown/markdown'
-import 'codemirror/mode/javascript/javascript'
-import 'codemirror/mode/jsx/jsx'
-import 'codemirror/mode/css/css'
-import 'codemirror/addon/edit/matchbrackets'
-import 'codemirror/addon/edit/closetag'
-import 'codemirror/addon/fold/xml-fold'
+import { ScrollbarStyles } from "./ps-scrollbar";
+import * as themes from "./themes";
+
+import "codemirror/mode/markdown/markdown";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/jsx/jsx";
+import "codemirror/mode/css/css";
+import "codemirror/addon/edit/matchbrackets";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/fold/xml-fold";
 
 const Scrollbar = styled(PerfectScrollbar)`
   overflow: auto;
@@ -27,9 +45,9 @@ const Scrollbar = styled(PerfectScrollbar)`
     z-index: 9;
     opacity: 0.4;
   }
-`
+`;
 
-const preStyles = get('styles.pre')
+const preStyles = get("styles.pre");
 const EditorStyled = styled(BaseCodeMirror)`
   ${themes.dark};
   ${themes.light};
@@ -62,62 +80,62 @@ const EditorStyled = styled(BaseCodeMirror)`
   .CodeMirror pre {
     ${preStyles};
   }
-`
+`;
 
 const scrollbarOpts = {
   wheelSpeed: 2,
   wheelPropagation: true,
   minScrollbarLength: 20,
-  suppressScrollX: true,
-}
+  suppressScrollX: true
+};
 
-const noCurrent = (val: any) => !val || !val.current
+const noCurrent = (val: any) => !val || !val.current;
 
 const CodeMirror: SFC<any> = props => {
-  const { themeConfig } = useConfig()
-  const editor = useRef<any>(null)
-  const forceUpdateEditorTimeout = useRef(0)
-  const previousEditor = useRef(0)
-  const linesToScroll = themeConfig.linesToScrollEditor || 14
+  const { themeConfig } = useConfig();
+  const editor = useRef < any > null;
+  const forceUpdateEditorTimeout = useRef(0);
+  const previousEditor = useRef(0);
+  const linesToScroll = themeConfig.linesToScrollEditor || 14;
 
   const editorProps = {
     ...props,
     editorDidMount: (codemirror: any) => {
-      props.editorDidMount && props.editorDidMount(codemirror)
-      editor.current = codemirror
-    },
-  }
+      props.editorDidMount && props.editorDidMount(codemirror);
+      editor.current = codemirror;
+    }
+  };
 
   const refreshCodeMirror = () => {
-    if (noCurrent(editor)) return
-    editor.current.refresh()
-  }
+    if (noCurrent(editor)) return;
+    editor.current.refresh();
+  };
 
   const clearForceUpdateCodeMirror = () => {
-    if (noCurrent(forceUpdateEditorTimeout)) return
-    clearTimeout(forceUpdateEditorTimeout.current)
-  }
+    if (noCurrent(forceUpdateEditorTimeout)) return;
+    clearTimeout(forceUpdateEditorTimeout.current);
+  };
 
   const forceUpdateCodeMirror = () => {
-    if (noCurrent(editor)) return
-    clearForceUpdateCodeMirror()
+    if (noCurrent(editor)) return;
+    clearForceUpdateCodeMirror();
 
     forceUpdateEditorTimeout.current = setTimeout(() => {
-      const currentHeight = editor.current.getScrollInfo().height || 0
-      const hasNoHeight = currentHeight <= 0
+      const currentHeight = editor.current.getScrollInfo().height || 0;
+      const hasNoHeight = currentHeight <= 0;
 
       // Don't refresh if no height (CodeMirror is not visible) or
       // Don't refresh if same height
-      if (hasNoHeight || previousEditor === currentHeight) return
-      refreshCodeMirror()
-      previousEditor.current = editor.current.getScrollInfo().height || 0
-    })
-  }
+      if (hasNoHeight || previousEditor === currentHeight) return;
+      refreshCodeMirror();
+      previousEditor.current = editor.current.getScrollInfo().height || 0;
+    });
+  };
 
   useEffect(() => {
-    forceUpdateCodeMirror()
-    return () => clearForceUpdateCodeMirror()
-  }, [])
+    forceUpdateCodeMirror();
+    return () => clearForceUpdateCodeMirror();
+  }, []);
 
   return (
     <React.Fragment>
@@ -126,7 +144,7 @@ const CodeMirror: SFC<any> = props => {
         <EditorStyled {...editorProps} />
       </Scrollbar>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default CodeMirror
+export default CodeMirror;

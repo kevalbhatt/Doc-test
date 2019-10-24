@@ -1,3 +1,21 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import * as React from "react";
 import { useState } from "react";
 import ChevronDown from "react-feather/dist/icons/chevron-down";
@@ -7,7 +25,7 @@ import { MenuLink } from "./MenuLink";
 import { get } from "../../../utils/theme";
 
 import { SubMenu } from "./SubMenu";
-import Utils from '../../../utils/utils';
+import Utils from "../../../utils/utils";
 export const MenuItem = {
   id: "",
   name: "",
@@ -61,7 +79,7 @@ const MenuState = {
   hasActive: false
 };
 export const Menu = props => {
-  const { item, sidebarToggle, handleActiveMenu,activeMenu } = props;
+  const { item, sidebarToggle, handleActiveMenu, activeMenu } = props;
   const opened = Utils.checkMenuIsOPen(props);
   const show = opened;
   const hasChildren = !item.href && item.menu && item.menu.length > 0;
@@ -70,7 +88,7 @@ export const Menu = props => {
     ev.preventDefault();
     handleActiveMenu(item);
   };
-  const options = {handleActiveMenu, activeMenu};
+  const options = { handleActiveMenu, activeMenu };
   let OutputHtml = (
     <Wrapper>
       <MenuLink item={item} {...(hasToggle && { onClick: handleToggle })}>
@@ -86,7 +104,7 @@ export const Menu = props => {
           {item.menu &&
             item.menu.map(dataItem => (
               <List opened={show} key={dataItem.name}>
-                <SubMenu item={dataItem} {...options}/>
+                <SubMenu item={dataItem} {...options} />
               </List>
             ))}
         </List>
@@ -95,10 +113,9 @@ export const Menu = props => {
   );
 
   if (!hasChildren && !hasToggle) {
-
     OutputHtml = (
       <Wrapper>
-        <MenuLink  item={item} {...(opened && { handleToggle })}>
+        <MenuLink item={item} {...(opened && { handleToggle })}>
           {`${item.name} `}
         </MenuLink>
       </Wrapper>
