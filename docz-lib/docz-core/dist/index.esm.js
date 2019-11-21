@@ -128,7 +128,7 @@ const getInitialTitle = pkg => {
   return titleize(humanize(name.replace(/^@.*\//, '')));
 };
 
-const getInitialDescription = pkg => _get('description', pkg) || 'My awesome app using docz';
+const getInitialDescription = pkg => _get('description', pkg) || 'Apache Atlas';
 
 const setArgs = yargs => {
   const pkg = readJsonSync(appPackageJson, {
